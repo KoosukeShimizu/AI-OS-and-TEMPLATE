@@ -13,3 +13,7 @@ __BackupSrc/
 
 # env
 .env
+
+.claude/
+__test/
+claude-talk-to-figma-mcp/
