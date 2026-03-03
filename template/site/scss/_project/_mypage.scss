@@ -1,0 +1,343 @@
+// （´・ω・`）< TOP / Global
+// -------------------------------
+// .p-home {
+// &__title {
+//   font-size: fz(22);
+//   line-height: 1.2;
+//   font-weight: 700;
+//   text-align: center;
+// }
+// &__subtitle {
+//   font-size: fz(12, 20);
+//   font-weight: 700;
+//   text-transform: uppercase;
+//   text-align: center;
+//   margin-bottom: gt(20);
+// }
+// &__image {
+//   margin: 0 auto gt(20);
+//   display: block;
+//   text-align: center;
+// }
+// }
+
+// （´・ω・`）< TOP / Hero
+// -------------------------------
+.p-home-hero {
+  // background: var(--bg-primary);
+  &__video {
+    max-height: 800px;
+  }
+
+  // &__swiper {
+  //   @media ($tab <= width) {
+  //     max-width: calc(100% - gt(20));
+  //     margin: 0 auto;
+  //   }
+
+  //   .swiper-slide {
+  //     position: relative;
+  //     overflow: hidden;
+  //     aspect-ratio: $aspect-square;
+  //     max-height: 70dvh;
+
+  //     @media ($tab <= width) {
+  //       aspect-ratio: $aspect-hd;
+  //     }
+
+  //     .p-home-hero__slide {
+  //       width: 100%;
+  //       height: 100%;
+  //       overflow: hidden;
+
+  //       img {
+  //         width: 100%;
+  //         height: 100%;
+  //         object-fit: cover;
+  //         transform: scale(1.5);
+  //         filter: blur(20px) brightness(1.5);
+  //         transform-origin: center bottom;
+  //         transition: all 5s $ease-deceleration;
+  //       }
+  //     }
+
+  //     &.swiper-slide-active .p-home-hero__slide img {
+  //       transform: scale(1);
+  //       filter: blur(0px) brightness(1);
+  //     }
+  //   }
+  // }
+}
+
+// （´・ω・`）< TOP / about
+// -------------------------------
+.p-home-about {
+  @media (max-width: $sp) {
+    .c-text {
+      text-align: left;
+    }
+  }
+  // background: var(--bg-primary);
+  // .l-inner {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+  // [class*="c-"] {
+  //   order: 1;
+  // }
+  // .c-subTitle {
+  //   order: 0;
+  // }
+}
+
+// （´・ω・`）< TOP / gallery
+// -------------------------------
+.p-home-gallery {
+  position: relative;
+
+  .swiper {
+    // overflow: visible !important;
+    &-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      overflow: visible !important;
+      gap: gt(8, 24);
+    }
+
+    &-slide {
+      width: auto;
+      flex-shrink: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &-pagination {
+      top: calc(100% + 1em) !important;
+      bottom: auto !important;
+      // background-color: #000 !important;
+      &-bullet {
+        background-color: $c-gray-300;
+        opacity: 1;
+
+        &-active {
+          background-color: #000;
+        }
+      }
+    }
+  }
+
+  &__slide {
+    width: clamp(240px, 60vw, 400px);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+// （´・ω・`）< TOP / menu
+// -------------------------------
+.p-home-menu {
+  // background: var(--bg-primary);
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    flex-wrap: wrap;
+    gap: gt(20, 50);
+    margin-bottom: gt(40);
+    @media (min-width: $sp) {
+      flex-direction: row;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    // flex-wrap: wrap;
+    @media (min-width: $sp) {
+      width: calc((100% - gt(20, 50)) / 2);
+    }
+    [class*="c-"] {
+      order: 1;
+    }
+  }
+  &__thumb {
+    width: 100%;
+    aspect-ratio: $aspect-hd;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    // @media (width <= $sp) {
+    //   aspect-ratio: $aspect-hd;
+    // }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    background: $c-white;
+    flex: 1;
+    padding: gt(8, 16) gt(24, 48) gt(32, 44);
+  }
+  .c-heading {
+    margin-block: 0.5em 1em;
+    text-align: center;
+  }
+  .c-text {
+    margin-bottom: gt(16, 32);
+  }
+  // .c-subTitle {
+  //   order: 0;
+  // }
+  .c-btnBox {
+    margin-top: auto;
+  }
+}
+
+// （´・ω・`）< TOP / certified
+// -------------------------------
+.p-home-certified {
+  position: relative;
+  overflow: hidden;
+  background: url($imgPath + "common/bg-01.jpg") no-repeat center center / cover;
+  // &::before {
+  //   content: "";
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background: url($imgPath + "common/bg-01.jpg") no-repeat center center / cover;
+  //   z-index: -1;
+  //   pointer-events: none;
+
+  //   // 表示範囲を限定（クリッピング）
+  //   mask-image: linear-gradient(#000, #000); // Safari対策で一応入れる
+  //   mask-composite: intersect;
+  //   -webkit-mask-composite: destination-in;
+  // }
+  .c-image {
+    width: min(80%, 350px);
+    margin: 0 auto gt(24, 40);
+  }
+  .c-text {
+    @media (min-width: $sp) {
+      text-align: center;
+    }
+  }
+  // .l-inner {
+  //   position: relative;
+  //   padding-block: gt(40, 60);
+  // }
+  // &__cards {
+  //   display: flex;
+  //   // flex-direction: column;
+  //   align-items: center;
+  //   gap: gt(20, 30);
+  //   margin-bottom: gt(40, 60);
+  // }
+  // &__card {
+  //   width: 100%;
+  //   height: min(80vw, 400px);
+  // }
+}
+
+// （´・ω・`）< TOP / doctor
+// -------------------------------
+// .p-home-doctor {
+// background: var(--bg-tertiary);
+// .c-text{
+//   @media ($tab <= width){
+//     text-align: center;
+//   }
+// }
+// .l-inner {
+//   position: relative;
+//   padding-block: gt(40, 60);
+// }
+//   &__cards {
+//     display: flex;
+// flex-direction: column;
+//     align-items: center;
+//     gap: gt(20, 30);
+//     margin-bottom: gt(40, 60);
+//   }
+//   &__card {
+//     width: 100%;
+//     height: min(80vw, 400px);
+//   }
+// }
+
+// （´・ω・`）< TOP / access
+// -------------------------------
+.p-home-access {
+  // background: var(--bg-primary);
+  text-align: center;
+  &__map {
+    width: 100%;
+    aspect-ratio: $aspect-golden;
+    filter: grayscale(1);
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+}
+
+.p-home-links {
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: gt(20, 30);
+    // margin-bottom: gt(40, 60);
+
+    @media ($tab <= width) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: $aspect-portrait;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+// （´・ω・`）< TOP / news
+// -------------------------------
+.p-home-news {
+  background: #fff;
+  .c-articleList {
+    background: var(--bg-primary);
+  }
+}

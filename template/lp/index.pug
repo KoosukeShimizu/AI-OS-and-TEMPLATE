@@ -1,0 +1,274 @@
+doctype html
+block vars
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(name="robots" content="noindex")
+    meta(name="robots" content="nofollow")
+    meta(name="robots" content="noarchive")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,shrink-to-fit=no")
+    title 開発用サイトマップ
+    style.
+      body{background:#f5f5f5;font-family: sans-serif;font-size:14px;width:100%}.l-main{width:100%;max-width:640px;}h1,h2,h2,h4,h5,h6 {margin: 0; font-size:16px;}h1{margin:40px 0;}h2,h3{background:#aaa;color:#fff;display:inline-block;padding:2px 10px;border-radius:3px;}h3{background:#000;margin:30px 0 0px;}ul{list-style:none;padding:0 0 0 1em;}li{padding:8px 0;position:relative;}li a{display:block;}small{color:#999;}.divider{border-top:4px double #bbb;}li >span{position:absolute;top:0;right:10px;}pre{padding:4px 10px;margin:0;color:#999;}li>ul{background:#eee;padding:16px;margin:8px 0;}li:not(:last-child){border-bottom:2px dotted #bbb;}details{background:#fff; padding:8px 16px;border-radius:10px;margin-bottom:20px;}summary{padding:8px;outline:0;cursor:pointer;}.disable{pointer-event:none;color:#999;text-decoration:line-through;}
+
+  body
+    main.l-main
+      h1 コーディングチェック
+      h2 基本情報
+      pre.
+        TIAMテスト：https://test.ti-am.jp/test/work/n2/
+        ID/PW：tiam/test
+        デバックシート：https://docs.google.com/spreadsheets/d/1RlG5WIV2X1xU1C1zGiXUIF1yGPbch27LjEHxdOT-eAs/edit?gid=1778525894#gid=1778525894
+
+        ✅️ ←作業完了ページを示します
+
+
+      h2 更新情報
+      pre.
+        7/3：フェーズ2用対応
+        6/27：Phase1リリース用データ納品 🌟
+        6/23：デバック対応（No.115〜142）
+        6/16：デバック対応（No.112〜114）
+        6/16：デバック対応（No.100〜111）
+        6/16：マイページ追加
+
+
+      h3 会員ページ / フェーズ2
+      ul
+        li
+          a(href="__dist/mypage.html") マイページ ✅️
+          small └ mypage
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/mypage2.html") マイページ（表示差分） ✅️
+          small └ mypage2
+          pre.
+            フォーマット：page
+            第２階層
+            💡開発メモ
+            残り投与回数3以下があると赤枠がつく
+            保存期間残が30日以内があると赤枠がつく
+        li
+          a(href="__dist/account.html") アカウント情報 ✅️
+          small └ account
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/account-edit.html") アカウント編集 ✅️
+          small └ account-edit
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/otp.html") OTP認証 ✅️
+          small └ otp
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/otp-complate.html") OTP認証｜完了 ✅️
+          small └ otp-complate
+          pre.
+            フォーマット：page
+            第２階層
+        //- li
+          a(href="__dist/history.html") 予約確認/施術履歴 ✅️
+          small └ history
+          pre.
+            フォーマット：page
+            第２階層
+            ⚠️ デザイン未確定
+        //- li
+          a(href="__dist/result.html") 血液検査結果
+          small └ result
+          pre.
+            フォーマット：page
+            第２階層
+            ⚠️ デザインなしページ
+        //- li
+          a(href="__dist/inbox.html") 受信BOX
+          small └ inbox
+          pre.
+            フォーマット：page
+            第２階層
+            ⚠️ デザインなしページ
+        //- li
+          a(href="__dist/logout.html") ログアウト
+          small └ logout
+          pre.
+            フォーマット：page
+            第２階層
+            ⚠️ デザインなしページ
+
+
+      h3 予約ページ / フェーズ2
+      ul
+        li
+          a(href="__dist/reserve.html") ご予約のご案内 ✅️
+          small └ reserve
+          pre.
+            フォーマット：page
+            第２階層
+            💡マイペリリース後版に修正
+        li
+          a(href="__dist/reserve-first.html") 初回予約 ✅️
+          small └ reserve-first
+          pre.
+            フォーマット：page
+            第２階層
+            💡マイペリリース後版に修正
+        li
+          a(href="__dist/reserve-guest.html") リピート予約（ゲスト状態） ✅️
+          small └ reserve-guest
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/reserve-repeat.html") リピート予約 ✅️
+          small └ reserve-repeat
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/reserve-confirm.html") 予約｜確認ページ ✅️
+          small └ reserve-confirm
+          pre.
+            フォーマット：page
+            第３階層
+            💡開発メモ
+            戻るボタンを押したときに入力内容を保持したいとのこと
+
+        li
+          a(href="__dist/reserve-thanks.html") 予約｜サンクスページ ✅️
+          small └ reserve-thanks
+          pre.
+            フォーマット：page
+            第3階層
+
+
+      h3 認証ページ / フェーズ2
+      ul
+        li
+          a(href="__dist/login.html") マイページログイン ✅️
+          small └ login
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/forget.html") パスワードお忘れの方 ✅️
+          small └ forget
+          pre.
+            フォーマット：page
+            第２階層
+            ⚠️ デザインなしページ
+        li
+          a(href="__dist/forget-thanks.html") パスワードお忘れの方｜サンクス ✅️
+          small └ forget-thanks
+          pre.
+            フォーマット：page
+            第３階層
+            ⚠️ デザインなしページ
+        li
+          a(href="__dist/password.html") パスワード再設定 ✅️
+          small └ password
+          pre.
+            フォーマット：page
+            第２階層
+            ⚠️ デザインなしページ
+        li
+          a(href="__dist/password-thanks.html") パスワード再設定｜サンクス ✅️
+          small └ password-thanks
+          pre.
+            フォーマット：page
+            第３階層
+            ⚠️ デザインなしページ
+
+
+
+      h3 一般ページ / フェーズ 1
+      ul
+        li
+          a(href="__dist/index.html") トップページ ✅️
+          small └ index
+          pre.
+            フォーマット：frontpage
+            第１階層
+        li
+          a(href="__dist/stemcell.html") 幹細胞療法 ✅️
+          small └ stemcell
+          pre.
+            フォーマット：page
+        li
+          a(href="__dist/immunecell.html") 免疫細胞療法 ✅️
+          small └ immunecell
+          pre.
+            フォーマット：page
+        li
+          a(href="__dist/about.html") N2クリニックとは ✅️
+          small └ about
+          pre.
+            フォーマット：page
+        li
+          a(href="__dist/doctor.html") 医師紹介 ✅️
+          small └ doctor
+          pre.
+            フォーマット：page
+        li
+          a(href="__dist/recruit.html") 採用情報 ✅️
+          small └ recruit
+          pre.
+            フォーマット：page
+
+        li
+          a(href="__dist/faq.html") よくある質問 ✅️
+          small └ faq
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/privacy.html") プライバシーポリシー ✅️
+          small └ privacy
+          pre.
+            フォーマット：page
+            第２階層
+        //- li
+          a(href="__dist/company.html") 会社概要
+          small └ company
+          pre.
+            フォーマット：page
+        
+        li
+          a(href="__dist/news.html") お知らせ一覧ページ ✅️
+          small └ news
+          pre.
+            フォーマット：archive
+            第２階層
+        li
+          a(href="__dist/news_detail.html") お知らせ詳細ページ ✅️
+          small └ news_detail
+          pre.
+            フォーマット：single
+            第３階層
+        
+        li
+          a(href="__dist/inquiry.html") お問い合わせ ✅️
+          small └ inquiry
+          pre.
+            フォーマット：page
+            第２階層
+        li
+          a(href="__dist/inquiry-confirm.html") お問い合わせ｜確認ページ ✅️
+          small └ inquiry-confirm
+          pre.
+            フォーマット：page
+            第３階層
+        li
+          a(href="__dist/inquiry-thanks.html") お問い合わせ｜サンクスページ ✅️
+          small └ inquiry-thanks
+          pre.
+            フォーマット：page
+            第４階層

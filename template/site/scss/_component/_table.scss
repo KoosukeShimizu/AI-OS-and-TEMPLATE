@@ -1,0 +1,80 @@
+.c-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid var(--border-primary);
+  font-size: $fz-base;
+  line-height: 1.6;
+  margin-block: gt(20, 40);
+
+  caption {
+    text-align: left;
+    font-size: $fz-s;
+    margin-bottom: gt(8, 16);
+    color: var(--note);
+  }
+
+  thead {
+    tr {
+      th {
+        font-weight: 600;
+        font-size: $fz-s;
+        padding: gt(10, 16) gt(8, 16);
+        border-bottom: 1px solid var(--border-primary);
+        background: var(--bg-secondary);
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      th,
+      td {
+        padding: gt(12, 24) gt(8, 16);
+        border-bottom: 1px solid var(--border-primary);
+        vertical-align: top;
+        font-size: $fz-base;
+        text-align: left;
+      }
+      th {
+        width: 30%;
+        font-weight: 600;
+        background: var(--bg-light);
+        border-right: 1px solid var(--border-primary);
+      }
+    }
+  }
+
+  // 状態オプション
+  &.-striped tbody tr:nth-child(even) {
+    background: var(--bg-secondary);
+  }
+
+  &.-center th, 
+  &.-center td {
+    text-align: center;
+  }
+
+  &.-borderless th,
+  &.-borderless td {
+    border: none;
+  }
+
+  &.-small th,
+  &.-small td {
+    font-size: $fz-s;
+    padding: gt(8, 16) gt(6, 12);
+  }
+
+  // SPスクロール対応
+  &.-scroll {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+
+    table, thead, tbody, th, td, tr {
+      white-space: nowrap;
+    }
+  }
+}

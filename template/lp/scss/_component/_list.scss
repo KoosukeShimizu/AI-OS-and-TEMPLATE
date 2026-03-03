@@ -1,0 +1,132 @@
+.c-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  li {
+    position: relative;
+    padding-left: 1.4em;
+    font-size: $fz-base;
+    line-height: 1.8;
+  }
+
+  li::before {
+    position: absolute;
+    left: 0;
+    top: 0.2em; // line-height:1.4 用補正
+    line-height: 1;
+  }
+
+  &.-dot li::before {
+    content: "•";
+    font-size: 1.1em;
+    color: var(--primary);
+  }
+
+  &.-num {
+    counter-reset: number;
+    li {
+      counter-increment: number;
+      &::before {
+        content: counter(number) ".";
+        font-weight: bold;
+        color: var(--primary);
+        font-size: 1em;
+      }
+    }
+  }
+
+  &.-check li::before {
+    content: "✔";
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  &.-icon li::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  &.-circle li::before {
+    content: "◯";
+    color: var(--primary);
+    font-size: 1.1em;
+  }
+
+  &.-hyphen li::before {
+    content: "–";
+    color: var(--primary);
+    font-size: 1.2em;
+  }
+
+  &.-arrow li::before {
+    content: "→";
+    color: var(--primary);
+    font-size: 1.1em;
+  }
+
+  &.-border li {
+    padding-left: 0;
+    border-bottom: 1px solid var(--border-primary);
+  }
+}
+
+// ============================================
+// .c-listNav: 矢印付きナビゲーションリスト
+// ============================================
+
+.c-listNav {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    position: relative;
+    border-bottom: 1px solid var(--border-primary);
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      padding: 1em 2em 1em 0; // 右に余白つけてアロー用スペース
+      position: relative; // 矢印のabsolute基点
+
+      // アイコン付きテキスト（特に囲わず直書きでOK）
+      img {
+        margin-right: 0.5em;
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0;
+      }
+
+      // デフォルトで矢印は非表示
+      &::after {
+        content: "";
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%) rotate(-45deg);
+        width: 0.5em;
+        height: 0.5em;
+        border-right: 1px solid currentColor;
+        border-bottom: 1px solid currentColor;
+      }
+    }
+  }
+
+  &.-arrow li a::after {
+    display: inline-block;
+  }
+}

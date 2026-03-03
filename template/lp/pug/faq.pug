@@ -1,0 +1,137 @@
+//-================================================
+//- サイト共通設定
+//-================================================
+include _includes/_foundation/_global
+
+//- block vars
+//---------------
+//- ページ設定
+//---------------
+- var root = './' // ルートパスの指定
+- var key = 'faq' // 条件分岐に使用
+- var useNoindex = false // noindexの有無
+- var useOgp = true // OGPの有無
+- var useAnalytics = true // GAタグの有無
+- var useLogoH1 = false // ロゴにh1を使うか
+- var useBreadcrumb = true // パンくずを使うか
+
+//---------------
+//- 構造化データ設定
+//---------------
+- var useSchemaWebSite = true
+- var useSchemaWebPage = true
+- var useSchemaOrganization = true
+- var useSchemaBreadcrumb = true
+- var useSchemaArticle = false
+- var useSchemaFAQ = true
+
+//---------------
+//- ページメタ情報
+//---------------
+- var pageTitle = 'お問い合わせ完了'
+- var pageDescription = 'N2クリニックへのお問い合わせが完了しました。内容を確認のうえ、担当者よりご連絡差し上げます。'
+- var pageKeywords = 'お問い合わせ,N2クリニック,完了,送信完了'
+- var pageOgUrl = '' // ページ公開後にURLを指定
+- var pageOgTitle = pageTitle + '｜N2クリニック'
+- var pageOgDescription = pageDescription
+- var pageOgImage = '' // OGP画像があれば指定
+
+//---------------
+//- パンくず設定
+//---------------
+- var pageSlug= "faq" // ページのスラッグ※末尾に「/」必須
+- var parentSlug= "" // ページが3階層目の場合、親ページのスラッグ
+- var parentTitle= "" // ページが3階層目の場合、親ページの名前
+
+//- ===================================================
+//-  ███████╗████████╗ █████╗ ███████╗ ████████╗
+//-  ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝
+//-  ███████╗   ██║   ███████║███████╔╝   ██║
+//-  ╚════██║   ██║   ██╔══██║██╔═██║     ██║
+//-  ███████║   ██║   ██║  ██║██║ ███║    ██║
+//-  ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚══╝    ╚═╝
+//- ===================================================
+doctype html
+html(lang='ja')
+  head
+    include _includes/_head
+    //---------------------------------
+    //- UNIQUE CSS　ページ独自に使用するスタイル
+    //---------------------------------
+    block append css
+      link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+      link(rel='stylesheet' href=root+cssPath+'main.css?ver=1.0.0' type='text/css' media='all')
+    //---------------------------------
+    //- SCHEMA　構造化データの呼び出し
+    //---------------------------------
+    include _includes/_foundation/_schema
+    //---------------------------------
+    //- 計測タグ（head）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_head
+  body.p-faq
+    //---------------------------------
+    //- 計測タグ（body）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_body
+    .l-wrapper
+      include _includes/_header
+      include _includes/_component/_breadcrumb
+      main.l-main.u-anim-fadeIn
+        //-================================================
+        //- ARTICLE START
+        //-================================================
+        // Article START
+        article.l-page
+          .l-page__head
+            h1.l-page__title ご質問集
+            .l-page__sub FAQ
+            //- .l-page__intro 導入説明
+
+          .l-page__body
+            section.l-section.-s
+              .l-inner
+                //- FAQカテゴリ定義
+                - var faqData = [{ category: '幹細胞治療', list: [{ question: '幹細胞療法とは何ですか？', answer: '	幹細胞の組織修復作用を応用した再生医療です。N2クリニックでは、慢性疼痛に対する脂肪組織由来幹細胞静脈投与と、加齢性のしわ・たるみに対する脂肪組織由来幹細胞顔面局所投与の再生医療提供計画番号を取得しております。' },{ question: '脂肪組織由来の幹細胞治療を受けることができる条件や制限はありますか?', answer: '		一般的に健康な成人が対象ですが、糖尿病や血液疾患がある場合、または妊娠中の場合は適応外となることがあります。事前の医師の診断が必要です。' }, { question: '脂肪細胞はどのように採取するのですか。', answer: '通常は臍下の目立たない部位から、下腹部の皮下脂肪を20〜30mlほど採取します。形成外科専門医が、2、3mmほどの小さな皮膚切開から脂肪吸引の手技を用いて脂肪組織を採取します。' }, { question: '脂肪採取してから、実際に幹細胞を投与するのはどれくらいの期間がかかりますか', answer: '細胞加工施設で脂肪組織から脂肪組織由来幹細胞を単離して培養するため、脂肪採取から初回の幹細胞投与には少なくとも5週間の期間がかかります。単離した脂肪組織由来幹細胞は凍結保存しておきますので、2回目以降の脂肪組織由来幹細胞は2週間の準備期間でおこなうことができます。' }, { question: '幹細胞療法は、どのような疾患に対して効果がありますか。', answer: '脂肪組織由来幹細胞は、非常に多くの疾患に対する有効性が報告されています。 例としましては、脳梗塞、脳挫傷、脊髄損傷、多発性硬化症、低酸素虚血性脳症、パーキンソン病、アルツハイマー型認知症、ALS(筋萎縮性側索硬化症)、ポリオ(小児麻痺)、末梢神経障害、慢性疼痛、膝関節症、腱損傷、関節炎、難治性の骨折、掌蹠膿疱症、アトピー性皮膚炎、ざ瘡瘢痕(にきび痕)、白斑症、AGA(男性型脱毛症)、その他の脱毛症、心筋梗塞、狭心症、動脈硬化、末梢動脈疾患、糖尿病、慢性腎臓病、肝臓病(肝炎、肝硬変、肝障害など)、原発性胆汁性肝硬変、肺気腫、肺線維症、慢性閉塞性肺疾患、自己免疫性疾患(関節リウマチ、全身性エリテマトーデスなど)、GVHD(移植片対宿主病)、女性更年期障害、男性更年期障害、前立腺肥大症、勃起障害、尿失禁、骨欠損、骨粗しょう症、歯周病、乳がん術後（乳房再建）、豊胸術、アンチエイジング治療(皮膚・血管などの若返りなど)、新型コロナウイルス感染症、新型コロナウイルス感染症後後遺症 などが挙げられます。当院では、慢性疼痛に対する脂肪組織由来幹細胞静脈投与と、加齢性のしわ・たるみに対する脂肪組織由来幹細胞顔面局所投与の再生医療提供計画番号を取得しております。' }]},{ category: '免疫細胞治療', list: [{ question: '免疫細胞療法とは何ですか。', answer: '体内にある各種の免疫細胞を細胞培養により増殖、活性化したのちにからだに戻し、免疫力を向上する治療法です。細胞の加工を要するため、再生医療に分類されます。 N2クリニックでは、NK細胞、樹状細胞、アルファ・ベータT細胞、ガンマ・デルタT細胞などのさまざまな免疫細胞による免疫細胞療法の再生医療提供計画を取得しています。' }, { question: '免疫細胞はどのように採取するのですか。', answer: '成分採血（アフェレーシス）により、血液成分から目的とする免疫細胞を採取します。' }, { question: '免疫細胞療法はどのような疾患に対して効果がありますか。', answer: '免疫力を向上する治療であるため、がん治療や、感染症に対する治療、予防などへの有効性が報告されています。手術、抗がん剤、放射線療法などのその他のがん治療を施行されている場合は、併用することによる治療効果の改善効果も認められます。' }]},{ category: 'その他', list: [{ question: '受診には予約は必要ですか。', answer: '当院は完全予約制のプライベートクリニックであるため、受診前に予約をおとりいただく必要がございます。' },{ question: '遠方からの受診の場合、宿泊の案内はできますか。', answer: '当院はホテル椿山荘東京と提携しておりますので、ホテルプランもご一緒にご案内いたします。詳細は、お電話でお問い合わせください。' }]}]
+
+                //- { category: '幹細胞上清', list: [{ question: '培養上清とは何ですか。', answer: '培養上清は、幹細胞が分泌するサイトカインやエクソソームを豊富に含んだ細胞培養液（上澄み液）です。これらの有効成分が細胞に働きかけることによる治療効果の研究が盛んに行われており、無細胞治療（cell free therapy）として注目を集めています。幹細胞自体は含まないため、現時点では再生医療には分類されていません。' },{ question: 'どのような培養上清があるのですか。', answer: '脂肪組織由来幹細胞、骨髄由来幹細胞、臍帯由来幹細胞などの間葉系幹細胞の分泌成分に治療効果が高いことが報告されています。N2クリニックでも、脂肪組織由来幹細胞培養上清と臍帯由来幹細胞培養上清による治療をおこなっています。' },{ question: '培養上清治療をおこなう際には、自分の体から組織を採取する必要がありますか。', answer: '培養上清は細胞を含まないため拒絶反応の副作用が出にくいという特徴があります。ご自分の組織を採取する必要はなく、ご希望時にすぐに実施することができます。' },{ question: '培養上清はどのような疾患に対して効果がありますか。', answer: '間葉系幹細胞の培養上清は、非常に多くの疾患に対する有効性が報告されています。例としましては、脳梗塞、脊髄損傷、多発性硬化症、低酸素虚血性脳症、パーキンソン病、アルツハイマー型認知症、末梢神経障害、慢性疼痛、膝関節症、腱損傷、関節炎、アトピー性皮膚炎、ざ瘡瘢痕(にきび痕)、白斑症、AGA(男性型脱毛症)、その他の脱毛症、心筋梗塞、狭心症、末梢動脈疾患、糖尿病、慢性腎臓病、肝臓病(肝炎、肝硬変、肝障害 など)、 アルコール依存症、間質性肺炎、肺線維症、慢性閉塞性肺疾患、ニコチン依存症、胸水、自己免疫性疾患(関節リウマチ、全身性エリテマトーデス など)、アレルギー性疾患(アレルギー性結膜炎、アレルギー性気管支炎 など)、女性更年期障害、男性更年期障害、前立腺肥大症、勃起障害、角膜障害、視力障害(老眼など)、骨欠損、歯周病、悪性腫瘍(悪性黒色腫、肺癌、大腸がん、神経膠腫、乳がん など)、アンチエイジング治療(皮膚・血管などの若返り など)、新型コロナウイルス感染症、新型コロナウイルス感染症後後遺症などが挙げられます。' }]},
+
+                .c-tab(data-tab-group="faq")
+                  ul.c-tab__nav.-col-3
+                    each cat, idx in faqData
+                      li(class=(idx === 0 ? 'is-active' : ''), data-tab-trigger=idx) #{cat.category}
+
+                  each cat, idx in faqData
+                    .c-tab__pane(class=(idx === 0 ? 'is-active' : ''), data-tab-content=idx, itemscope itemtype="https://schema.org/FAQPage")
+                      .c-accordion.-list
+                        each item in cat.list
+                          .c-accordion__item(itemprop="mainEntity" itemscope itemtype="https://schema.org/Question")
+                            button.c-accordion__title(type="button", data-accordion-trigger)
+                              //- span.c-accordion__label Q
+                              span.c-accordion__text(itemprop="name") #{item.question}
+                              //- span.c-accordion__icon
+                            .c-accordion__content(data-accordion-content itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer")
+                              //- p.c-accordion__label A
+                              p(itemprop="text") #{item.answer}
+
+            section.l-section.-xs(data-inview="slideUp")
+              .l-inner
+                .c-text.-center.u-mb-l その他ご質問があればお気軽にお問い合わせください。
+                .c-btnBox.u-fd-col
+                  a.c-btn.-underline.u-mb-l(href=root+"inquiry"+extention) お問い合わせ
+                  //- a.c-btn.-underline(href=root+"faq"+extention) よくある質問
+
+
+        //-================================================
+        //- Article END
+        //-================================================
+        // Article END
+      //- include _includes/_sidebar
+      include _includes/_component/_floatbox
+      include _includes/_footer
+    //- include _includes/_script
+    //---------------------------------
+    //- UNIQUE SCRIPT　ページ独自に使用するJS
+    //---------------------------------
+    block append js
+      script(src=root+jsPath + "main.js?ver=1.0.0")

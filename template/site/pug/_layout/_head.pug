@@ -1,0 +1,99 @@
+meta(charset='UTF-8')
+meta(name='viewport' content='width=device-width,initial-scale=1.0')
+
+//- robots
+if useNoindex===true
+  meta(name="robots" content="noindex,nofollow,noarchive")
+else
+  meta(name='robots' content='index,follow,max-image-preview:large')
+
+//- title
+unless pageTitle
+  title #{siteTitle}
+else
+  title #{pageTitle}｜#{siteName}
+
+//- description
+unless pageDescription
+  meta(name='description' content=siteDescription)
+else
+  meta(name='description' content=pageDescription)
+
+//- keywords（任意運用）
+unless pageKeywords
+  meta(name='keywords' content=siteKeywords)
+else
+  meta(name='keywords' content=pageKeywords)
+
+meta(name="format-detection" content="telephone=no")
+
+//- favicon（version必須）
+link(rel='shortcut icon' href=root+imgPath+'common/favicon.ico'+version type='image/x-icon')
+//- link(rel="icon" href=root+imgPath+"common/favicon.svg"+version type="image/svg+xml")
+
+//- ======================================
+//- OGP
+//- ======================================
+if useOgp===true
+  unless pageOgTitle
+    meta(property='og:title' content=siteOgTitle)
+  else
+    meta(property='og:title' content=pageOgTitle)
+
+  meta(property='og:type' content=(typeof ogType !== 'undefined' && ogType) ? ogType : 'article')
+
+  unless pageOgImage
+    meta(property='og:image' content=siteOgImage)
+  else
+    meta(property='og:image' content=pageOgImage)
+
+  unless pageOgUrl
+    meta(property='og:url' content=siteOgUrl)
+  else
+    meta(property='og:url' content=pageOgUrl)
+
+  unless pageOgDescription
+    meta(property='og:description' content=siteOgDescription)
+  else
+    meta(property='og:description' content=pageOgDescription)
+
+  meta(property='og:site_name' content=siteTitle)
+  meta(property='og:locale' content='ja')
+
+  meta(name='twitter:card' content='summary')
+
+  unless pageOgTitle
+    meta(name='twitter:title' content=siteOgTitle)
+  else
+    meta(name='twitter:title' content=pageOgTitle)
+
+  unless pageOgDescription
+    meta(name='twitter:description' content=siteOgDescription)
+  else
+    meta(name='twitter:description' content=pageOgDescription)
+
+  unless pageOgUrl
+    meta(name='twitter:url' content=siteOgUrl)
+  else
+    meta(name='twitter:url' content=pageOgUrl)
+
+  unless pageOgImage
+    meta(name='twitter:image:src' content=siteOgImage)
+  else
+    meta(name='twitter:image:src' content=pageOgImage)
+
+//- ======================================
+//- External CSS / Fonts（必要時のみコメント解除）
+//- ======================================
+block css 
+  //- Google Fonts 使用時
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+  link(href='https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,300i,400,400i,500,500i,700|Roboto:300,300i,400,400i,500,500i,700&display=swap&subset=japanese' rel='stylesheet')
+
+  //- Swiper使用時
+  //- link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.7/swiper-bundle.css'+version crossorigin="anonymous")
+
+  //- main CSS
+  link(rel='stylesheet' href=root+cssPath+'main.css'+version type='text/css' media='all')

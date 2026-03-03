@@ -1,0 +1,65 @@
+# example.com / example.jp は 本番URLに必ず置き換え
+# AuthUserFile のパスは サーバー上の絶対パス にしてください
+# Apache 2.4以上では Require ディレクティブ推奨
+
+RewriteEngine On
+
+# --- URL正規化関連 ---
+
+# wwwあり → wwwなしに統一
+RewriteCond %{HTTP_HOST} ^www\.example\.com$ [NC]
+RewriteRule ^(.*)$ https://example.com/$1 [R=301,L]
+
+# index.html → / に統一
+RewriteCond %{THE_REQUEST} \s/index\.html [NC]
+RewriteRule ^(.*)index\.html$ https://example.com/$1 [R=301,L]
+
+# .php省略可能に
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\\.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+# .html省略可能に
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# .php/.html 拡張子付きアクセス → 拡張子なしに301リダイレクト
+RewriteCond %{THE_REQUEST} \s.+\.(php|html) [NC]
+RewriteRule ^(.+)\.(php|html)$ https://example.com/$1 [R=301,L]
+
+# --- セキュリティと表示設定 ---
+
+# ファイル一覧非表示
+Options -Indexes
+
+# 特定ファイルにリダイレクト
+RewriteRule ^old.html$ https://example.com/new.html [R=301,L]
+
+# --- Basic認証 ---
+AuthType Basic
+AuthName "Please enter your ID and password"
+AuthUserFile /フルパス/.htpasswd
+Require valid-user
+
+# --- IP制限 ---
+
+<Files "test-file.html">
+  Require ip 123.456.789.000
+</Files>
+
+# 全体IP制限例（任意で使う）
+# Require all denied
+# Require ip 123.456.789.000
+
+# --- gzip圧縮 ---
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\\.0[678] no-gzip
+  BrowserMatch \\bMSIE !no-gzip !gzip-only-text/html
+  SetEnvIfNoCase Request_URI \\. (?:gif|jpe?g|png|ico)$ no-gzip dont-vary
+  Header append Vary User-Agent env=!dont-vary
+</IfModule>

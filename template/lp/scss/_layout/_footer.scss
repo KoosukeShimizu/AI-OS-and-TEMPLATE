@@ -1,0 +1,266 @@
+//  footer
+// -------------------------------
+.l-footer {
+  width: 100%;
+  position: relative;
+  padding: gt(30, 60) 0;
+  font-size: fz(12, 14);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+
+  &__head {
+    border-bottom: 1px solid var(--border-primary);
+    padding: gt(8, 16) gt(20, 40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (min-width: $sp) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  &__msg {
+    font-size: fz(18, 24);
+  }
+  &__body {
+    // width: min(100%, 1400px);
+    padding: gt(24, 44) gt(20, 40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (min-width: $sp) {
+      // width: 60%;
+      flex-direction: row;
+      justify-content: space-between;
+      // flex-wrap:wrap;
+    }
+  }
+  &__logo {
+    padding-block: gt(32, 44);
+    img {
+      width: min(100%, 60px);
+      margin: auto;
+      display: block;
+    }
+    @media (min-width: $sp) {
+      width: min(45%, 300px);
+      img {
+        width: min(25%, 100px);
+      }
+      // width: min(100%, 120px);
+      // background: blue;
+    }
+  }
+}
+
+// Sitemap
+// -----------------------------
+.c-sitemap {
+  font-family: $sans;
+  :lang(en),
+  &:lang(vi) {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: "Songti SC", serif !important;
+  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: min(85%, 400px);
+
+  // margin: auto;
+  // gap: gt(16, 24);
+  &__col {
+    width: 11em;
+  }
+  &__item {
+    padding: 0.2em 0;
+  }
+  // @media (max-width: $sp) {
+  //   text-align: center;
+  // }
+  @media (min-width: $sp) {
+    width: min(80%, 500px);
+    // justify-content: flex-end;
+    margin-right: min(10%, 40px);
+    // background: red;
+  }
+}
+
+//  c-socialNav
+// -------------------------------
+.c-socialNav {
+  margin: 0 auto gt(40);
+  &__list {
+    @include flexbox(inline-flex, null, null, null, center, null);
+    background: #000;
+    color: var(--seconray);
+  }
+  &__item {
+    padding: 0 gt(8);
+    &:nth-child(odd) {
+      border-right: 1px solid var(--seconray);
+    }
+    a {
+      padding: gt(4) 0;
+      display: block;
+    }
+  }
+  @media (min-width: $tab) {
+    margin: 0;
+    order: 1;
+    &__list {
+      display: block;
+    }
+    &__item {
+      border-bottom: 1px solid var(--seconray);
+      &:nth-child(odd) {
+        border-right: none;
+      }
+    }
+  }
+}
+
+//  pagetop
+// -------------------------------
+.c-pagetop {
+  cursor: pointer;
+  font-family: $sans;
+  :lang(en),
+  &:lang(vi) {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: "Songti SC", serif !important;
+  }
+  padding: gt(8, 16) 0;
+  // width: 70px;
+  // height: 70px;
+  // background: #000;
+  // color: var(--seconray);
+  // border-radius: 50%;
+  // @include position(absolute, 6% -15px null null);
+  // line-height: 1;
+  // transform: rotate(90deg);
+  // @include flexbox(flex, null, null, center, center, null);
+  // font-family: $handwrite;
+  // transition: $transition;
+
+  // &:before {
+  //   content: "";
+  //   display: block;
+  //   width: 100px;
+  //   height: 0;
+  //   border-top: 1px solid #000;
+  //   @include position(absolute, 50% 100% null null);
+  //   transition: $transition;
+  // }
+  // &:after {
+  //   content: "";
+  //   display: block;
+  //   width: 15px;
+  //   height: 0;
+  //   border-top: 1px solid var(--seconray);
+  //   @include position(absolute, 50% null null 0);
+  //   transition: $transition;
+  // }
+  // @include hover {
+  //   background: var(--seconray);
+  //   color: var(--text-primary);
+  //   border: 1px solid var(--text-primary);
+  //   &:before {
+  //     width: 85px;
+  //   }
+  //   &:after {
+  //     border-top: 1px solid var(--text-primary);
+  //     width: 25px;
+  //   }
+  // }
+}
+
+//  floatbox
+// -------------------------------
+.c-floatbox {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: gt(16, 24) 0;
+  backdrop-filter: blur(20px);
+  color: var(--footer-text);
+  z-index: 1000;
+  @include flexbox(flex, null, wrap, center, center, null);
+  gap: gt(20);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  opacity: 1;
+  visibility: visible;
+
+  &__item {
+    border-radius: var(--radius-primary);
+    text-align: center;
+    line-height: 1;
+    transition: $transition;
+    font-size: fz(12, 14);
+    background: var(--btn-primary);
+    color: #fff;
+    font-family: $serif;
+    &:lang(en),
+    &:lang(vi) {
+      font-family: "Times New Roman", Times, serif !important;
+    }
+    &:lang(zh-CN),
+    &:lang(zh-SG) {
+      font-family: "Songti SC", serif !important;
+    }
+    font-weight: 500;
+    width: calc((80% - 1em) / 2);
+    padding: 1em 1.5em;
+    cursor: pointer !important;
+    @include hover {
+      transform: translateY(1px);
+      filter: brightness(1.05) saturate(1.2);
+      &::before {
+        left: 100%;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @media (min-width: $sp) {
+    display: none;
+  }
+}
+
+//  copyright
+// -------------------------------
+.c-copyright {
+  width: 100%;
+  // @include flexbox(flex, null, wrap, center, center, null);
+  font-weight: 400;
+  font-size: $fz-xs;
+  padding: 0 gt(20, 40);
+  // text-align: center;
+  // &:before {
+  //   content: "";
+  //   display: inline-block;
+  //   width: min(3vw, 14px);
+  //   aspect-ratio: 1 / 1;
+  //   background: url("#{$imgPath}common/icons/copyright.svg") no-repeat center center / contain;
+  //   margin-right: gt(4);
+  // }
+  @media (max-width: $sp) {
+    margin-bottom: gt(60, 80);
+    text-align: center;
+  }
+}

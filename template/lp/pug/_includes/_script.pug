@@ -1,0 +1,22 @@
+block js
+  //- SCRIPTS
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js?ver=1.0.0')
+  //- script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=1.0.0")
+  //- script(src="https://code.jquery.com/jquery-migrate-1.2.1.min.js?ver=1.0.0")
+  //- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4/jquery.easing.min.js?ver=1.0.0")
+  script(src=root+jsPath + "main.js?ver=1.0.0")
+  //- if slick==='true'
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ver=1.0.0")
+  //- if swiper==='true'
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.7/swiper-bundle.min.js?ver=1.0.0")
+  //- if magnificpopup==='true'
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js?ver=1.0.1")
+  //- if accordion==='true'
+    script(type='text/javascript').
+      $(function(){
+        $(".js-accordion dt").on("click", function() {
+          $(this).toggleClass("is-open");
+          $(this).next().slideToggle();
+          return false;
+        });
+      });

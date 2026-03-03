@@ -1,0 +1,335 @@
+//-================================================
+//- サイト共通設定
+//-================================================
+include _includes/_foundation/_global
+//- block vars
+//---------------
+//- ページ設定
+//---------------
+- var root = './'//ルートパスの指定
+- var key = 'home'//条件分岐に使用
+- var useNoindex = false//noindexの有無
+- var useOgp = true//OGPの有無
+- var useAnalytics = true//GAタグの有無
+- var useLogoH1 = false//ロゴにh1を使うか
+- var useBreadcrumb = false//パンくずを使うか
+//---------------
+//- 構造化データ設定
+//---------------
+- var useSchemaWebSite = true
+- var useSchemaWebPage = false
+- var useSchemaOrganization = false
+- var useSchemaBreadcrumb = false
+- var useSchemaArticle = false
+- var useSchemaFAQ = false
+//---------------
+//- ページメタ情報
+//---------------
+- var pageTitle = ''
+- var pageDescription = ''
+- var pageKeywords = ''
+- var pageOgUrl = ''
+- var pageOgTitle = ''
+- var pageOgDescription = ''
+- var pageOgImage = ''
+//---------------
+//- パンくず設定
+//---------------
+- var pageSlug= ""//ページのスラッグ※末尾に「/」必須
+- var parentSlug= ""//ページが3階層目の場合、親ページのスラッグ※末尾に「/」必須
+- var parentTitle= ""//ページが3階層目の場合、親ページの名前
+
+//- ===================================================
+//-  ███████╗████████╗ █████╗ ███████╗ ████████╗
+//-  ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝
+//-  ███████╗   ██║   ███████║███████╔╝   ██║
+//-  ╚════██║   ██║   ██╔══██║██╔═██║     ██║
+//-  ███████║   ██║   ██║  ██║██║ ███║    ██║
+//-  ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚══╝    ╚═╝
+//- Frontpageは独立設計になる傾向がある
+//- .p-home-xxxのように、個別にスタイルを当てることが多い
+//- ===================================================
+doctype html
+html(lang='ja')
+  head
+    include _includes/_head
+    //---------------------------------
+    //- UNIQUE CSS　ページ独自に使用するスタイル
+    //---------------------------------
+    block append css
+      link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+      link(rel='stylesheet' href=root+cssPath+'main.css?ver=1.0.0' type='text/css' media='all')
+      link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css")
+      //- script(src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js")
+      //- style(type='text/css').
+        .class{}
+    //---------------------------------
+    //- SCHEMA　構造化データの呼び出し
+    //---------------------------------
+    include _includes/_foundation/_schema
+    //---------------------------------
+    //- 計測タグ（head）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_head
+    script(src="https://d.shutto-translation.com/trans.js?id=64682")
+  body.p-home
+    //---------------------------------
+    //- 計測タグ（body）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_body
+    .l-wrapper
+      include _includes/_header
+      include _includes/_component/_breadcrumb
+      main.l-main.u-anim-fadeIn
+        //-================================================
+        //- ARTICLE START
+        //-================================================
+        // Article START
+        article
+          // Heroセクション
+          .p-home-hero
+            figure.p-home-hero__video.c-video.-spClassic
+              video( src=root + imgPath + "top/mv25mb.mp4" poster=root + imgPath + "top/mv-poster.png" autoplay muted loop playsinline)
+          // .p-home-hero__overlay
+          //   h1.c-heading.-h1 未来を創る細胞治療
+            //- .p-home-hero__swiper.swiper(data-swiper="hero")
+              .swiper-wrapper
+                each item in [{ img: 'mv1.jpg', alt: '幹細胞医療のメインビジュアル' },{ img: 'mv2.jpg', alt: '免疫細胞療法のメインビジュアル' },{ img: 'mv3.jpg', alt: 'N2クリニック外観のメインビジュアル' }]
+                  .swiper-slide
+                    figure.p-home-hero__slide
+                      img(src=root + imgPath + 'top/' + item.img, alt=item.alt)
+                //- .swiper-pagination
+
+          // クリニック紹介
+          section.p-home-about.l-section.-xs
+            .l-inner.-center
+              .c-subTitle 東京 銀座
+              h1.c-heading.-h1 N2クリニック銀座本院
+              .c-lead 細胞が紡ぐ、健康と美の新たな物語
+              .c-text N2クリニック銀座本院では、幹細胞療法や免疫細胞療法などの  最先端の再生医療を通じて、#[br.u-hide-sp]あなた本来の自然治癒力を引き出す治療をご提供します。
+              .c-text すべての施術は、安全性を最優先に、  厚生労働省認定のプロトコルと科学的根拠に基づいた#[br.u-hide-sp]厳格な品質管理のもとで行われています。
+              .c-text 私たちが目指すのは、  一時的な変化ではなく、持続的な健康と美しさ。#[br]心と体の調和を整えることで、  人生そのものの質を高めていきます。
+              .c-text 再生医療の可能性は、美容や健康を超えて#[br.u-hide-tab-down]“真のLongevity（長寿）”を実現する力を秘めています。
+              .c-text 患者様一人ひとりに寄り添い、  信頼できる最新医療を丁寧にお届けすること。#[br]それが私たちの使命です。
+              .c-text 心も体も満たされる、新しい医療体験を  ぜひご体感ください。
+          
+          // ギャラリー
+          .l-section.-s.p-home-gallery
+            .l-inner.-xl
+              .p-home-gallery__swiper.swiper(data-swiper="gallery")
+                .swiper-wrapper
+                  each item in [{ src: 'top-1-1.jpg', alt: '受付・ラウンジの様子' },{ src: 'top-1-2.jpg', alt: '診察室の風景' },{ src: 'top-1-3.jpg', alt: '施術スペースの内観' },{ src: 'top-1-4.jpg', alt: '施術室の様子' },{ src: 'top-1-5.jpg', alt: '待合室の風景' }]
+                    .swiper-slide
+                      figure.p-home-gallery__slide
+                        img(src=root + imgPath + 'top/' + item.src, alt=item.alt data-lightbox)
+              .swiper-pagination
+
+
+
+          //- MENUセクション
+          section.p-home-menu.l-section(data-inview="slideUp")
+            .l-inner.-l
+              .c-subTitle MENU
+              h2.c-heading.-section 施術一覧
+              .p-home-menu__wrapper
+                .p-home-menu__item
+                  figure.p-home-menu__thumb
+                    img(src=root+imgPath+'top/top-2-1.jpg', alt='幹細胞治療')
+                  .p-home-menu__body
+                    .c-subTitle REBUILDING BEAUTY AND HEALTH
+                    h3.c-heading.-h2 幹細胞療法
+                    .c-text 幹細胞療法は、体内の幹細胞の力を活かし、加齢に伴うさまざまな変化にアプローチする先進医療です。#[br.u-hide-sp]N2クリニックでは、美容と健康の両面で高い可能性を持つ「脂肪組織由来幹細胞」を使用しています。
+
+                    .c-btnBox #[a.c-btn.-underline(href=root+'stemcell'+extention) 詳細はこちら]
+                .p-home-menu__item
+                  figure.p-home-menu__thumb
+                    img(src=root+imgPath+'top/top-2-2.jpg', alt='免疫細胞療法')
+                  .p-home-menu__body
+                    .c-subTitle REBUILDING YOUR IMMUNITY
+                    h3.c-heading.-h2 免疫細胞療法
+                    .c-text N2クリニックの免疫細胞療法は、内側から若々しさを引き出しながら、健康寿命の延伸を目指す先進的な治療です。#[br.u-hide-sp]美容と健康を同時に叶える、新たな選択肢をぜひご体感ください。
+                    .c-btnBox #[a.c-btn.-underline(href=root+'immunecell'+extention) 詳細はこちら]
+              //- .c-btnBox.u-fd-col
+                //- a.c-btn.-underline(href=root+'#'+extention) すべての施術を見る
+                a.c-btn.-underline(href=root+'reserve'+extention) 予約
+
+
+
+          //- 認証セクション
+          section.p-home-certified.l-section(data-inview="slideUp")
+            .l-inner.-l
+              .c-subTitle CERTIFIED
+              h2.c-heading.-section 国の認可を受けた確かな医療
+              figure.c-image.-square
+                img(src=root+imgPath+"top/top-3-1.jpg" loading="lazy" alt="")
+              .c-text N2クリニックは、厚生労働省から正式に「再生医療等提供計画番号」を取得した医療機関です。
+              .c-text N2クリニックでは、更年期障害や慢性的な痛みに対する点滴治療、#[br.u-hide-sp]さらに顔の加齢による変化を改善する局所注入治療の提供計画番号を取得しています。
+              .c-text 幹細胞を用いた再生医療は、厚生労働省認定の特定認定再生医療等委員会でその適合性が厳しく審査され、#[br.u-hide-sp]適切と認められた後に厚生労働省に治療計画を提出し、計画番号を取得した場合のみ治療が可能となります。
+              .c-text N2クリニックは正規のプロセスを経て厚生労働省に対し、再生医療提供計画を提出し、計画番号を取得しています。
+              .c-text また、治療の有効性を最大限に引き出すために、国内外の最新の研究内容を把握するとともに#[br.u-hide-sp]院内でも臨床研究を実施し、エビデンスの構築に努めています。
+              .c-btnBox.u-mt-l #[a.c-btn.-underline(href=root+"about"+extention+"#creafied") 詳細はこちら]
+
+
+          //- 下層リンク
+          section.p-home-links.l-section.-bg-white(data-inview="slideUp")
+            .l-inner.-l
+              .p-home-links__cards
+                .p-home-links__card
+                  figure.p-home-links__image
+                    img(src=root + imgPath + 'top/top-6-1.jpg', alt='N2クリニックの紹介イメージ')
+                  .c-subTitle ABOUT US
+                  .c-heading.-h3 N2クリニックとは
+                  .c-btnBox.u-mt-l #[a.c-btn.-underline(href=root+'about'+extention) 詳細はこちら]
+
+                .p-home-links__card
+                  figure.p-home-links__image
+                    img(src=root + imgPath + 'top/top-6-2.jpg', alt='FAQページのイメージ')
+                  .c-subTitle FAQ
+                  .c-heading.-h3 ご質問集
+                  .c-btnBox.u-mt-l #[a.c-btn.-underline(href=root+'faq'+extention) 詳細はこちら]
+
+                .p-home-links__card
+                  figure.p-home-links__image
+                    img(src=root + imgPath + 'top/top-6-3.jpg', alt='採用情報のイメージ')
+                  .c-subTitle DOCTOR
+                  .c-heading.-h3 医師のご紹介
+                  .c-btnBox.u-mt-l #[a.c-btn.-underline(href=root+'doctor'+extention) 詳細はこちら]
+                
+                .p-home-links__card
+                  figure.p-home-links__image
+                    img(src=root + imgPath + 'top/top-6-4.jpg', alt='採用情報のイメージ')
+                  .c-subTitle SHARE THE FUTURE
+                  .c-heading.-h3 採用情報
+                  .c-btnBox.u-mt-l #[a.c-btn.-underline(href=root+'recruit'+extention) 詳細はこちら]
+
+
+
+          //- ドクターセクション
+          //- section.p-home-doctor.l-section(data-inview="slideUp")
+            .l-inner.-l
+              h2.c-heading.-section DOCTOR
+              .p-home-doctor__cards
+                each img, idx in ['top-4-1.jpg', 'top-4-2.jpg', 'top-4-3.jpg']
+                  figure.p-home-doctor__card
+                    img(src=root+imgPath+'top/'+img, alt='施設写真'+(idx+1))
+              .c-btnBox #[a.c-btn.-underline(href=root+'doctor'+extention) ドクターの詳細を見る]
+
+
+
+          //- アクセス
+          section#access.p-home-access.l-section(data-inview="slideUp")
+            .l-inner.-l
+              .c-subTitle ACCESS
+              h2.c-heading.-section クリニックへのご案内
+              .c-text N2クリニック銀座本院
+              .c-text 住所：東京都中央区銀座6丁目6-5#[br]HULIC &New GINZA NAMIKI6 11階
+              .c-text TEL：03-3289-0202
+              .c-text 診療時間：10:00~18:30#[br]休診日：日曜日
+              .c-text 最寄駅#[br]各線銀座駅B5番出口より徒歩4分
+              .c-btnBox.-right.u-mb-m #[a.c-btn.-underline(href='https://www.google.com/maps?ll=35.67094,139.762513&z=16&t=m&hl=ja&gl=JP&mapclient=embed&cid=2743125638156727850' target="_blank") マップへ]
+              figure.c-map.-spClassic.u-w-edge-sp
+                iframe(
+                  width='100%' 
+                  height='400px' 
+                  src='https://api.mapbox.com/styles/v1/virtuoso-sac/cmahi93pr00w301si5be6gygt.html?title=false&access_token=pk.eyJ1IjoidmlydHVvc28tc2FjIiwiYSI6ImNtYWV4NzZyYTBjeXkycW9jeDE0aGsya2YifQ.adiUxTYrVMG6PJ5MpCDlBQ&zoomwheel=false#15/35.6708/139.7638' 
+                  title='N2clinic_ginza' 
+                  style='border:none;'
+                )
+                //- iframe(width='100%' height='400px' src="https://api.mapbox.com/styles/v1/virtuoso-sac/cmahi93pr00w301si5be6gygt.html?title=false&access_token=pk.eyJ1IjoidmlydHVvc28tc2FjIiwiYSI6ImNtYWV4NzZyYTBjeXkycW9jeDE0aGsya2YifQ.adiUxTYrVMG6PJ5MpCDlBQ&zoomwheel=false#2/38/-34" title="N2clinic_ginza" style="border:none;")
+                //- iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.2461905647065!2d139.7625125!3d35.670939600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b4f3e67a031%3A0x26118a3bf499362a!2zTjLjgq_jg6rjg4vjg4Pjgq_pioDluqc!5e0!3m2!1sja!2sjp!4v1748337420012!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+
+
+
+          section.p-home-news.l-section.-s(data-inview="slideUp")
+            .l-inner.-l
+              .c-subTitle NEWS
+              h2.c-heading.-section お知らせ
+              ul.c-articleList.-text.u-mb-l
+                each article in [{href: root + 'news_detail' + extention, date: '2025.01.01', title: 'HPを更新しました。'}, {href: root + 'news_detail' + extention, date: '2025.02.10', title: '移転いたしました。'}, {href: root + 'news_detail' + extention, date: '2025.03.15', title: '幹細胞クリニックの免許の種類について'}]
+                  li.c-articleList__item
+                    a.c-articleList__link(href=article.href)
+                    time.c-articleList__date(datetime=article.date)= article.date
+                    .c-articleList__title= article.title
+              .c-btnBox #[a.c-btn.-underline(href=root+'news'+extention) 他のニュースも見る]
+              
+              //- // カード型ブログ一覧
+              //-================================================
+              //- お知らせデータ定義（仮データ）
+              //- - var newsData = [{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' },{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' },{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' },{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' },{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' },{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' },{ href: root + 'news-detail' + extention, thumb: 'noimage.jpg', date: '2025年1月11日', title: 'タイトルが入ります' }]
+              //-================================================
+              //- レンダリング部（3列レイアウト例）
+              //- ul.c-articleList.-card.-col-3
+                each article in newsData
+                  li.c-articleList__item
+                    a.c-articleList__link(href=article.href)
+                    figure.c-articleList__thumb
+                      img(src=root + imgPath + 'common/' + article.thumb, alt='お知らせサムネイル')
+                    .c-articleList__body
+                      .c-articleList__date
+                        time(datetime=article.date)= article.date
+                      .c-articleList__title= article.title
+                      .c-btn.-underline 詳しく見る
+
+
+              //- // サムネ付き縦型ブログ一覧
+              //- ul.c-articleList.-thumbnail.-blog
+                each article in [{ href: root + 'blog-detail' + extention, thumb: 'thumb-1.jpg', date: '2024-05-01', category: 'ブログ', tag: '免疫療法', title: 'ブログ更新のお知らせ vol.1' },{ href: root + 'blog-detail' + extention, thumb: 'thumb-2.jpg', date: '2024-05-02', category: 'ブログ', tag: '施術情報', title: 'ブログ更新のお知らせ vol.2' },{ href: root + 'blog-detail' + extention, thumb: 'thumb-3.jpg', date: '2024-05-03', category: 'ブログ', tag: 'イベント', title: 'ブログ更新のお知らせ vol.3' }]
+                  li.c-articleList__item
+                    a.c-articleList__link(href=article.href)
+                      figure.c-articleList__thumb
+                        img(src=root + imgPath + 'blog/' + article.thumb, alt='ブログサムネイル')
+                      .c-articleList__body
+                        .c-articleList__meta
+                          time(datetime=article.date)= article.date
+                          span.c-articleList__label.-category= article.category
+                          span.c-articleList__label.-tag= article.tag
+                        .c-articleList__title= article.title
+
+
+
+        //-================================================
+        //- Article END
+        //-================================================
+        // Article END
+      //- include _includes/_sidebar
+      include _includes/_component/_floatbox
+      include _includes/_footer
+    //- include _includes/_script
+    //---------------------------------
+    //- UNIQUE SCRIPT　ページ独自に使用するJS
+    //---------------------------------
+    block append js
+      script(src=root+jsPath + "main.js?ver=1.0.0")
+      script(src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js")
+      script.
+        // ヒーロースライダー
+        //- const heroSwiperEl = document.querySelector('[data-swiper="hero"]');
+        //- if (heroSwiperEl) {
+        //-   const heroSwiper = new Swiper(heroSwiperEl, {
+        //-     loop: true,
+        //-     effect: 'fade',
+        //-     speed: 2000,
+        //-     autoplay: {
+        //-       delay: 8000,
+        //-       disableOnInteraction: false,
+        //-     },
+        //-     // pagination: { el: '.swiper-pagination', clickable: true },
+        //-   });
+        //- }
+
+        // ギャラリースライダー
+        const gallerySwiperEl = document.querySelector('[data-swiper="gallery"]');
+        if (gallerySwiperEl) {
+          const gallerySwiper = new Swiper(gallerySwiperEl, {
+            slidesPerView: 'auto',
+            //- spaceBetween: 40,
+            dot:true,
+            grabCursor: true,
+            loop: false, // 無限ループをオフ
+            //- centeredSlides: true, // 中央に並べる
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+          });
+        }

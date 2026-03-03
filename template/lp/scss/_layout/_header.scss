@@ -1,0 +1,177 @@
+//  header
+// -------------------------------
+.l-header {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: gt(16, 24);
+  font-family: $sans;
+  :lang(en),
+  &:lang(vi) {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: "Songti SC", serif !important;
+  }
+  z-index: 1000;
+  background: var(--header-bg);
+  color: var(--header-text);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &__inner {
+    margin: auto;
+    @include flexbox(flex, null, null, space-between, center, null);
+    position: relative;
+  }
+
+  &__logo {
+    order: 2;
+    width: min(10%, 60px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    a {
+      display: inline-block;
+      line-height: 0;
+    }
+  }
+
+  &__left {
+    order: 1;
+    width: 44%;
+    // text-align: lef;
+    display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &__right {
+    order: 3;
+    width: 44%;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-end;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  &[data-sticky-header] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(0);
+    // background: rgba(255, 255, 255, 0.1);
+    background: none;
+    backdrop-filter: blur(20px);
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--header-bg);
+      // background: #000;
+      opacity: 0.4;
+      z-index: -1;
+    }
+
+    &.is-sticky {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    &.is-hide {
+      transform: translateY(-100%);
+    }
+  }
+}
+.c-btn-contact {
+  display: none;
+  border-radius: var(--radius-primary);
+  text-align: center;
+  line-height: 1;
+  transition: $transition;
+  position: relative;
+  font-size: fz(12, 14);
+  background: #000;
+  color: #fff;
+  font-family: $serif;
+  &:lang(en),
+  &:lang(vi) {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: "Songti SC", serif !important;
+  }
+  font-weight: 500;
+  width: auto;
+  padding: 1em 1.5em;
+  cursor: pointer !important;
+  &:not(:first-child) {
+    margin-left: 0.4em;
+  }
+  @include hover {
+    transform: translateY(1px);
+    filter: brightness(1.05) saturate(1.2);
+    &::before {
+      left: 100%;
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: $sp) {
+    display: block;
+  }
+}
+
+.c-lang {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0;
+  width: 6em;
+  &__btn {
+    position: relative;
+    font-size: fz(12, 14);
+    line-height: 1.4;
+    cursor: pointer;
+    & + &::before {
+      content: "/";
+      display: inline-block;
+      margin: 0 0.2em;
+    }
+    // &:nth-of-type(3)::before {
+    //   display: none;
+    // }
+    @include hover {
+      opacity: 0.5;
+    }
+  }
+  @media (max-width: ($sp - 1)) {
+    &__btn {
+      &:nth-of-type(3)::before {
+        display: none;
+      }
+    }
+  }
+  @media (min-width: $sp) {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.1em;
+    width: 100%;
+    &__btn {
+      & + &::before {
+        content: "/";
+        margin: 0 0.1em;
+      }
+    }
+  }
+}

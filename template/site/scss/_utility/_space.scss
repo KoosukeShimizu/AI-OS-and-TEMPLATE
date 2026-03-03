@@ -1,0 +1,73 @@
+// Spacing Utilities
+// -----------------
+
+$spacing-map: (
+  0: 0,
+  auto: auto,
+  xxxs: gt(2, 4),    // 極小 (罫線間、細かな装飾)
+  xxs: gt(4, 8),     // アイコン隙間、ボタン内余白
+  xs: gt(8, 12),     // ラベル・文字の余白
+  s: gt(12, 20),     // コンポーネント内パディング
+  m: gt(16, 28),     // ボックス間、テキストブロック間
+  l: gt(24, 44),     // セクション内区切り（※微調整済み）
+  xl: gt(32, 64),    // セクション前後
+  xxl: gt(40, 80),   // 大きな区切り・トップエリア
+  xxxl: gt(48, 104)  // ヒーロー、画面全体の余白
+);
+
+// ============================
+// Spacing Utilities（8px刻み・リキッド式）
+// 命名規則：.u-[m|p][方向]-[サイズ]
+// ============================
+
+@each $size, $value in $spacing-map {
+  // Margin
+  .u-m-#{$size} {
+    margin: $value !important;
+  }
+  .u-mt-#{$size} {
+    margin-top: $value !important;
+  }
+  .u-mb-#{$size} {
+    margin-bottom: $value !important;
+  }
+  .u-ml-#{$size} {
+    margin-left: $value !important;
+  }
+  .u-mr-#{$size} {
+    margin-right: $value !important;
+  }
+  .u-mx-#{$size} {
+    margin-inline: $value !important;
+    // margin-right: $value !important;
+  }
+  .u-my-#{$size} {
+    margin-block: $value !important;
+    // margin-bottom: $value !important;
+  }
+
+  // Padding
+  .u-p-#{$size} {
+    padding: $value !important;
+  }
+  .u-pt-#{$size} {
+    padding-top: $value !important;
+  }
+  .u-pb-#{$size} {
+    padding-bottom: $value !important;
+  }
+  .u-pl-#{$size} {
+    padding-left: $value !important;
+  }
+  .u-pr-#{$size} {
+    padding-right: $value !important;
+  }
+  .u-px-#{$size} {
+    padding-inline: $value !important;
+    // padding-right: $value !important;
+  }
+  .u-py-#{$size} {
+    padding-block: $value !important;
+    // padding-bottom: $value !important;
+  }
+}

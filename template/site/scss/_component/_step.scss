@@ -1,0 +1,104 @@
+.c-step {
+  text-align: center;
+  margin-bottom: gt(40, 60);
+  font-family: $sans;
+  :lang(en),
+  &:lang(vi) {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: "Songti SC", serif !important;
+  }
+
+  &__list {
+    width: min(90%, 400px);
+    display: flex;
+    justify-content: space-around;
+    // align-items: space-around;
+    gap: gt(24, 40);
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+    position: relative;
+    z-index: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 4px;
+      background-image: repeating-linear-gradient(to right, $c-gray-200, $c-gray-200 4px, transparent 4px, transparent 10px);
+      z-index: -1;
+    }
+  }
+
+  &__item {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    // position: relative;
+    font-size: $fz-xs;
+    color: var(--text-muted, #888);
+    border-radius: 50%;
+    background: $c-gray-200;
+    width: gt(90, 100);
+    aspect-ratio: $aspect-square;
+    padding: gt(8, 16);
+
+    // &::before {
+    //   content: "";
+    //   display: block;
+    //   width: 64px;
+    //   height: 64px;
+    //   border-radius: 50%;
+    //   background: $c-gray-200;
+    //   margin-bottom: 0.5em;
+    // }
+
+    // &:last-child::after {
+    //   display: none;
+    // }
+
+    &.is-current {
+      background: $c-gray-600;
+      color: var(--text-white, #fff);
+      // font-weight: bold;
+
+      // &::before {
+      //   background: var(--accent, #333); // 適度に抑えた黒
+      // }
+
+      // &::after {
+      //   background: var(--accent, #333);
+      // }
+
+      .c-step__order,
+      .c-step__label {
+        color: var(--text-white, #fff);
+      }
+    }
+  }
+
+  &__order {
+    // font-size: fz(11, 12);
+    // margin-top: 0.2em;
+    // margin-bottom: 0.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: inherit;
+    line-height: 1;
+  }
+
+  &__label {
+    // font-size: fz(12, 14);
+    color: inherit;
+    line-height: 1;
+  }
+}

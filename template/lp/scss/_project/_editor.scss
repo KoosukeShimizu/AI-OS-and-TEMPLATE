@@ -1,0 +1,157 @@
+/* --------------------------------------------------
+記事本文内（エディタ出力タグ）の装飾
+-------------------------------------------------- */
+.p-editor {
+  display: flex;
+  flex-direction: column;
+  gap: gt(20, 40);
+
+  h2 {
+    position: relative;
+    font-weight: 700;
+    padding: gt(12, 20) 0;
+    // font-size: $fz-h2;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-align: center;
+
+    // デコレーション（必要時のみ有効化）
+    // &:before {
+    //   @include position(absolute, 100% null null 0);
+    //   width: 100%;
+    //   height: 4px;
+    //   content: "";
+    //   background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px, transparent 5px);
+    //   background-size: 7px 7px;
+    //   backface-visibility: hidden;
+    // }
+    // &:after {
+    //   @include position(absolute, 100% null null 0);
+    //   width: 20%;
+    //   height: 4px;
+    //   content: "";
+    //   background: #000;
+    //   backface-visibility: hidden;
+    // }
+  }
+
+  h3 {
+    font-weight: 700;
+    // font-size: $fz-h3;
+    padding: gt(8, 12) 0;
+
+    // デコレーション（必要時のみ有効化）
+    // border-bottom: 1px solid #000;
+  }
+
+  h4 {
+    font-weight: 700;
+    padding: gt(5, 10) gt(5, 10);
+    display: inline-block;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  img {
+    height: auto !important;
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: underline;
+    color: var(--link-primary);
+  }
+
+  strong {
+    font-size: 110%;
+    font-weight: bold;
+    padding: 0 0.25em;
+    color: red;
+  }
+
+  em {
+    font-style: italic;
+    padding: 0 0.25em;
+  }
+
+  b {
+    font-weight: bold;
+    padding: 0 0.25em;
+  }
+
+  small {
+    font-size: 12px;
+    font-weight: 300;
+    color: #999999;
+  }
+
+  mark {
+    background: linear-gradient(transparent 0%, transparent 50%, yellow 50%, yellow 100%);
+    padding: 0 0.25em;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5em;
+    li {
+      margin-bottom: gt(5, 10);
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+
+  dl {
+    dt {
+      font-weight: bold;
+      margin-bottom: gt(5, 10);
+    }
+    dd:not(:last-child) {
+      margin-bottom: gt(20, 40);
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid var(--border-primary);
+    tr {
+      border-bottom: 1px solid var(--border-primary) !important;
+    }
+    th,
+    td {
+      padding: gt(5, 10);
+      text-align: left;
+    }
+  }
+
+  blockquote {
+    padding: gt(20, 40) gt(10, 20) gt(10, 20) gt(20, 40);
+    background-color: #eee;
+    border-radius: 6px;
+    position: relative;
+
+    // デコレーション（必要時のみ有効化）
+    // &:before {
+    //   content: "";
+    //   background: url("#{$imgPath}common/icons/quate.svg") no-repeat center center / cover;
+    //   display: block;
+    //   top: 10px;
+    //   left: 10px;
+    //   position: absolute;
+    // }
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    // background: #000;
+  }
+}

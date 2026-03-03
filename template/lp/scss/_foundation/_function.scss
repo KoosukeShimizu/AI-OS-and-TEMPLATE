@@ -1,0 +1,37 @@
+// ======================================================
+// フォントサイズ計算（fz）+ ガター計算（gt） for Prepros
+// Prepros対応版：unitエラー・除算エラー解消済み
+// ======================================================
+// （´・ω・`）< フォントサイズ計算
+// 使い方：font-size: fz(14, 20);
+@function fz($minFont, $maxFont: null) {
+  $minVw: 440;
+  $maxVw: 1024;
+  $minFz: $minFont * 1px;
+  $fontVw: math.div($minFont * 100 * 1000, $minVw);
+  $fontVw: math.div($fontVw, 1000);
+  @if $maxFont == null {
+    $maxFz: round($maxVw * ($fontVw / 100)) * 1px;
+    @return clamp(#{$minFz}, #{$fontVw}vw, #{$maxFz});
+  } @else {
+    $maxFz: $maxFont * 1px;
+    @return clamp(#{$minFz}, #{$fontVw}vw, #{$maxFz});
+  }
+}
+
+// （´・ω・`）< ガター計算（マージン/パディングなど）
+// 使い方：margin: gt(16, 32);
+@function gt($minGutter, $maxGutter: null) {
+  $minVw: 440;
+  $maxVw: 1200;
+  $minGt: $minGutter * 1px;
+  $gutterVw: math.div($minGutter * 100 * 1000, $minVw);
+  $gutterVw: math.div($gutterVw, 1000);
+  @if $maxGutter == null {
+    $maxGt: round($maxVw * ($gutterVw / 100)) * 1px;
+    @return clamp(#{$minGt}, #{$gutterVw}vw, #{$maxGt});
+  } @else {
+    $maxGt: $maxGutter * 1px;
+    @return clamp(#{$minGt}, #{$gutterVw}vw, #{$maxGt});
+  }
+}

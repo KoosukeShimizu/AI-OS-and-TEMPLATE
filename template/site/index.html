@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>テンプレ用サイトマップ</title>
+    <style>
+      body{background:#f5f5f5;font-family:sans-serif;font-size:14px;margin:0}
+      main{max-width:720px;margin:0 auto;padding:24px}
+      h1{margin:0 0 24px;font-size:18px}
+      h2{margin:28px 0 12px;font-size:14px;background:#000;color:#fff;display:inline-block;padding:4px 10px;border-radius:4px}
+      ul{list-style:none;padding:0;margin:0}
+      li{padding:10px 0;border-bottom:1px dotted #ccc}
+      a{color:#000;text-decoration:none}
+      a:hover{opacity:.6}
+      small{display:block;color:#777;margin-top:4px}
+      .group{background:#fff;border-radius:12px;padding:16px;margin-top:10px}
+      pre{background:#fff;border-radius:12px;padding:14px;margin:10px 0 0;white-space:pre-wrap;color:#666}
+      
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>コーディング確認用サイトマップ</h1>
+      <!-- ==================================================-->
+      <h2>基本情報</h2>
+      <pre>本ファイルはコーディング確認用です。
+本番公開禁止（noindex設定済み）
+
+ステータス凡例：✅ 完了｜🛠 作業中｜💤 未着手
+
+</pre>
+      <!-- ==================================================-->
+      <h2>更新情報</h2>
+      <pre>2026-02-24：テンプレサイトマップ初期構築
+2026-02-XX：更新内容をここに追記
+
+</pre>
+      <!-- ==================================================-->
+      <h2>基本ページ</h2>
+      <ul class="group">
+        <li><a href="__dist/index.html">トップページ</a> ✅<small>slug: index / format: frontpage / 第1階層</small></li>
+        <li><a href="__dist/page.html">固定ページ（汎用）</a> ✅<small>slug: page / format: page / 第2階層</small></li>
+        <li><a href="__dist/faq.html">FAQページ</a> ✅<small>slug: faq / format: page / 第2階層</small></li>
+        <li><a href="__dist/text-page.html">テキスト系ページ</a> 🛠<small>slug: text-page / format: page / 第2階層</small></li>
+      </ul>
+      <!-- ==================================================-->
+      <h2>投稿ページ</h2>
+      <ul class="group">
+        <li><a href="__dist/archive.html">一覧ページ</a> 🛠<small>slug: archive / format: archive / 第2階層</small></li>
+        <li><a href="__dist/post.html">詳細ページ</a> 💤<small>slug: post / format: single / 第3階層</small></li>
+      </ul>
+      <!-- ==================================================-->
+      <h2>フォームページ</h2>
+      <ul class="group">
+        <li><a href="__dist/inquiry.html">お問い合わせ入力</a> ✅<small>slug: inquiry / format: page / 第2階層</small></li>
+        <li><a href="__dist/inquiry-confirm.html">お問い合わせ確認</a> 🛠<small>slug: inquiry-confirm / format: page / 第3階層</small></li>
+        <li><a href="__dist/inquiry-thanks.html">お問い合わせ完了</a> 💤<small>slug: inquiry-thanks / format: page / 第4階層</small></li>
+      </ul>
+      <!-- ==================================================-->
+      <h2>認証ページ</h2>
+      <ul class="group">
+        <li><a href="__dist/login.html">ログイン</a> 🛠<small>slug: login / format: page / 第2階層</small></li>
+        <li><a href="__dist/password.html">パスワード再設定</a> 💤<small>slug: password / format: page / 第2階層</small></li>
+        <li><a href="__dist/password-thanks.html">パスワード再設定完了</a> 💤<small>slug: password-thanks / format: page / 第3階層</small></li>
+      </ul>
+    </main>
+  </body>
+</html>

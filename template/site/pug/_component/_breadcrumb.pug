@@ -1,0 +1,21 @@
+//- ==============================================
+//- BREADCRUMB（useBreadcrumb=true のとき）
+//- - slug / parentSlug は「/なし」を推奨（例: about, news）
+//- - URL結合は joinUrl() を使用（globalで定義済み前提）
+//- ==============================================
+if useBreadcrumb === true
+  nav.c-breadcrumb(aria-label="パンくずリスト")
+    ol.c-breadcrumb__list
+      li.c-breadcrumb__item
+        a(href=root)
+          i.c-icon.-home
+          span.u-sr-only ホーム
+
+      if parentSlug
+        li.c-breadcrumb__item
+          a(href=joinUrl(root, parentSlug)+extension)= parentTitle
+        li.c-breadcrumb__item(aria-current="page")
+          span= pageTitle
+      else
+        li.c-breadcrumb__item(aria-current="page")
+          span= pageTitle
