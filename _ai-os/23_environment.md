@@ -102,10 +102,10 @@ includeは pug 配下で以下の3分類に分解する（SCSSの思想に揃え
 
 # 7. テンプレ運用（プロジェクト開始の起点）
 
-標準テンプレは /template 配下で管理する（/ai配下には置かない）。
+標準テンプレは /_template 配下で管理する（/ai配下には置かない）。
 
-- template/site/（中規模以上）
-- template/lp/（ペライチLP）
+- _template/site/（中規模以上）
+- _template/lp/（ペライチLP）
 
 運用方針：
 

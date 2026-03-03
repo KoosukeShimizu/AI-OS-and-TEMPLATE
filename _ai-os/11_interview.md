@@ -17,8 +17,8 @@ Updated: 2026-03-03
 
 # Step 1：プロジェクト種別
 
-[1] LP（→ template/lp を使用）  
-[2] コーポレート（→ template/site を使用）  
+[1] LP（→ _template/lp を使用）  
+[2] コーポレート（→ _template/site を使用）  
 [3] 管理画面  
 [4] Webアプリ  
 [5] メディア  
@@ -161,4 +161,4 @@ pug構造は以下に分解します：
 2. ai_context.md を生成
 3. Mode決定
 4. ai_outline.md 作成
-5. template/ から雛形展開
+5. _template/ から雛形展開
