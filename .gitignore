@@ -1,5 +1,4 @@
 # build
-__dist/
 build/
 node_modules/
 
