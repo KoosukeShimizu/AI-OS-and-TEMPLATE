@@ -1,0 +1,100 @@
+.c-tag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $fz-xs;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.6em 1.2em;
+  border-radius: $radius-xxl;
+  border: 1px solid var(--border-primary);
+  color: var(--text-main, #333);
+  background: var(--bg-light, #171111);
+  cursor: default;
+  transition: all 0.2s ease;
+  font-family: $sans;
+  :lang(en),
+  &:lang(vi) {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+  &:lang(zh-CN),
+  &:lang(zh-SG) {
+    font-family: "Songti SC", serif !important;
+  }
+
+  // 基本バリエーション
+  &.-primary {
+    background: var(--tag-primary);
+    color: #fff;
+    border-color: var(--tag-primary);
+    &:hover {
+      background: var(--tag-primary);
+      color: #fff;
+    }
+  }
+
+  &.-secondary {
+    color: var(--tag-secondary);
+    border-color: var(--tag-secondary);
+    &:hover {
+      background: var(--tag-secondary);
+      color: #fff;
+    }
+  }
+
+  // 状態系バリエーション
+  &.-important {
+    // color: var(--important);
+    border-color: var(--important);
+    background: var(--important);
+    color: #fff;
+    // &:hover {
+    //   background: var(--important);
+    //   color: #fff;
+    // }
+  }
+
+  &.-danger {
+    // color: var(--danger);
+    border-color: var(--danger);
+    background: var(--danger);
+    color: #fff;
+    // &:hover {
+    //   background: var(--danger);
+    //   color: #fff;
+    // }
+  }
+
+  &.-success {
+    // color: var(--success);
+    border-color: var(--success);
+    background: var(--success);
+    color: #fff;
+    // &:hover {
+    //   background: var(--success);
+    //   color: #fff;
+    // }
+  }
+
+  &.-info {
+    // color: var(--info);
+    border-color: var(--info);
+    background: var(--info);
+    color: #fff;
+    // &:hover {
+    //   background: var(--info);
+    //   color: #fff;
+    // }
+  }
+
+  &.-mute {
+    // color: var(--mute);
+    border-color: var(--mute);
+    background: var(--mute);
+    color: #fff;
+    // &:hover {
+    //   background: var(--mute);
+    //   color: #fff;
+    // }
+  }
+}

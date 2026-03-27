@@ -1,0 +1,60 @@
+// （´・ω・`）< TOP / Global
+// -------------------------------
+// .p-works {
+
+// }
+.p-works-info {
+  margin-bottom: gt(20, 40);
+}
+.p-works-gallery {
+  &__item {
+    margin-bottom: gt(20, 40);
+  }
+}
+
+.p-works-content {
+  background: white;
+  padding: gt(20, 40);
+  margin-bottom: gt(20, 40);
+}
+.p-works__table {
+  th,
+  td {
+    display: block;
+  }
+  th {
+    // font-weight: 700;
+    font-size: fz(12, 14);
+    margin-bottom: gt(5, 10);
+    span {
+      background: #000;
+      display: inline-block;
+      color: var(--seconray);
+      line-height: 1;
+      padding: 0.4em 0.8em;
+    }
+
+    // &:after{
+    //   width: 20px;
+    //   height: 0;
+    //   border-top: 1px solid #000;
+    //   display: block;
+    //   content: "";
+    // }
+  }
+  td {
+    margin-bottom: gt(20, 30);
+  }
+}
+@include mq(pc, min) {
+  .p-works__body {
+    @include flexbox(flex, null, wrap, null, null, null);
+    gap: 4%;
+  }
+  .p-works-info {
+    width: 36%;
+  }
+  .p-works-gallery {
+    width: 60%;
+  }
+}

@@ -1,0 +1,70 @@
+.c-tab {
+  &__nav {
+    display: grid;
+    gap: gt(10, 20);
+    margin-bottom: gt(20, 40);
+    scroll-snap-type: x mandatory;
+
+    // 横並び（等幅）
+    &.-col-1 { grid-template-columns: repeat(1, 1fr); }
+    &.-col-2 { grid-template-columns: repeat(2, 1fr); }
+    &.-col-3 { grid-template-columns: repeat(3, 1fr); }
+    &.-col-4 { grid-template-columns: repeat(4, 1fr); }
+    &.-col-5 { grid-template-columns: repeat(5, 1fr); }
+
+    // 縦並び
+    &.-vertical { grid-template-columns: 1fr; }
+
+    // インライン幅
+    &.-inline {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // スワイプ（オプション）
+    &.-scroll {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: gt(10, 20);
+
+      li {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+    }
+
+    // ナビ共通スタイル
+    li {
+      padding: 1em 1.2em;
+      background: white;
+      border-radius: 3px;
+      transition: 0.3s;
+      cursor: pointer;
+      text-align: center;
+      min-width: 6em; // スワイプ用の最低幅
+
+      &.is-active {
+        background: var(--accent);
+        color: #fff;
+      }
+    }
+
+    // ブレイクポイント対応
+    @media (width <= $sp){
+      &.-col-3 { grid-template-columns: repeat(2, 1fr); }
+      &.-col-4 { grid-template-columns: repeat(2, 1fr); }
+      &.-col-5 { grid-template-columns: repeat(2, 1fr); }
+    }
+    // @media (max-width: 600px) {
+    //   &.-col-3 { grid-template-columns: repeat(2, 1fr); }
+    //   &.-col-4 { grid-template-columns: repeat(2, 1fr); }
+    //   &.-col-5 { grid-template-columns: repeat(2, 1fr); }
+    // }
+  }
+
+  &__pane {
+    display: none;
+    &.is-active { display: block; }
+  }
+}

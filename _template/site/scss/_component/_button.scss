@@ -1,0 +1,267 @@
+// ============================
+// Button Component (Arrow統合版)
+// ============================
+
+.c-btnBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+
+  // &.-left {
+  //   justify-content: flex-start;
+  // }
+  // &.-right {
+  //   justify-content: flex-end;
+  // }
+  // &.-center {
+  //   justify-content: center;
+  // }
+  // &.-column {
+  //   flex-direction: column;
+  // }
+  // &.-stretch {
+  //   align-items: stretch;
+  // }
+
+  // &.-gap-s {
+  //   gap: 0.5rem;
+  // }
+  // &.-gap-l {
+  //   gap: 2rem;
+  // }
+}
+
+// ============================
+// Button Core
+// ============================
+
+.c-btn {
+  // border-radius: var(--radius-s, 4px);
+  width: min(85%, 640px);
+  text-align: center;
+  padding: 1.4em 0;
+  font-weight: 500;
+  font-size: $fz-base;
+  line-height: 1;
+  transition: $transition;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  background: var(--btn-default, $c-gray-200);
+  color: var(--btn-on-default, $c-gray-800);
+
+  @include hover {
+    transform: translateY(0.5px);
+    filter: brightness(1.05) saturate(1.2);
+  }
+  &[disabled] {
+    border-bottom: 1px solid transparent;
+    // color: var(--mute);
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  // ------------------
+  // Color Variants
+  // ------------------
+
+  &.-primary {
+    background: var(--btn-primary);
+    color: var(--btn-on-primary);
+  }
+
+  &.-secondary {
+    background: var(--btn-secondary);
+    color: var(--btn-on-secondary);
+  }
+
+  &.-tertiary {
+    background: var(--btn-tertiary);
+    color: var(--btn-on-tertiary);
+    border: 2px solid var(--btn-border-tertiary, var(--whiteSecondary));
+  }
+
+  &.-outline {
+    // background: transparent;
+    background: white;
+    border: 2px solid currentColor;
+    color: currentColor;
+
+    &.-primary {
+      color: var(--btn-primary);
+      border-color: var(--btn-primary);
+    }
+    &.-secondary {
+      color: var(--btn-secondary);
+      border-color: var(--btn-secondary);
+    }
+    &.-tertiary {
+      color: var(--btn-tertiary);
+      border-color: var(--btn-tertiary);
+    }
+  }
+
+  &.-ghost {
+    background: transparent;
+    color: var(--btn-ghost);
+  }
+
+  &.-round {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    width: 3em;
+    height: 3em;
+  }
+
+  &.-square {
+    border-radius: 0;
+  }
+
+  &.-pill {
+    border-radius: 100vh;
+  }
+
+  &.-underline {
+    border-radius: 0;
+    background: transparent;
+    color: var(--btn-underline);
+    width: auto;
+    border-bottom: 1px solid var(--btn-underline);
+    padding: 0.4em 0.2em;
+  }
+
+  // ------------------
+  // Size Variants
+  // ------------------
+
+  &.-s {
+    font-size: $fz-s;
+    padding: 0.6em 1.2em;
+  }
+  &.-m {
+    font-size: $fz-base;
+    padding: 1em 2em;
+  }
+  &.-l {
+    font-size: $fz-l;
+    padding: 1.4em 2.8em;
+  }
+  &.-xl {
+    font-size: $fz-xl;
+    padding: 1.8em 3.6em;
+  }
+
+  // ------------------
+  // Arrow Variant
+  // ------------------
+
+  &.-arrow {
+    padding-right: 2.5em;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 1em;
+      width: 0.6em;
+      height: 0.6em;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: translateY(-50%) rotate(45deg);
+      transition: $transition;
+    }
+    @include hover {
+      &::after {
+        transform: translateY(-50%) rotate(45deg) translateX(3px);
+      }
+    }
+  }
+
+  &.-submit {
+    border-radius: 0;
+    background: transparent;
+    color: var(--btn-underline);
+    width: auto;
+    border-bottom: 1px solid var(--btn-underline);
+    padding: 0.4em 0.2em;
+    padding-right: 2em;
+    font-size: 1.2em;
+    &::after {
+      content: "send";
+      position: absolute;
+      top: 50%;
+      right: 0.5em;
+      transform: translateY(-50%);
+      @include icon-symbol-base;
+    }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   top: 50%;
+    //   right: 0.5em;
+    //   transform: translateY(-50%);
+    //   aspect-ratio: $aspect-square;
+    //   width: 16px;
+    //   height: 16px;
+    //   background: url("#{$imgPath}icons/form/paper-plane.svg") no-repeat center center / contain;
+    // }
+    &[disabled] {
+      border-bottom: 1px solid transparent;
+      // color: var(--mute);
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  // ------------------
+  // CTA専用
+  // ------------------
+
+  &.-cta {
+    background: var(--btn-primary);
+    color: var(--btn-on-primary);
+    padding: 0.8em 2em;
+    font-size: $fz-l;
+    box-shadow: 0 3px 0 var(--btn-primary);
+    b {
+      font-size: $fz-xl;
+      display: block;
+      margin-top: gt(4, 8);
+    }
+  }
+
+  // ------------------
+  // Utility Variants
+  // ------------------
+
+  &.-block {
+    display: block;
+    width: 100%;
+  }
+  &.-inline {
+    display: inline-block;
+    width: auto;
+    padding: 0.5em 1em;
+  }
+  &.-inline-block {
+    display: inline-block;
+    width: auto;
+    padding-inline: 1em;
+  }
+
+  // ------------------
+  // 状態系
+  // ------------------
+
+  &.is-disabled,
+  &.-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+    filter: grayscale(1);
+  }
+}

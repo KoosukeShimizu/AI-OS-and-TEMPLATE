@@ -1,0 +1,156 @@
+// ============================
+// Icon Component (Material Icons)
+// ※アイコン名は Material Symbols に準拠
+// https://fonts.google.com/icons
+// ============================
+
+.c-icon {
+  display: inline-block;
+  aspect-ratio: 1 / 1;
+  vertical-align: middle;
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5em; // 基本サイズ（必要に応じて変更）
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  margin-inline: .5em;
+
+  // ----------------------------
+  // サイズユーティリティ（emベース）
+  // ----------------------------
+  &.-xxs { font-size: 0.5em; }
+  &.-xs  { font-size: 0.8em; }
+  &.-s   { font-size: 1em; }
+  &.-m   { font-size: 1.5em; }
+  &.-l   { font-size: 2em; }
+  &.-xl  { font-size: 3em; }
+
+  // ----------------------------
+  // サイズユーティリティ（px指定）
+  // ※font-size で指定することでフォントアイコンとしての整合性を保つ
+  // ----------------------------
+  &.-px8   { font-size: 8px; }
+  &.-px16  { font-size: 16px; }
+  &.-px24  { font-size: 24px; }
+  &.-px32  { font-size: 32px; }
+  &.-px48  { font-size: 48px; }
+  &.-px64  { font-size: 64px; }
+  &.-px80  { font-size: 80px; }
+  &.-px96  { font-size: 96px; }
+  &.-px128 { font-size: 128px; }
+  &.-px160 { font-size: 160px; }
+
+
+// ============================
+  // アイコン別スタイル分類
+  // ============================
+  // ▼ UI操作・ナビゲーション
+  &.-home::before { content: "home"; }
+  &.-back::before         { content: "arrow_left_alt"; }
+  &.-arrow::before         { content: "arrow_forward"; }
+  &.-arrowLeft::before     { content: "arrow_back"; }
+  &.-arrowDown::before     { content: "keyboard_arrow_down"; }
+  &.-arrowUp::before       { content: "keyboard_arrow_up"; }
+  &.-more::before          { content: "more_horiz"; }
+  &.-expand::before        { content: "expand_more"; }
+  &.-collapse::before      { content: "expand_less"; }
+  &.-refresh::before       { content: "refresh"; }
+  &.-open::before          { content: "open_in_new"; }
+  &.-external::before      { content: "launch"; }
+  &.-menu::before          { content: "menu"; }
+  &.-link::before       { content: "link"; }
+
+  // ▼ フォーム操作・入力支援
+  &.-add::before               { content: "add"; }
+  &.-remove::before            { content: "remove"; }
+  &.-plus::before              { content: "add"; }
+  &.-minus::before             { content: "remove"; }
+  &.-edit::before              { content: "edit"; }
+  &.-delete::before            { content: "delete"; }
+  &.-upload::before            { content: "upload"; }
+  &.-download::before          { content: "download"; }
+  &.-check::before             { content: "check"; }
+  &.-close::before             { content: "close"; }
+  &.-clear::before             { content: "cancel"; }
+  &.-calendar::before          { content: "calendar_today"; }
+  &.-time::before              { content: "schedule"; }
+  &.-visibility::before        { content: "visibility"; }
+  &.-visibilityOff::before     { content: "visibility_off"; }
+  &.-checkbox::before          { content: "check_box"; }
+  &.-checkboxOutline::before   { content: "check_box_outline_blank"; }
+  &.-radio::before             { content: "radio_button_checked"; }
+  &.-radioOutline::before      { content: "radio_button_unchecked"; }
+  &.-send::before              { content: "send"; }
+
+  // ▼ UIコンポーネント（一般機能）
+  &.-search::before            { content: "search"; }
+  &.-filter::before            { content: "filter_list"; }
+  &.-sort::before              { content: "sort"; }
+  &.-notification::before      { content: "notifications"; }
+  &.-alert::before             { content: "warning"; }
+  &.-info::before              { content: "info"; }
+  &.-help::before              { content: "help"; }
+
+  // ▼ アカウント・ユーザー
+  &.-user::before              { content: "person"; }
+  &.-userAdd::before           { content: "person_add"; }
+  &.-group::before             { content: "group"; }
+  &.-login::before             { content: "login"; }
+  &.-logout::before            { content: "power_settings_new"; } // or "logout"
+  &.-link::before       { content: "link"; }
+  &.-setting::before           { content: "settings"; }
+
+  // ▼ コンテンツ・ドキュメント
+  &.-document::before          { content: "description"; } // or "article"
+  &.-image::before             { content: "image"; }
+  &.-camera::before            { content: "photo_camera"; }
+  &.-video::before             { content: "videocam"; }
+  &.-mic::before               { content: "mic"; }
+  &.-play::before              { content: "play_arrow"; }
+  &.-pause::before             { content: "pause"; }
+  &.-stop::before              { content: "stop"; }
+
+  // ▼ その他
+  &.-lab::before               { content: "science"; }
+
+  // ▼ 通知・受信関連
+  &.-inbox::before             { content: "tune"; } // or "filter_list"
+
+  // ▼ 決済・カード
+  &.-card::before              { content: "credit_card"; }
+
+  // ▼ 連絡手段
+  &.-phone::before             { content: "call"; }
+  &.-mail::before              { content: "mail"; }
+}
+
+
+
+.c-imgIcon {
+  aspect-ratio: 1 / 1;
+  display: inline-block;
+  width: 24px;
+
+  &.-xxs { width: 0.5em; }
+  &.-xs  { width: 0.8em; }
+  &.-s   { width: 1em; }
+  &.-m   { width: 1.5em; }
+  &.-l   { width: 2em; }
+  &.-xl  { width: 3em; }
+
+  &.-px8  { width: 8px; }
+  &.-px16 { width: 16px; }
+  &.-px24 { width: 24px; }
+  &.-px32 { width: 32px; }
+  &.-px48 { width: 48px; }
+  &.-px64 { width: 64px; }
+  &.-px80 { width: 80px; }
+  &.-px96 { width: 96px; }
+  &.-px128 { width: 128px; }
+  &.-px160 { width: 160px; }
+}

@@ -1,0 +1,162 @@
+.u-t {
+  margin: 0 0 gt(10, 20);
+  // text-align
+  &-l {
+    text-align: left !important;
+  }
+  &-c {
+    text-align: center !important;
+  }
+  &-r {
+    text-align: right !important;
+  }
+  // 媒体別ユーティリティ
+  @media (max-width: ($sp - 1)) {
+    .u-t-l-sp {
+      text-align: left !important;
+    }
+    .u-t-c-sp {
+      text-align: center !important;
+    }
+    .u-t-r-sp {
+      text-align: right !important;
+    }
+  }
+
+  @media (min-width: $sp) {
+    .u-t-l-pc {
+      text-align: left !important;
+    }
+    .u-t-c-pc {
+      text-align: center !important;
+    }
+    .u-t-r-pc {
+      text-align: right !important;
+    }
+  }
+
+  // text color
+  &-primary {
+    color: var(--primary);
+  }
+  &-secondary {
+    color: var(--secondary);
+  }
+  &-tertiary {
+    color: var(--tertiary);
+  }
+  &-accent {
+    color: var(--accent);
+  }
+  &-danger {
+    color: var(--danger);
+  }
+  &-important {
+    color: var(--important);
+  }
+  &-success {
+    color: var(--success);
+  }
+  &-disable {
+    color: var(--mute);
+  }
+
+  // font-style / weight / size
+  &-b {
+    font-weight: bold;
+  }
+  &-i {
+    font-style: italic;
+  }
+  &-s {
+    font-size: 85%;
+  }
+
+  // decoration
+  &-ul {
+    text-decoration: underline !important;
+  }
+  &-lt {
+    text-decoration: line-through;
+  }
+
+  // highlight / marker
+  &-mark {
+    background: var(--marker, #fff59d);
+  }
+  &-hl {
+    background: linear-gradient(to bottom, transparent 60%, var(--highlight, #ffeaa7) 60%);
+  }
+
+  // overflow
+  &-cut {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // transform
+  &-up {
+    text-transform: uppercase;
+  }
+  &-low {
+    text-transform: lowercase;
+  }
+  &-cap {
+    text-transform: capitalize;
+  }
+}
+.u-fz {
+  &-xs {
+    font-size: $fz-xs;
+  }
+  &-s {
+    font-size: $fz-s;
+  }
+  &-m {
+    font-size: $fz-base;
+  }
+  &-l {
+    font-size: $fz-l;
+  }
+  &-xl {
+    font-size: $fz-xl;
+  }
+}
+.u-lh {
+  &-0 {
+    line-height: 0;
+  }
+  &-1 {
+    line-height: 1;
+  }
+  &-s {
+    line-height: 1.2;
+  }
+  &-m {
+    line-height: 1.4;
+  }
+  &-l {
+    line-height: 1.8;
+  }
+  &-xl {
+    line-height: 2;
+  }
+}
+.u-ls {
+  &-0 {
+    letter-spacing: 0;
+  }
+  &-s {
+    letter-spacing: 0.02em;
+  }
+  &-m {
+    letter-spacing: 0.05em;
+  }
+  &-l {
+    letter-spacing: 0.07em;
+  }
+  &-xl {
+    letter-spacing: 0.1em;
+  }
+}

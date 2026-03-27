@@ -1,0 +1,77 @@
+//- ==============================================
+//- HEADER TEMPLATE（Minimal対応）
+//- - 必須: root, imgPath, extension, key, useLogoH1
+//- - 任意: useHeaderMinimal (default: false)
+//- ==============================================
+
+- var useHeaderMinimal = (typeof useHeaderMinimal !== 'undefined') ? useHeaderMinimal : false
+
+header#header.l-header(data-sticky-header)
+  .l-header__inner
+
+    //- LOGO（H1切替）
+    if useLogoH1 === true
+      h1.l-header__logo
+        a(href=root+"")
+          img(src=root+imgPath+"common/siteLogo.svg"+version alt=siteName loading="lazy")
+    else
+      .l-header__logo
+        a(href=root+"")
+          img(src=root+imgPath+"common/siteLogo.svg"+version alt=siteName loading="lazy")
+
+    //- ハンバーガー（Minimal時は非表示）
+    if useHeaderMinimal !== true
+      .l-header__left
+        button.c-hamburger(
+          type="button"
+          aria-label="メニューを開く"
+          data-nav-toggle="globalNav"
+          aria-controls="globalNav"
+          aria-expanded="false"
+        )
+          span.c-hamburger__line
+          span.c-hamburger__line
+          span.c-hamburger__line
+          .c-hamburger__label Menu
+
+      //- CTA（案件ごとに自由に編集）
+      .l-header__right
+        .u-d-flex
+          //- a.c-btn-contact(href=root+"reserve"+extension) ご予約  //- オプション：予約機能がある案件で有効化
+          a.c-btn-contact(href=root+"inquiry"+extension) お問い合わせ
+
+
+//- ==============================================
+//- GLOBAL NAV（最小テンプレ）
+//- ==============================================
+nav.c-globalNav.-center#globalNav
+  .c-globalNav__head
+    button.c-globalNav__close(
+      type="button"
+      aria-controls="globalNav"
+      aria-label="Close menu"
+      data-nav-close="globalNav"
+    )
+      i.c-icon.-close
+
+    .c-globalNav__title
+      img(src=root+imgPath+"common/siteLogo.svg"+version alt=siteName loading="lazy")
+
+  .c-globalNav__body(data-nav-body="globalNav")
+    ul.c-globalNav__col
+      li.c-globalNav__item
+        a(class=(key === 'home') ? "is-current" : "" href=root+"") #[span TOP]
+
+      li.c-globalNav__item
+        a(class=(key === 'page') ? "is-current" : "" href=root+"page"+extension) #[span 固定ページ]
+
+      li.c-globalNav__item
+        a(class=(key === 'archive') ? "is-current" : "" href=root+"archive"+extension) #[span 記事一覧]
+
+      li.c-globalNav__item
+        a(class=(key === 'inquiry') ? "is-current" : "" href=root+"inquiry"+extension) #[span お問い合わせ]
+
+  .c-globalNav__foot
+    ul.c-globalNav__col
+      li.c-globalNav__item
+        a.u-jc-c(class=(key === 'inquiry') ? "is-current" : "" href=root+"inquiry"+extension) #[span お問い合わせ]

@@ -1,0 +1,258 @@
+// ============================
+// Display Utilities（最適化版）
+// 命名規則：.u-[prefix]-[option]
+// ============================
+
+// ----------------------------
+// Margin Auto（中央寄せ）
+// ----------------------------
+
+.u-mx-auto {
+  margin-inline: auto !important;
+}
+.u-my-auto {
+  margin-block: auto !important;
+}
+
+// ----------------------------
+// Display
+// ----------------------------
+
+.u-d-flex {
+  display: flex !important;
+}
+.u-d-if {
+  display: inline-flex !important;
+}
+.u-d-grid {
+  display: grid !important;
+}
+.u-d-ig {
+  display: inline-grid !important;
+}
+
+// ----------------------------
+// Flex Utilities
+// ----------------------------
+.u-fd-row {
+  flex-direction: row !important;
+}
+.u-fd-row-r {
+  flex-direction: row-reverse !important;
+}
+.u-fd-col {
+  flex-direction: column !important;
+}
+.u-fd-col-r {
+  flex-direction: column-reverse !important;
+}
+.u-jc-s {
+  justify-content: flex-start !important;
+}
+.u-jc-c {
+  justify-content: center !important;
+}
+.u-jc-e {
+  justify-content: flex-end !important;
+}
+.u-jc-b {
+  justify-content: space-between !important;
+}
+.u-jc-a {
+  justify-content: space-around !important;
+}
+
+.u-ai-s {
+  align-items: flex-start !important;
+}
+.u-ai-c {
+  align-items: center !important;
+}
+.u-ai-e {
+  align-items: flex-end !important;
+}
+.u-ai-st {
+  align-items: stretch !important;
+}
+
+// ----------------------------
+// Grid Utilities - Col制御
+// ----------------------------
+
+.u-col-1 {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
+.u-col-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+.u-col-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+.u-col-4 {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+@media (width <= $sp) {
+  .u-col-sp-1 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .u-col-sp-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .u-col-sp-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: $sp) {
+  .u-col-pc-1 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .u-col-pc-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .u-col-pc-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+// ----------------------------
+// Gap Utilities
+// ----------------------------
+
+.u-gap-xs {
+  gap: gt(4, 8) !important;
+}
+.u-gap-s {
+  gap: gt(8, 16) !important;
+}
+.u-gap-m {
+  gap: gt(16, 32) !important;
+}
+.u-gap-l {
+  gap: gt(24, 48) !important;
+}
+.u-gap-xl {
+  gap: gt(32, 64) !important;
+}
+
+// ----------------------------
+// Positioning Utilities
+// ----------------------------
+
+.u-pos-a {
+  position: absolute !important;
+}
+.u-pos-r {
+  position: relative !important;
+}
+.u-pos-f {
+  position: fixed !important;
+}
+.u-pos-s {
+  position: sticky !important;
+}
+
+.u-pos-a-c {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.u-pos-f-c {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 共通：表示/非表示
+.u-show {
+  display: block !important;
+}
+.u-hide {
+  display: none !important;
+}
+
+// ------------------------------
+// 各出し分けユーティリティ
+// ------------------------------
+
+// ① SPのみ表示 (〜599px)
+.u-show-sp {
+  display: none !important;
+  @media (max-width: ($sp - 1)) {
+    display: block !important;
+  }
+}
+.u-hide-sp {
+  @media (max-width: ($sp - 1)) {
+    display: none !important;
+  }
+}
+
+// ② TABのみ表示 (600〜1023px) ※特殊時のみ利用
+.u-show-tab {
+  display: none !important;
+  @media (min-width: $sp) and (max-width: ($tab - 1)) {
+    display: block !important;
+  }
+}
+.u-hide-tab {
+  @media (min-width: $sp) and (max-width: ($tab - 1)) {
+    display: none !important;
+  }
+}
+
+// ③ PCのみ表示 (1280px〜)
+.u-show-pc {
+  display: none !important;
+  @media (min-width: $pc) {
+    display: block !important;
+  }
+}
+.u-hide-pc {
+  @media (min-width: $pc) {
+    display: none !important;
+  }
+}
+
+// ④ SP以外全部 (TAB+PC = 600px以上)
+.u-show-wide {
+  display: none !important;
+  @media (min-width: $sp) {
+    display: block !important;
+  }
+}
+.u-hide-wide {
+  @media (min-width: $sp) {
+    display: none !important;
+  }
+}
+
+// ⑤ TAB以上 (TAB+PC = 1024px以上)
+.u-show-tab-up {
+  display: none !important;
+  @media (min-width: $tab) {
+    display: block !important;
+  }
+}
+.u-hide-tab-up {
+  @media (min-width: $tab) {
+    display: none !important;
+  }
+}
+
+// ⑥ TAB以下 (SP+TAB = 〜1279px)
+.u-show-tab-down {
+  display: none !important;
+  @media (max-width: ($pc - 1)) {
+    display: block !important;
+  }
+}
+.u-hide-tab-down {
+  @media (max-width: ($pc - 1)) {
+    display: none !important;
+  }
+}

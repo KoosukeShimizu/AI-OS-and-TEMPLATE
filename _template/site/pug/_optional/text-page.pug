@@ -1,0 +1,162 @@
+//-================================================
+//- text-page.pug（テキスト系ページ：規約/プラポリ/特商法など）
+//- - 横展用の最小テンプレ
+//- - 本文は .l-page__body 内に積む
+//-================================================
+
+//-================================================
+//- サイト共通設定
+//-================================================
+include _foundation/_global
+
+//-================================================
+//- control block（中規模以上：STANDARD）
+//-================================================
+
+//---------------
+//- パス・識別（必須）
+//---------------
+- var root = './'
+- var key = 'text-page'
+- var slug = 'text-page'
+- var parentSlug = ''
+- var parentTitle = ''
+
+//---------------
+//- version（静的アセット用：必須）
+//---------------
+- var version = '?v=20260220'
+
+//---------------
+//- head制御
+//---------------
+- var useNoindex = false
+- var useOgp = true
+- var useAnalytics = true
+- var useLogoH1 = false
+- var useBreadcrumb = true
+
+//---------------
+//- header制御（テンプレで採用）
+//---------------
+- var useHeaderMinimal = false
+- var useFooterMinimal = false
+
+//---------------
+//- schema制御（必要な場合のみON）
+//---------------
+- var useSchemaWebSite = false
+- var useSchemaWebPage = true
+- var useSchemaOrganization = false
+- var useSchemaBreadcrumb = true
+- var useSchemaArticle = false
+- var useSchemaFAQ = false
+
+//---------------
+//- meta（ページ固有）
+//---------------
+- var pageTitle = 'プライバシーポリシー'
+- var pageDescription = 'プライバシーポリシーと個人情報の取扱いについてご案内します。'
+- var pageKeywords = ''
+
+//---------------
+//- OGP（useOgp=trueのとき有効）
+//---------------
+- var pageOgUrl = ''
+- var pageOgTitle = pageTitle
+- var pageOgDescription = pageDescription
+- var pageOgImage = ''
+
+//- ===================================================
+//-  ███████╗████████╗ █████╗ ███████╗ ████████╗
+//-  ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝
+//-  ███████╗   ██║   ███████║███████╔╝   ██║
+//-  ╚════██║   ██║   ██╔══██║██╔═██║     ██║
+//-  ███████║   ██║   ██║  ██║██║ ███║    ██║
+//-  ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚══╝    ╚═╝
+//- ===================================================
+doctype html
+html(lang='ja')
+  head
+    include _layout/_head
+
+    //---------------------------------
+    //- UNIQUE CSS　ページ独自に使用するスタイル
+    //---------------------------------
+    block append css
+      //- link(rel='stylesheet' href=root+cssPath+'text-page.css'+version)
+
+    //---------------------------------
+    //- SCHEMA　構造化データの呼び出し
+    //---------------------------------
+    include _foundation/_schema
+
+    //---------------------------------
+    //- 計測タグ（head）の呼び出し
+    //---------------------------------
+    include _layout/_trackingTag_head
+
+  body
+    //---------------------------------
+    //- 計測タグ（body）の呼び出し
+    //---------------------------------
+    include _layout/_trackingTag_body
+
+    .l-wrapper
+      include _layout/_header
+
+      if useBreadcrumb === true
+        include _component/_breadcrumb
+
+      main.l-main
+        //-================================================
+        //- ARTICLE START
+        //-================================================
+        article.l-page
+
+          // Heroセクション
+          .l-page__head
+            h1.l-page__title #{pageTitle}
+            //- .l-page__sub TEXT PAGE
+            //- .l-page__intro #{siteName}のテキストページです。
+
+          .l-page__body
+            section.l-section.-s
+              .l-inner.-s
+                .c-text ここに導入文が入ります。テキスト系ページのテンプレとして最低限の文章を置いています。
+
+                h2.c-heading.-h3 1. 見出し（h3）
+                .c-text 本文が入ります。文章は案件の原稿に差し替えてください。
+                ul.c-list.-num
+                  li 箇条書き（番号）1
+                  li 箇条書き（番号）2
+                  li 箇条書き（番号）3
+
+                h2.c-heading.-h3 2. 見出し（h3）
+                .c-text 本文が入ります。必要に応じて dot リストも使えます。
+                ul.c-list.-dot
+                  li 箇条書き（ドット）1
+                  li 箇条書き（ドット）2
+                  li 箇条書き（ドット）3
+
+                .c-text.-right 以上
+
+            section.l-section.-xs
+              .l-inner
+                .c-btnBox.u-fd-col
+                  a.c-btn.-underline.u-mb-l(href=root+'inquiry'+extension) お問い合わせ
+                  a.c-btn.-underline(href=root+'archive'+extension) 記事一覧へ
+
+        //-================================================
+        //- Article END
+        //-================================================
+
+      include _layout/_footer
+
+    include _layout/_script
+
+    //---------------------------------
+    //- UNIQUE SCRIPT　ページ独自に使用するJS
+    //---------------------------------
+    block append js
+      //- script(src=root+jsPath+'text-page.js'+version)

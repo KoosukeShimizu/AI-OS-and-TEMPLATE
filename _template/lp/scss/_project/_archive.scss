@@ -1,0 +1,43 @@
+/* --------------------------------------------------
+アーカイブページ
+-------------------------------------------------- */
+.p-archive {
+  &__head {
+    padding: gt(64, 100) 0 gt(0);
+    margin: auto;
+    position: relative;
+  }
+  &__title {
+    font-size: fz(30, 60);
+    font-weight: 700;
+    line-height: 1;
+    // letter-spacing: 0em;
+    margin-bottom: gt(52);
+    text-transform: capitalize;
+  }
+  &__subtitle {
+    font-size: fz(100);
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-transform: capitalize;
+    margin-bottom: gt(10);
+    font-family: $handwrite;
+    display: block;
+    @include position(absolute, gt(45, 100) null null -4%);
+    color: var(--tertiary);
+    z-index: -1;
+    transform: translateY(-55%) rotate(-8deg);
+    transform-origin: left center;
+    filter: drop-shadow(-0.07em 0.04em 0 #ece390);
+    // -webkit-text-stroke: 1px #000;
+    // text-stroke: 1px #000;
+    // color: transparent;
+  }
+  &__intro {
+    font-size: fz(14, 22);
+    // font-size: 16px;
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+  }
+}

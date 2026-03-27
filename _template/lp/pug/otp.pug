@@ -1,0 +1,133 @@
+//-================================================
+//- サイト共通設定
+//-================================================
+include _includes/_foundation/_global
+
+//- block vars
+//---------------
+//- ページ設定
+//---------------
+- var root = './' // ルートパスの指定
+- var key = 'account' // 条件分岐に使用
+- var useNoindex = true // noindexの有無
+- var useOgp = false // OGPの有無
+- var useAnalytics = true // GAタグの有無
+- var useLogoH1 = false // ロゴにh1を使うか
+- var useBreadcrumb = false // パンくずを使うか
+
+//---------------
+//- 構造化データ設定
+//---------------
+- var useSchemaWebSite = false
+- var useSchemaWebPage = false
+- var useSchemaOrganization = false
+- var useSchemaBreadcrumb = false
+- var useSchemaArticle = false
+- var useSchemaFAQ = false
+
+//---------------
+//- ページメタ情報
+//---------------
+- var pageTitle = 'マイページ｜N2クリニック'
+- var pageDescription = 'N2クリニックの会員専用マイページです。ご予約内容の確認・変更や各種情報の管理を行えます。'
+- var pageKeywords = 'N2クリニック, マイページ, 会員ページ, ご予約確認, 情報変更'
+- var pageOgUrl = ''
+- var pageOgTitle = pageTitle
+- var pageOgDescription = pageDescription
+- var pageOgImage = ''
+//---------------
+//- パンくず設定
+//---------------
+- var pageSlug= "account" // ページのスラッグ※末尾に「/」必須
+- var parentSlug= "" // ページが3階層目の場合、親ページのスラッグ
+- var parentTitle= "" // ページが3階層目の場合、親ページの名前
+
+//- ===================================================
+//-  ███████╗████████╗ █████╗ ███████╗ ████████╗
+//-  ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝
+//-  ███████╗   ██║   ███████║███████╔╝   ██║
+//-  ╚════██║   ██║   ██╔══██║██╔═██║     ██║
+//-  ███████║   ██║   ██║  ██║██║ ███║    ██║
+//-  ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚══╝    ╚═╝
+//- ===================================================
+doctype html
+html(lang='ja')
+  head
+    include _includes/_head
+    //---------------------------------
+    //- UNIQUE CSS　ページ独自に使用するスタイル
+    //---------------------------------
+    block append css
+      link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+      link(rel='stylesheet' href=root+cssPath+'main.css?ver=1.0.0' type='text/css' media='all')
+    include _includes/_foundation/_schema
+    include _includes/_trackingTag_head
+  body.p-account
+    include _includes/_trackingTag_body
+    .l-wrapper
+      //- include _includes/_header
+      //- include _includes/_component/_breadcrumb
+      //- header.l-header.p-mypage-header
+        h1.c-heading.-section.u-mb-m アカウント情報
+        .p-mypage-header__back.u-t-c
+          a(href=root+"mypage"+extention) #[i.c-icon.-back]マイページに戻る
+
+      main.l-main.u-anim-fadeIn
+        //-================================================
+        //- ARTICLE START
+        //-================================================
+        // Article START
+        article.l-page
+          .l-page__body
+            section.l-section.-xxs
+              .l-inner.-xxs
+                .c-heading.-h4.u-mb-m アカウント情報の変更を受け付けました。#[br]アカウント情報を更新するには、本人確認が必要です。
+                .c-text ご登録のメールアドレス宛に、確認コード（OTP）を送信しました。届いたコードを入力して、変更内容を確定してください。
+                .c-note ※ご本人以外による変更を防ぐため、セキュリティ確認を行っています。
+
+
+                //- .c-avatar
+                  img(src=root+imgPath + 'common/noimage.jpg', alt='ユーザー画像')
+
+                h1.c-heading.-section.u-mt-xxl.u-mb-s OTP認証画面
+                .c-text.u-mb-l ご登録のアドレスに届いたワンタイムパスワードを入力してください。
+
+                form(method="post" action=root+"otp-complate"+extention enctype="multipart/form-data")
+                  .c-form
+                    .c-form__item
+                      .c-form__body.-row
+                        - for (let i = 0; i < 6; i++)
+                          input.c-form__input.u-w-10.u-t-c(type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth)
+
+                      .c-text.-important.u-t-r(data-timer) 1.00s
+                      .c-form__error 6桁のコードをすべて入力してください
+                      .c-form__error 数字のみでご入力ください
+                      .c-form__error コードが正しくありません。もう一度ご確認ください
+                      .c-form__error コードの有効期限が切れました。再送信を行ってください
+
+                  // 送信ボタン
+                  .c-btnBox.u-gap-l.u-my-l
+                    button.c-btn.-primary(type="submit" disabled) 認証する
+                  
+                  .c-text ワンタイムパスワードが届かない。#[button.c-link(type="button") 再送する]
+                  .c-note ※メールが届かない場合、受信許可設定を行う必要があります。#[br]お手持ちの端末にて、n2clinic-ginza.comのドメインを受信許可設定してください。
+
+                  .c-text.u-mt-l どうしてもメールが届かない場合は#[a.c-link(href=root+"inquiry"+extention) お問い合わせフォーム]よりご連絡ください。
+
+
+
+
+        //-================================================
+        //- Article END
+        //-================================================
+        // Article END
+      //- include _includes/_sidebar
+      //- include _includes/_component/_floatbox
+      //- include _includes/_footer
+    //- include _includes/_script
+    //---------------------------------
+    //- UNIQUE SCRIPT　ページ独自に使用するJS
+    //---------------------------------
+    block append js
+      script(src=root+jsPath + "main.js?ver=1.0.0")
+      script(src=root+jsPath + "form.js?ver=1.0.0")

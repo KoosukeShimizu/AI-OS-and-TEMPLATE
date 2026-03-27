@@ -1,0 +1,181 @@
+
+<!-- ------------------------------------>
+<!-- Site Base-->
+<!-- ------------------------------------>
+<!-- ------------------------------------>
+<!-- URL Join Helper（末尾/や先頭/の事故防止）-->
+<!-- ------------------------------------>
+<!-- ------------------------------------>
+<!-- Paths (dist assets)-->
+<!-- ------------------------------------>
+<!-- ------------------------------------>
+<!-- OGP (default = site meta)-->
+<!-- ------------------------------------>
+<!-- ------------------------------------>
+<!-- Organization / Contact (Schema)-->
+<!-- ------------------------------------>
+<!-- SNS（schema sameAs）-->
+<!-- ------------------------------------>
+<!-- Cache Busting（各ページのcontrol blockで上書き推奨）-->
+<!-- ------------------------------------>
+<!-- ------------------------------------>
+<!-- Output Ext-->
+<!-- ------------------------------------><!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <title>サイトタイトル</title>
+    <meta name="description" content="サイトの説明文を入力してください。">
+    <meta name="keywords" content="">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="./assets/img/common/favicon.ico?v=20260101" type="image/x-icon">
+    <meta property="og:title" content="サイトタイトル">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://example.com/assets/img/common/ogp.png">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:description" content="サイトの説明文を入力してください。">
+    <meta property="og:site_name" content="サイトタイトル">
+    <meta property="og:locale" content="ja">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="サイトタイトル">
+    <meta name="twitter:description" content="サイトの説明文を入力してください。">
+    <meta name="twitter:url" content="https://example.com">
+    <meta name="twitter:image:src" content="https://example.com/assets/img/common/ogp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css?v=20260101" type="text/css" media="all">
+    <!-- STRUCTURED DATA (SCHEMA)-->
+    <!-- schemaPageUrl（pageUrl優先 → siteUrl + slug）-->
+    <!-- ※ pageSlug は旧互換（移行期間のみ）。最終的に削除して slug に統一する。-->
+    <!-- Article / FAQ の出力条件-->
+    <!-- sameAs（未定義でも落ちない）-->
+    <!-- Breadcrumb itemListElement を配列で組む（JSON事故防止）-->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "サイト名",
+        "url": "https://example.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://example.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+      
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "サイト名",
+        "url": "https://example.com",
+        "logo": "https://example.com/assets/img/common/siteLogo.svg",
+        "email": "",
+        "telephone": "",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "JP",
+          "postalCode": "",
+          "addressRegion": "",
+          "addressLocality": "",
+          "streetAddress": ""
+        },
+        "sameAs": []
+      }
+      
+    </script>
+  </head>
+  <body class="l-home">
+    <div class="l-wrapper">
+      <header class="l-header" id="header" data-sticky-header>
+        <div class="l-header__inner">
+          <h1 class="l-header__logo"><a href="./"><img src="./assets/img/common/siteLogo.svg?v=20260101" alt="サイト名" loading="lazy"></a></h1>
+          <div class="l-header__left">
+            <button class="c-hamburger" type="button" aria-label="メニューを開く" data-nav-toggle="globalNav" aria-controls="globalNav" aria-expanded="false"><span class="c-hamburger__line"></span><span class="c-hamburger__line"></span><span class="c-hamburger__line"></span>
+              <div class="c-hamburger__label">Menu</div>
+            </button>
+          </div>
+          <div class="l-header__right">
+            <div class="u-d-flex"><a class="c-btn-contact" href="./inquiry.html">お問い合わせ</a></div>
+          </div>
+        </div>
+      </header>
+      <nav class="c-globalNav -center" id="globalNav">
+        <div class="c-globalNav__head">
+          <button class="c-globalNav__close" type="button" aria-controls="globalNav" aria-label="Close menu" data-nav-close="globalNav"><i class="c-icon -close"></i></button>
+          <div class="c-globalNav__title"><img src="./assets/img/common/siteLogo.svg?v=20260101" alt="サイト名" loading="lazy"></div>
+        </div>
+        <div class="c-globalNav__body" data-nav-body="globalNav">
+          <ul class="c-globalNav__col">
+            <li class="c-globalNav__item"><a class="is-current" href="./"><span>TOP</span></a></li>
+            <li class="c-globalNav__item"><a href="./page.html"><span>固定ページ</span></a></li>
+            <li class="c-globalNav__item"><a href="./archive.html"><span>記事一覧</span></a></li>
+            <li class="c-globalNav__item"><a href="./inquiry.html"><span>お問い合わせ</span></a></li>
+          </ul>
+        </div>
+        <div class="c-globalNav__foot">
+          <ul class="c-globalNav__col">
+            <li class="c-globalNav__item"><a class="u-jc-c" href="./inquiry.html"><span>お問い合わせ</span></a></li>
+          </ul>
+        </div>
+      </nav>
+      <main class="l-main">
+        <article>
+          <section class="l-hero l-section -xs">
+            <div class="l-inner -l">
+              <figure class="l-hero__media"><img src="./assets/img/common/dummy-xl.png?v=20260101" alt="メインビジュアル" loading="eager"></figure>
+            </div>
+          </section>
+          <section class="l-section" data-inview="slideUp">
+            <div class="l-inner -l">
+              <div class="c-subTitle">SECTION</div>
+              <h2 class="c-heading -section">セクションタイトル</h2>
+              <div class="c-text">ここに説明文が入ります。テンプレでは文章量を控えめにして、案件で差し替えます。</div>
+            </div>
+          </section>
+          <section class="l-section -s" data-inview="slideUp">
+            <div class="l-inner -l">
+              <div class="c-subTitle">NEWS</div>
+              <h2 class="c-heading -section">お知らせ</h2>
+              <ul class="c-articleList -text u-mb-l">
+                <li class="c-articleList__item"><a class="c-articleList__link" href="./post.html">
+                    <time class="c-articleList__date" datetime="2026-02-24">2026-02-24</time>
+                    <div class="c-articleList__title">お知らせタイトルが入ります</div></a></li>
+                <li class="c-articleList__item"><a class="c-articleList__link" href="./post.html">
+                    <time class="c-articleList__date" datetime="2026-02-20">2026-02-20</time>
+                    <div class="c-articleList__title">お知らせタイトルが入ります</div></a></li>
+                <li class="c-articleList__item"><a class="c-articleList__link" href="./post.html">
+                    <time class="c-articleList__date" datetime="2026-02-10">2026-02-10</time>
+                    <div class="c-articleList__title">お知らせタイトルが入ります</div></a></li>
+              </ul>
+              <div class="c-btnBox"><a class="c-btn -underline" href="./archive.html">一覧を見る</a></div>
+            </div>
+          </section>
+        </article>
+      </main>
+      <footer class="l-footer">
+        <div class="l-footer__head"><a class="c-pagetop" href="#header" data-pagetop>PAGE TOP</a></div>
+        <div class="l-footer__body">
+          <div class="l-footer__logo"><img src="./assets/img/common/siteLogo-footer.svg?v=20260101" loading="lazy" alt="サイト名"></div>
+          <nav class="c-sitemap" aria-label="Sitemap">
+            <ul class="c-sitemap__col">
+              <li class="c-sitemap__item"><a href="./"><span>TOP</span></a></li>
+              <li class="c-sitemap__item"><a href="./page.html"><span>固定ページ</span></a></li>
+              <li class="c-sitemap__item"><a href="./archive.html"><span>記事一覧</span></a></li>
+              <li class="c-sitemap__item"><a href="./inquiry.html"><span>お問い合わせ</span></a></li>
+            </ul>
+            <ul class="c-sitemap__col">
+              <li class="c-sitemap__item"><a href="./privacy.html"><span>プライバシー</span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="c-copyright">2026 SITE NAME ALL RIGHTS RESERVED.</div>
+      </footer>
+      <script src="./assets/js/main.js?v=20260101" defer></script>
+    </div>
+  </body>
+</html>

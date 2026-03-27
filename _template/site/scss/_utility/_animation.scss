@@ -1,0 +1,108 @@
+// ============================
+// Animation Utility (Final Expanded Set)
+// ============================
+
+// ※ speed / easing / depth は Themeで制御
+// --anim-speed: 0.4s;
+// --anim-easing: cubic-bezier(0.4, 0, 0.2, 1);
+// --anim-depth: 1.0;
+
+// --------------------
+// Fade 系
+// --------------------
+
+@keyframes anim-fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.u-anim-fadeIn {
+  animation: anim-fadeIn var(--anim-speed) var(--anim-easing) forwards;
+}
+
+// --------------------
+// Slide 系（縦・基本）
+// --------------------
+
+@keyframes anim-slideUp {
+  0% { transform: translateY(calc(20px * var(--anim-depth))); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.u-anim-slideUp {
+  animation: anim-slideUp var(--anim-speed) var(--anim-easing) forwards;
+}
+
+@keyframes anim-slideDown {
+  0% { transform: translateY(calc(-20px * var(--anim-depth))); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.u-anim-slideDown {
+  animation: anim-slideDown var(--anim-speed) var(--anim-easing) forwards;
+}
+
+// --------------------
+// Slide 系（横）
+// --------------------
+
+@keyframes anim-slideLeft {
+  0% { transform: translateX(calc(-30px * var(--anim-depth))); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.u-anim-slideLeft {
+  animation: anim-slideLeft var(--anim-speed) var(--anim-easing) forwards;
+}
+
+@keyframes anim-slideRight {
+  0% { transform: translateX(calc(30px * var(--anim-depth))); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.u-anim-slideRight {
+  animation: anim-slideRight var(--anim-speed) var(--anim-easing) forwards;
+}
+
+// --------------------
+// Scale 系
+// --------------------
+
+@keyframes anim-scaleIn {
+  0% { transform: scale(calc(0.95 - (0.05 * var(--anim-depth)))); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.u-anim-scaleIn {
+  animation: anim-scaleIn var(--anim-speed) var(--anim-easing) forwards;
+}
+
+// --------------------
+// Rise 系（やや大きめに浮く）
+// --------------------
+
+@keyframes anim-rise {
+  0% { transform: translateY(calc(60px * var(--anim-depth))); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.u-anim-rise {
+  animation: anim-rise var(--anim-speed) var(--anim-easing) forwards;
+}
+
+// --------------------
+// Zoom 系
+// --------------------
+
+@keyframes anim-zoomIn {
+  0% { transform: scale(calc(0.8 - (0.2 * var(--anim-depth)))); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.u-anim-zoomIn {
+  animation: anim-zoomIn var(--anim-speed) var(--anim-easing) forwards;
+}
+
+// --------------------
+// Spin 系（アイコンなど）
+// --------------------
+
+@keyframes anim-spin {
+  0% { transform: rotate(-180deg); opacity: 0; }
+  100% { transform: rotate(0deg); opacity: 1; }
+}
+.u-anim-spin {
+  animation: anim-spin var(--anim-speed) var(--anim-easing) forwards;
+}

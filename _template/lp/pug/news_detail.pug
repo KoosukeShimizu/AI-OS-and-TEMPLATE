@@ -1,0 +1,196 @@
+//-================================================
+//- サイト共通設定
+//-================================================
+include _includes/_foundation/_global
+
+//- block vars
+//---------------
+//- ページ設定
+//---------------
+- var root = './' // ルートパスの指定
+- var key = 'news-detail' // 条件分岐に使用
+- var useNoindex = false // noindexの有無
+- var useOgp = true // OGPの有無
+- var useAnalytics = true // GAタグの有無
+- var useLogoH1 = false // ロゴにh1を使うか
+- var useBreadcrumb = true // パンくずを使うか
+
+//---------------
+//- 構造化データ設定
+//---------------
+- var useSchemaWebSite = true
+- var useSchemaWebPage = true
+- var useSchemaOrganization = true
+- var useSchemaBreadcrumb = true
+- var useSchemaArticle = true
+- var useSchemaFAQ = false
+
+//---------------
+//- ページメタ情報（記事詳細は都度上書き可能）
+- var pageTitle = '記事タイトル（ダミー）'
+- var pageDescription = 'N2クリニックからのお知らせ詳細ページです。記事内容に応じて適宜書き換えてください。'
+- var pageKeywords = 'お知らせ,ニュース,N2クリニック,新着情報,記事詳細'
+- var pageOgUrl = '' // ページ公開後にURLを指定
+- var pageOgTitle = pageTitle + '｜N2クリニック'
+- var pageOgDescription = pageDescription
+- var pageOgImage = '' // OGP画像があれば指定
+
+//---------------
+//- パンくず設定
+//---------------
+- var pageSlug= "news-detail" // ページのスラッグ
+- var parentSlug= "news" // 親ページスラッグ
+- var parentTitle= "お知らせ一覧" // 親ページタイトル
+
+//- ===================================================
+//-  ███████╗████████╗ █████╗ ███████╗ ████████╗
+//-  ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝
+//-  ███████╗   ██║   ███████║███████╔╝   ██║
+//-  ╚════██║   ██║   ██╔══██║██╔═██║     ██║
+//-  ███████║   ██║   ██║  ██║██║ ███║    ██║
+//-  ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚══╝    ╚═╝
+//- ===================================================
+doctype html
+html(lang='ja')
+  head
+    include _includes/_head
+    //---------------------------------
+    //- UNIQUE CSS　ページ独自に使用するスタイル
+    //---------------------------------
+    block append css
+      link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+      link(rel='stylesheet' href=root+cssPath+'main.css?ver=1.0.0' type='text/css' media='all')
+    //---------------------------------
+    //- SCHEMA　構造化データの呼び出し
+    //---------------------------------
+    include _includes/_foundation/_schema
+    //---------------------------------
+    //- 計測タグ（head）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_head
+  body.p-news
+    //---------------------------------
+    //- 計測タグ（body）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_body
+    .l-wrapper
+      include _includes/_header
+      include _includes/_component/_breadcrumb
+      main.l-main.u-anim-fadeIn
+        //-================================================
+        //- ARTICLE START
+        //-================================================
+        // Article START
+        article.l-article
+          // Heroセクション
+          .l-article__head
+            time.l-article__time(datetime="2025.07.07") 2025.07.07
+            h1.l-article__title N2 CLINIC GINZAは移転いたしました。
+            //- .l-article__tags
+              a.c-tag(href=root+"tag1"+extention) タグ1
+              a.c-tag-red(href=root+"tag2"+extention) タグ2
+              a.c-tag-blue(href=root+"tag3"+extention) タグ3
+            
+            //- figure.l-article__hero
+                img(src=root+imgPath+"common/dummy-l.png" loading="lazy"  width="" height="" alt="")
+
+          //- details.c-toc(open)
+            summary.c-toc__title index
+            #js-toc.c-toc__body
+
+          .l-article__body
+            //- .l-inner.-xs
+            .p-editor
+              // CMS EDIT CONTENT START
+              // ここからはCMSで入力された内容が反映されます。
+              //  .p-single-content配下はセレクタにスタイルを設定し、クラス付与無しで見た目が整うようにしてください。
+              p クリニック移転のご案内
+              p 拝啓 #[br]#[br]皆様におかれましては、益々ご健勝のこととお慶び申し上げます。#[br]平素よりN2 CLINIC GINZAをご愛顧いただき、心より御礼申し上げます。
+              p さて、このたびN2 CLINIC GINZAは業務拡大およびサービス向上のため、2025年1月11日をもちまして下記の新住所へ移転する運びとなりました。これを機に、より一層皆様のお役に立てるクリニックを目指して努力してまいります。
+              p 新クリニックは、これまで以上に快適で利便性の高い環境をご提供できるよう配慮いたしました。新しい場所でも、変わらぬご愛顧を賜りますようお願い申し上げます。
+              p 新住所：東京都中央区銀座6-6-5 HulicGinza Namiki6 11F#[br]移転日：2025年1月11日
+              p 皆様には移転に伴い何かとご不便をおかけすることもあるかと存じますが、引き続き変わらぬお引き立てを賜りますようお願い申し上げます。
+              p まずは略儀ながら、書中をもちましてご挨拶申し上げます。
+              p N2 CLINIC　一同
+              h2 <移転先へのアクセス>
+              iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.2461905647065!2d139.7625125!3d35.670939600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b4f3e67a031%3A0x26118a3bf499362a!2zTjLjgq_jg6rjg4vjg4Pjgq_pioDluqc!5e0!3m2!1sja!2sjp!4v1748337420012!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+
+
+
+              //- img(src=root+imgPath+"common/dummy-l.png" loading="lazy"  width="" height="" alt="")
+
+              //- h2 大見出しスタイル（h2）
+              //- p これは通常テキスト（p）です
+              //- h3 中見出しスタイル（h3）
+              //- p こちらはテキストの見た目だけ変更するタグです#[small これは細目テキスト（small）です]#[br]#[b これは太字テキスト（b）です]#[br]#[i これは斜体テキスト（i）です]#[br]#[u これは下線テキスト（u）です]#[br]#[s これは打ち消しテキスト（u）です]#[br]#[mark これはマーカーテキスト（mark）です]#[br]#[a(href="#") これはリンクテキスト（a）です]
+
+              //- h2 大見出しスタイル２（h2）
+              //- h3 中見出しスタイル（h3）
+              //- p こちらはテキストの意味を表すタグです#[strong これは強調テキスト（strong）です]#[br] #[em これは強調テキスト（em）です]#[br] #[small これは細目テキスト（small）です]#[br]#[address これは連絡先や問合せ先を表すテキスト（address）です]#[br]#[del これは文字の削除（del）を表すテキストです]#[br]#[ins これは文字の追加を表すテキスト（ins）です]#[br]#[mark これはマーカーテキスト（mark）です]#[br]#[a(href="#") これはリンクテキスト（a）です]
+
+                //- code.
+                  <h2>codeタグの役割</h2>
+                  <p>これはコード記述用（code）です<p>
+                  <div>この中にかかれたコードは変換されません</div>
+                
+                //- pre.
+                  これは入力内容を
+                  そのまま表示する用（pre）タグです。
+                  改行位置などそのまま反映されます。
+
+                //- blockquote.
+                  p これは引用文（blockquote）です引用文です引用文です引用文です引用文です
+                  p 引用元：#[a(href="#" target="_blank") 引用記事タイトル | 引用サイト]
+
+                //- img(src=root+imgPath+"common/dummy-m.png" loading="lazy" alt="")
+
+                //- h3 リストタグ
+                //- ul
+                  li これはリストタグです。これはリストタグです。
+                  li これはリストタグです。これはリストタグです。
+                  li これはリストタグです。これはリストタグです。
+                  li これはリストタグです。これはリストタグです。
+
+                //- h3 順序タグ
+                //- ol
+                  li これは順序タグです。これは順序タグです。
+                  li これは順序タグです。これは順序タグです。
+                  li これは順序タグです。これは順序タグです。
+                  li これは順序タグです。これは順序タグです。
+
+              //- h3 テーブルタグ
+              //- table
+                colgroup
+                  col(width='30%')
+                  col(width='70%')
+                tbody
+                  tr
+                    th テーブルタイトル
+                    td テーブルコンテンツテーブルコンテンツ
+                  tr
+                    th テーブルタイトル
+                    td テーブルコンテンツテーブルコンテンツ
+                  tr
+                    th テーブルタイトル
+                    td テーブルコンテンツテーブルコンテンツ
+          .c-btnBox.u-fd-col.u-my-xl(data-inview="slideUp")
+            a.c-btn.-underline.u-mb-l(href=root+"news"+extention) お知らせ一覧を見る
+            a.c-btn.-underline.u-mb-l(href=root+"inquiry"+extention) お問い合わせ
+            a.c-btn.-underline(href=root+"faq"+extention) よくある質問
+            //- include _includes/_module/_pager
+              
+
+
+        //-================================================
+        //- Article END
+        //-================================================
+        // Article END
+      //- include _includes/_sidebar
+      include _includes/_component/_floatbox
+      include _includes/_footer
+    //- include _includes/_script
+    //---------------------------------
+    //- UNIQUE SCRIPT　ページ独自に使用するJS
+    //---------------------------------
+    block append js
+      script(src=root+jsPath + "main.js?ver=1.0.0")

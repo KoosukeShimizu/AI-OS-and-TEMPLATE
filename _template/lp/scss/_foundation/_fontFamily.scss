@@ -1,0 +1,18 @@
+/* --------------------------------------------------
+フォント指定
+-------------------------------------------------- */
+// （´・ω・`）< Webfont
+// -------------------------------
+// @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+// （´・ω・`）< Font family
+// -------------------------------
+//明朝体フォント設定
+$serif: "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+
+//ゴシック体フォント設定
+$sans: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W6", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+
+// $sans:'Zen Kaku Gothic New', sans-serif;
+
+$handwrite:'Satisfy', cursive;

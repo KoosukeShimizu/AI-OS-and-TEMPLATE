@@ -1,0 +1,9 @@
+// （´・ω・`）< button-wrapper
+// -------------------------------
+.c-block {
+  padding: gt(20) 0;
+  &-button {
+    @include flexbox(flex, null, wrap, center, center, null);
+    margin-top: gt(40);
+  }
+}

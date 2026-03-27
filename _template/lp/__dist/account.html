@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>マイページ｜N2クリニック｜N2 CLINIC 銀座本院</title>
+    <meta name="description" content="N2クリニックの会員専用マイページです。ご予約内容の確認・変更や各種情報の管理を行えます。">
+    <meta name="keywords" content="N2クリニック, マイページ, 会員ページ, ご予約確認, 情報変更">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="./assets/img/common/favicon.ico" type="image/x-icon">
+    <meta name="robots" content="max-image-preview:large">
+    <!-- CSS-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css?ver=1.0.0" type="text/css" media="all">
+    <!-- STRUCTURED DATA (SCHEMA)-->
+  </head>
+  <body class="p-account">
+    <div class="l-wrapper">
+      <header class="l-header p-mypage-header">
+        <h1 class="c-heading -section u-mb-m">アカウント情報</h1>
+        <div class="p-mypage-header__back u-t-c"><a href="./mypage.html"><i class="c-icon -back"></i>マイページに戻る</a></div>
+      </header>
+      <main class="l-main u-anim-fadeIn">
+        <!-- Article START-->
+        <article class="l-page">
+          <div class="l-page__body">
+            <section class="l-section -xxs">
+              <div class="l-inner -xxs">
+                <div class="c-text u-mb-l">登録内容をご確認いただけます。<br>内容を変更する場合は、下の「アカウント情報変更」ボタンを押してください。</div>
+                <form method="post" action="./reserve-confirm.html" enctype="multipart/form-data">
+                  <div class="c-form">
+                    <!-- サムネ-->
+                    <div class="c-form__item">
+                      <div class="c-avatar u-mx-auto"><img src="./assets/img/common/noimage.jpg" alt="ユーザー画像"></div>
+                    </div>
+                    <!-- 名前（フルネーム版）-->
+                    <div class="c-form__item">
+                      <div class="c-form__label">お名前<span class="c-text -small u-m-0">(ローマ字)</span></div>
+                      <div class="c-form__body">
+                        <input class="c-form__input" type="text" id="name" name="name" value="HANAKO YAMADA" autocomplete="name" readonly>
+                      </div>
+                    </div>
+                    <!-- メールアドレス-->
+                    <div class="c-form__item">
+                      <div class="c-form__label">メールアドレス</div>
+                      <div class="c-form__body">
+                        <input class="c-form__input" type="email" id="email" name="email" value="yourname@example.com" autocomplete="email" readonly>
+                      </div>
+                    </div>
+                    <!-- パスワード-->
+                    <div class="c-form__item">
+                      <div class="c-form__label">パスワード</div>
+                      <div class="c-form__body">
+                        <input class="c-form__password u-fz-l" type="password" id="password" name="password" value="123abc" autocomplete="current-password" readonly data-password-input>
+                        <button class="c-form__pwToggle" type="button" aria-label="パスワード表示切替" data-password-toggle></button>
+                      </div>
+                    </div>
+                    <!-- 電話番号-->
+                    <div class="c-form__item">
+                      <div class="c-form__label">お電話番号</div>
+                      <div class="c-form__body">
+                        <input class="c-form__input" type="tel" id="tel" name="tel" value="+8190-1234-5678" autocomplete="tel" maxlength="13" readonly>
+                      </div>
+                    </div>
+                    <!-- 生年月日-->
+                    <div class="c-form__item">
+                      <div class="c-form__label">生年月日</div>
+                      <div class="c-form__body">
+                        <input class="c-form__input" type="text" id="birthday" name="birthday" value="1990/01/01" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 送信ボタン-->
+                  <div class="c-btnBox u-gap-l u-my-l"><a class="c-btn -primary u-w-full" href="./account-edit.html">アカウント情報を変更する</a></div>
+                  <div class="c-note u-t-c">※電話番号・メールアドレス・パスワードを変更できます。</div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </article>
+        <!-- Article END-->
+      </main>
+    </div>
+    <script src="./assets/js/main.js?ver=1.0.0"></script>
+    <script src="./assets/js/form.js?ver=1.0.0"></script>
+  </body>
+</html>

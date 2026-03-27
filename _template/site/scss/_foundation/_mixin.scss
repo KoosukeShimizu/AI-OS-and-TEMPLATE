@@ -1,0 +1,167 @@
+
+
+// （´・ω・`）< アイコンフォント利用
+// 使い方：.hoge{@include position(absolute, 10px null null 0);}
+// -------------------------------
+@mixin icon-symbol($name) {
+  content: $name;
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.2em;
+  line-height: 1;
+  color: currentColor;
+  display: inline-block;
+}
+@mixin icon-symbol-base {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+}
+
+
+
+// （´・ω・`）< Position（タイプ、上位置 右位置 下位置 左位置）
+// 使い方：.hoge{@include position(absolute, 10px null null 0);}
+// -------------------------------
+@mixin position($position: relative, $coordinates: null null null null) {
+  @if type-of($position) == list {
+    $coordinates: $position;
+    $position: relative;
+  }
+  // $coordinates: unpack($coordinates);
+  $offsets: (
+    top:    nth($coordinates, 1),
+    right:  nth($coordinates, 2),
+    bottom: nth($coordinates, 3),
+    left:   nth($coordinates, 4)
+  );
+  position: $position;
+  @each $offset, $value in $offsets {
+    @if is-length($value) {
+      #{$offset}: $value;
+    }
+  }
+}
+
+
+
+// （´・ω・`）< Flexbox（タイプ、方向、子要素折返し、水平揃え、垂直揃え、複数行揃え）
+// 使い方：.hoge{@include flexbox(flex,null,wrap,center,center,null);}
+// -------------------------------
+@mixin flexbox($display:flex, $direction:null, $wrap:wrap, $justify:null, $items:null, $content:null, $prefix:null) {
+  display: $display;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $items;
+  align-content: $content;
+}
+
+
+// （´・ω・`）< Ellipsis
+// 使い方：.hoge{@include ellipsis();}
+// 1行で三点リーダー
+// -------------------------------
+@mixin ellipsis($width: 100%) {
+  display: inline-block;
+  max-width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+// （´・ω・`）< line clump
+// 使い方：.hoge{@include lineclump(3);}
+// 複数行で三点リーダ
+// -------------------------------
+@mixin lineclump($row: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row;
+  overflow: hidden;
+}
+
+
+
+// （´・ω・`）<  PCのみホバー
+// 使い方：.hoge {@include hover {color: red;}}
+//=====================
+@mixin hover {
+  // &:focus {
+  //   @content;
+  // }
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+//=====================
+@mixin hover-underline($type: fade, $dir: null, $weight: 2px, $color: #000) {
+  @if $dir == null {
+    @if $type == fade {
+      $dir: 'top';
+    } @else if $type == slide {
+      $dir: 'center';
+    }
+  }
+  opacity: 1;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  &::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: $weight;
+    background: $color;
+    @if $type == fade {
+      transition: .3s;
+      opacity: 0;
+      visibility: hidden;
+      @if $dir == bottom {
+        bottom: $weight * -1;
+      } @else {
+        bottom: $weight;
+      }
+    } @else if $type == slide {
+      bottom: $weight * -1;
+      transform: scale(0, 1);
+      transition: transform .3s;
+      @if $dir == left-right or $dir == right-in-left {
+        transform-origin: left top;
+      } @else if $dir == right-left or $dir == left-in-right {
+        transform-origin: right top;
+      } @else {
+        transform-origin: center top;
+      }
+    }
+  }
+  &:hover::after {
+    @if $type == fade {
+      bottom: $weight * -1;
+      opacity: 1;
+      visibility: visible;
+    } @else if $type == slide {
+      @if $dir == left-in-right {
+        transform-origin: left top;
+      } @else if $dir == right-in-left {
+        transform-origin: right top;
+      }
+      transform: scale(1, 1);
+    }
+  }
+}
+

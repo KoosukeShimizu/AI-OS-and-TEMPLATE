@@ -1,0 +1,104 @@
+// ============================
+// Layout Utilities
+// 命名規則：.u-[layout]-[key]
+// ============================
+
+// テキスト揃え
+.u-text-left {
+  text-align: left !important;
+}
+.u-text-center {
+  text-align: center !important;
+}
+.u-text-right {
+  text-align: right !important;
+}
+
+// 自身を中央寄せ
+.u-mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.u-my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+.u-center {
+  margin: 0 auto !important;
+}
+
+// Flexで子要素整列
+.u-d-flex {
+  display: flex !important;
+}
+.u-inline-flex {
+  display: inline-flex !important;
+}
+
+.u-justify-start {
+  justify-content: flex-start !important;
+}
+.u-justify-center {
+  justify-content: center !important;
+}
+.u-justify-end {
+  justify-content: flex-end !important;
+}
+.u-justify-between {
+  justify-content: space-between !important;
+}
+.u-justify-around {
+  justify-content: space-around !important;
+}
+
+.u-items-start {
+  align-items: flex-start !important;
+}
+.u-items-center {
+  align-items: center !important;
+}
+.u-items-end {
+  align-items: flex-end !important;
+}
+
+// Grid系（必要であれば）
+.u-grid {
+  display: grid !important;
+}
+.u-grid-center {
+  place-items: center !important;
+}
+.u-grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+.u-grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+// Positioning
+.u-absolute {
+  position: absolute !important;
+}
+.u-relative {
+  position: relative !important;
+}
+.u-fixed {
+  position: fixed !important;
+}
+.u-sticky {
+  position: sticky !important;
+}
+
+// translate中心配置（transformベース）
+.u-abs-center {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.u-fixed-center {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

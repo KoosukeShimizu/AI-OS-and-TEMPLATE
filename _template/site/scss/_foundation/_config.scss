@@ -1,0 +1,340 @@
+/* --------------------------------------------------
+グローバル変数設定
+再利用できるプロジェクト非依存のsass変数を定義
+-------------------------------------------------- */
+// ----------------------------------
+// Path & Base Values
+// ----------------------------------
+$imgPath: "../img/";
+$transition: all 0.3s ease;
+// ----------------------------------
+// Breakpoints (used in mixins)
+// ----------------------------------
+$mb: 420px; // モバイル
+$sp: 600px; // スマホ〜小型タブレットまで
+$tab: 1024px; // iPad Air/Mini landscape基準
+$pc: 1280px; // ラップトップ基準
+$wide: 1536px; // ワイドディスプレイ
+$cinema: 1920px; // フルHD以上
+
+// ----------------------------------
+// Layout Constraints
+// ----------------------------------
+$main-max: 760px;
+
+// ----------------------------------
+// Font size
+// ----------------------------------
+$pc-fz-scale: 0.9; // PCフォントサイズスケール
+// $base-font-size == 16
+// $fz-h1: fz(28, round(40 * $pc-fz-scale));
+// $fz-h2: fz(24, round(36 * $pc-fz-scale));
+// $fz-h3: fz(20, round(30 * $pc-fz-scale));
+// $fz-h4: fz(18, round(28 * $pc-fz-scale));
+// $fz-h5: fz(16, round(24 * $pc-fz-scale));
+// $fz-h6: fz(14, round(20 * $pc-fz-scale));
+
+// $fz-xl: fz(30, round(42 * $pc-fz-scale)); // 追加
+// $fz-l: fz(20, round(28 * $pc-fz-scale));  // 追加
+
+// $fz-lead: fz(18, round(26 * $pc-fz-scale));
+// $fz-base: fz(16, round(22 * $pc-fz-scale));
+// $fz-s: fz(14, round(18 * $pc-fz-scale));
+// $fz-xs: fz(12, round(16 * $pc-fz-scale));
+
+// $fz-en-heading: fz(18, round(28 * $pc-fz-scale));
+// $fz-section-title: fz(22, round(36 * $pc-fz-scale));
+// $fz-page-title: fz(26, round(38 * $pc-fz-scale));
+// $fz-article-title: fz(26, round(36 * $pc-fz-scale));
+// $fz-thanks-title: fz(24, round(36 * $pc-fz-scale));
+
+// $fz-note: fz(13, round(16 * $pc-fz-scale));
+// $fz-quote: fz(16, round(22 * $pc-fz-scale));
+// $fz-blockquote: fz(16, round(22 * $pc-fz-scale));
+// $fz-strong: fz(16, round(22 * $pc-fz-scale));
+// $fz-em: fz(16, round(22 * $pc-fz-scale));
+
+// $base-font-size == 14
+// $fz-h1: fz(26, round(36 * $pc-fz-scale));
+// $fz-h2: fz(22, round(32 * $pc-fz-scale));
+// $fz-h3: fz(18, round(28 * $pc-fz-scale));
+// $fz-h4: fz(16, round(26 * $pc-fz-scale));
+// $fz-h5: fz(14, round(24 * $pc-fz-scale));
+// $fz-h6: fz(13, round(20 * $pc-fz-scale));
+
+// $fz-lead: fz(16, round(24 * $pc-fz-scale));
+// $fz-base: fz(14, round(20 * $pc-fz-scale));
+// $fz-xs: fz(11, round(16 * $pc-fz-scale));
+// $fz-s: fz(13, round(18 * $pc-fz-scale));
+// $fz-l: fz(18, round(26 * $pc-fz-scale));
+// $fz-xl: fz(28, round(40 * $pc-fz-scale));
+
+// $fz-en-heading: fz(16, round(26 * $pc-fz-scale));
+// $fz-section-title: fz(20, round(32 * $pc-fz-scale));
+// $fz-page-title: fz(24, round(36 * $pc-fz-scale));
+// $fz-article-title: fz(24, round(34 * $pc-fz-scale));
+// $fz-thanks-title: fz(22, round(34 * $pc-fz-scale));
+
+// $fz-note: fz(12, round(14 * $pc-fz-scale));
+// $fz-quote: fz(14, round(20 * $pc-fz-scale));
+// $fz-blockquote: fz(14, round(20 * $pc-fz-scale));
+// $fz-strong: fz(14, round(20 * $pc-fz-scale));
+// $fz-em: fz(14, round(20 * $pc-fz-scale));
+
+// $base-font-size == 13
+$fz-h1: fz(24, round(34 * $pc-fz-scale));
+$fz-h2: fz(20, round(28 * $pc-fz-scale));
+$fz-h3: fz(18, round(24 * $pc-fz-scale));
+$fz-h4: fz(16, round(20 * $pc-fz-scale));
+$fz-h5: fz(12, round(18 * $pc-fz-scale));
+$fz-h6: fz(11, round(16 * $pc-fz-scale));
+
+$fz-lead: fz(18, round(24 * $pc-fz-scale));
+$fz-base: fz(13, round(14 * $pc-fz-scale));
+$fz-xs: fz(10, round(14 * $pc-fz-scale));
+$fz-s: fz(11, round(15 * $pc-fz-scale));
+$fz-m: fz(14, round(16 * $pc-fz-scale));
+$fz-l: fz(16, round(20 * $pc-fz-scale));
+$fz-xl: fz(16, round(24 * $pc-fz-scale));
+
+$fz-en-heading: fz(14, round(24 * $pc-fz-scale));
+$fz-section-title: fz(20, round(30 * $pc-fz-scale));
+$fz-page-title: fz(24, round(34 * $pc-fz-scale));
+$fz-article-title: fz(22, round(32 * $pc-fz-scale));
+$fz-thanks-title: fz(20, round(32 * $pc-fz-scale));
+
+$fz-note: fz(11, round(12 * $pc-fz-scale));
+$fz-quote: fz(12, round(18 * $pc-fz-scale));
+$fz-blockquote: fz(12, round(18 * $pc-fz-scale));
+$fz-strong: fz(12, round(18 * $pc-fz-scale));
+$fz-em: fz(12, round(18 * $pc-fz-scale));
+
+
+// ----------------------------------
+// Radius Constraints
+// ----------------------------------
+$radius-xxs: clamp(2px, 0.5vw, 4px);
+$radius-xs: clamp(4px, 0.8vw, 6px);
+$radius-s: clamp(6px, 1.2vw, 8px);
+$radius-m: clamp(8px, 1.6vw, 12px);
+$radius-l: clamp(12px, 2.1vw, 16px);
+$radius-xl: clamp(16px, 3.2vw, 24px);
+$radius-xxl: clamp(24px, 4.3vw, 32px);
+$radius-full: 9999px; // 角丸全開
+$radius-none: 0px; // 角丸なし
+
+
+// ----------------------------------
+// System Colors (status indicators)
+// ----------------------------------
+// DANGER (Red系)
+$c-danger-default: #ef4444; // 赤500
+$c-danger-light: #f87171; // 赤400
+$c-danger-lighten: #fee2e2; // 赤100
+$c-danger-dark: #dc2626; // 赤600
+$c-danger-darken: #991b1b; // 赤800
+
+// IMPORTANT (Orange系)
+$c-important-default: #f97316; // オレンジ500
+$c-important-light: #fb923c; // オレンジ400
+$c-important-lighten: #ffedd5; // オレンジ100
+$c-important-dark: #ea580c; // オレンジ600
+$c-important-darken: #9a3412; // オレンジ800
+
+// INFO (Blue系)
+$c-info-default: #3b82f6; // 青500
+$c-info-light: #60a5fa; // 青400
+$c-info-lighten: #dbeafe; // 青100
+$c-info-dark: #2563eb; // 青600
+$c-info-darken: #1e40af; // 青800
+
+// SUCCESS (Green系)
+$c-success-default: #22c55e; // 緑500
+$c-success-light: #4ade80; // 緑400
+$c-success-lighten: #dcfce7; // 緑100
+$c-success-dark: #16a34a; // 緑600
+$c-success-darken: #166534; // 緑800
+
+// MUTE (Gray系)
+$c-mute-default: #6b7280; // グレー500
+$c-mute-light: #9ca3af; // グレー400
+$c-mute-lighten: #f3f4f6; // グレー100
+$c-mute-dark: #4b5563; // グレー600
+$c-mute-darken: #374151; // グレー800
+
+// ----------------------------------
+// Grayscale Palette (neutral, reusable)
+// ----------------------------------
+$c-white: #ffffff;
+$c-gray-50: #f9fafb;
+$c-gray-100: #f3f4f6;
+$c-gray-200: #e5e7eb;
+$c-gray-300: #d1d5db;
+$c-gray-400: #9ca3af;
+$c-gray-500: #6b7280;
+$c-gray-600: #4b5563;
+$c-gray-700: #374151;
+$c-gray-800: #1f2937;
+$c-gray-900: #111827;
+$c-black: #000000;
+
+// ----------------------------------
+// Link Color (UI/action related)
+// ----------------------------------
+// LINK (Blue系)
+$c-link-default: #1d4ed8; // 青600 (Googleよりやや落ち着いたトーン)
+$c-link-light: #3b82f6; // 青500 (標準リンク色に最適)
+$c-link-lighten: #bfdbfe; // 青200 (hover背景色や下線用)
+$c-link-dark: #1e40af; // 青700 (hover時や強調)
+$c-link-darken: #1e3a8a; // 青800 (activeやvisited)
+
+// ----------------------------------
+// SNS Brand Colors (fixed identity)
+// ----------------------------------
+// Facebook
+$sns-facebook-default: #1877f2;
+$sns-facebook-light: #3b82f6; // hoverやボタン用
+$sns-facebook-lighten: #dbeafe; // 背景やhover補助
+$sns-facebook-dark: #145dbf; // activeや強調
+$sns-facebook-darken: #0f4ab0; // visited / 強hover
+
+// Twitter (X)
+$sns-twitter-default: #1da1f2;
+$sns-twitter-light: #60bdf6;
+$sns-twitter-lighten: #d1ecfd;
+$sns-twitter-dark: #0d8ddb;
+$sns-twitter-darken: #0a6fab;
+
+// LINE
+$sns-line-default: #06c755;
+$sns-line-light: #4de28e;
+$sns-line-lighten: #d0f5e2;
+$sns-line-dark: #04a344;
+$sns-line-darken: #037033;
+
+// Pinterest
+$sns-pinterest-default: #e60023;
+$sns-pinterest-light: #f15461;
+$sns-pinterest-lighten: #facfd3;
+$sns-pinterest-dark: #b8001c;
+$sns-pinterest-darken: #8a0015;
+
+// YouTube
+$sns-youtube-default: #ff0000;
+$sns-youtube-light: #ff5a5a;
+$sns-youtube-lighten: #ffc9c9;
+$sns-youtube-dark: #cc0000;
+$sns-youtube-darken: #990000;
+
+// ----------------------------------
+// Shadow
+// ----------------------------------
+// Shadow Tokens (standard)
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-s: 0 2px 4px rgba(0, 0, 0, 0.08);
+$shadow-m: 0 4px 8px rgba(0, 0, 0, 0.1);
+$shadow-l: 0 8px 16px rgba(0, 0, 0, 0.12);
+$shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.15);
+$shadow-xxl: 0 24px 48px rgba(0, 0, 0, 0.18);
+
+// Trendy Soft Shadow（ふわっと系）
+$shadow-soft-s: 0 6px 16px rgba(0, 0, 0, 0.08);
+$shadow-soft-m: 0 12px 24px rgba(0, 0, 0, 0.1);
+$shadow-soft-l: 0 20px 40px rgba(0, 0, 0, 0.12);
+$shadow-soft-xl: 0 32px 64px rgba(0, 0, 0, 0.14);
+
+// ----------------------------------
+// Easing (Animation Timing Functions)
+// ----------------------------------
+
+// ---- 基本系 ----
+$ease-linear: linear; // 均等、機械的
+$ease-in: cubic-bezier(0.42, 0, 1, 1); // ゆっくり始まる
+$ease-out: cubic-bezier(0, 0, 0.58, 1); // ゆっくり止まる
+$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1); // 両端なめらか
+
+// ---- Material風 ----
+$ease-standard: cubic-bezier(0.4, 0, 0.2, 1); // 自然
+$ease-deceleration: cubic-bezier(0, 0, 0.2, 1); // ゆるやか停止
+$ease-acceleration: cubic-bezier(0.4, 0, 1, 1); // 加速
+$ease-sharp: cubic-bezier(0.4, 0, 0.6, 1); // パキッと切替
+
+// ---- Quad系 ----
+$ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53); // 強めに加速
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94); // 強めに減速
+$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955); // メリハリあり
+
+// ---- Back系 ----
+$ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045); // 少し引く
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275); // 少し戻る
+$ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55); // 前後に弾む
+
+// ---- Elastic系 ----
+$ease-in-elastic: cubic-bezier(0.47, 0, 0.745, 0.715); // びよんと始まる
+$ease-out-elastic: cubic-bezier(0.39, 0.575, 0.565, 1); // びよんと終わる
+
+// ============================
+// Aspect Ratios
+// 命名規則：$aspect-[名前]
+// ============================
+
+$aspect-golden: math.div(1.618, 1);
+$aspect-square: math.div(1, 1);
+$aspect-video: math.div(16, 9);
+$aspect-photo: math.div(4, 3);
+$aspect-portrait: math.div(3, 4);
+$aspect-tall: math.div(9, 16);
+$aspect-hd: math.div(16, 9);
+$aspect-vhd: math.div(9, 16);
+$aspect-classic: math.div(4, 3);
+$aspect-cinema: math.div(21, 9);
+
+// ============================
+// Z-Index Variables (1000単位設計)
+// ============================
+
+// 基本（0〜999）
+$z-base: 0; // 通常レイヤー
+$z-negative: -1; // 背面に配置（rare）
+
+// 固定・Sticky系（1000〜1999）
+$z-sticky: 1000; // ヘッダー、フッターなどのsticky要素
+$z-sticky-overlay: 1100; // sticky上のオーバーレイ
+
+// ナビゲーション系（2000〜2999）
+$z-dropdown: 2000; // ドロップダウンメニュー
+$z-hover-card: 2100; // ホバー表示カードなど
+$z-tooltip: 2200; // ツールチップ
+$z-lang-selector: 2300; // 言語切替など
+
+// モーダル系（3000〜3999）
+$z-modal-overlay: 3000; // モーダル背景
+$z-modal: 3100; // モーダル本体
+$z-modal-close: 3200; // モーダルのXボタンなど
+
+// メニュー系（4000〜4999）
+$z-drawer-overlay: 4000; // ドロワー用オーバーレイ
+$z-drawer: 4100; // ハンバーガーメニュー
+$z-float-nav: 4200; // 浮かせたナビゲーション
+$z-contact-btn: 4300; // フロートの問い合わせボタンなど
+
+// トースト・通知系（5000〜5999）
+$z-toast: 5000; // トースト通知
+$z-notification: 5100; // 固定表示の通知バーなど
+
+// フルスクリーン系（6000〜6999）
+$z-fullscreen: 6000; // フルスクリーン動画、画像
+$z-lightbox: 6100; // ライトボックス
+
+// システム系（7000〜7999）
+$z-loader: 7000; // ページローダー・インジケータ
+$z-blocker: 7100; // UIブロック用オーバーレイ
+$z-debug: 7999; // デバッグ用
+
+// 保険・予備（8000〜8999）
+$z-reserved-1: 8000;
+$z-reserved-2: 8100;
+
+// 最上位（9000〜9999）
+$z-override: 9000; // 強制表示が必要なレイヤー
+$z-critical: 9999; // 緊急／最後の手段（極力避ける）

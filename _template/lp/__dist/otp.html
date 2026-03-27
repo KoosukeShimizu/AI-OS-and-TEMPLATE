@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <title>マイページ｜N2クリニック｜N2 CLINIC 銀座本院</title>
+    <meta name="description" content="N2クリニックの会員専用マイページです。ご予約内容の確認・変更や各種情報の管理を行えます。">
+    <meta name="keywords" content="N2クリニック, マイページ, 会員ページ, ご予約確認, 情報変更">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="./assets/img/common/favicon.ico" type="image/x-icon">
+    <meta name="robots" content="max-image-preview:large">
+    <!-- CSS-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css?ver=1.0.0" type="text/css" media="all">
+    <!-- STRUCTURED DATA (SCHEMA)-->
+  </head>
+  <body class="p-account">
+    <div class="l-wrapper">
+      <main class="l-main u-anim-fadeIn">
+        <!-- Article START-->
+        <article class="l-page">
+          <div class="l-page__body">
+            <section class="l-section -xxs">
+              <div class="l-inner -xxs">
+                <div class="c-heading -h4 u-mb-m">アカウント情報の変更を受け付けました。<br>アカウント情報を更新するには、本人確認が必要です。</div>
+                <div class="c-text">ご登録のメールアドレス宛に、確認コード（OTP）を送信しました。届いたコードを入力して、変更内容を確定してください。</div>
+                <div class="c-note">※ご本人以外による変更を防ぐため、セキュリティ確認を行っています。</div>
+                <h1 class="c-heading -section u-mt-xxl u-mb-s">OTP認証画面</h1>
+                <div class="c-text u-mb-l">ご登録のアドレスに届いたワンタイムパスワードを入力してください。</div>
+                <form method="post" action="./otp-complate.html" enctype="multipart/form-data">
+                  <div class="c-form">
+                    <div class="c-form__item">
+                      <div class="c-form__body -row">
+                        <input class="c-form__input u-w-10 u-t-c" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth>
+                        <input class="c-form__input u-w-10 u-t-c" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth>
+                        <input class="c-form__input u-w-10 u-t-c" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth>
+                        <input class="c-form__input u-w-10 u-t-c" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth>
+                        <input class="c-form__input u-w-10 u-t-c" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth>
+                        <input class="c-form__input u-w-10 u-t-c" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" data-auth>
+                      </div>
+                      <div class="c-text -important u-t-r" data-timer>1.00s</div>
+                      <div class="c-form__error">6桁のコードをすべて入力してください</div>
+                      <div class="c-form__error">数字のみでご入力ください</div>
+                      <div class="c-form__error">コードが正しくありません。もう一度ご確認ください</div>
+                      <div class="c-form__error">コードの有効期限が切れました。再送信を行ってください</div>
+                    </div>
+                  </div>
+                  <!-- 送信ボタン-->
+                  <div class="c-btnBox u-gap-l u-my-l">
+                    <button class="c-btn -primary" type="submit" disabled>認証する</button>
+                  </div>
+                  <div class="c-text">ワンタイムパスワードが届かない。
+                    <button class="c-link" type="button">再送する</button>
+                  </div>
+                  <div class="c-note">※メールが届かない場合、受信許可設定を行う必要があります。<br>お手持ちの端末にて、n2clinic-ginza.comのドメインを受信許可設定してください。</div>
+                  <div class="c-text u-mt-l">どうしてもメールが届かない場合は<a class="c-link" href="./inquiry.html">お問い合わせフォーム</a>よりご連絡ください。</div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </article>
+        <!-- Article END-->
+      </main>
+    </div>
+    <script src="./assets/js/main.js?ver=1.0.0"></script>
+    <script src="./assets/js/form.js?ver=1.0.0"></script>
+  </body>
+</html>

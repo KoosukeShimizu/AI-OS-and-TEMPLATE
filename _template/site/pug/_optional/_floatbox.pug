@@ -1,0 +1,21 @@
+//- ==============================================
+//- FLOATBOX（任意コンポーネント）
+//- - 使用時のみ include
+//- - CTA補助用（L1通知ではない）
+//- ==============================================
+
+.c-floatbox#floatbox(data-floatbox aria-label="固定アクションメニュー")
+  //- お問い合わせ（navトグル型）
+  button.c-floatbox__item(
+    type="button"
+    data-nav-toggle="contactNav"
+    aria-controls="contactNav"
+    aria-expanded="false"
+    aria-label="お問い合わせを開く"
+  ) お問い合わせ
+
+  //- オプション：追加CTA（案件ごとに編集）
+  //- a.c-floatbox__item(
+  //-   href=root+"page"+extension
+  //-   aria-label="CTAページへ移動"
+  //- ) CTA

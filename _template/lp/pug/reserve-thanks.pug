@@ -1,0 +1,128 @@
+//-================================================
+//- サイト共通設定
+//-================================================
+include _includes/_foundation/_global
+
+//- block vars
+//---------------
+//- ページ設定
+//---------------
+- var root = './' // ルートパスの指定
+- var key = 'reserve-thanks' // 条件分岐に使用
+- var useNoindex = true // noindexの有無
+- var useOgp = false // OGPの有無
+- var useAnalytics = false // GAタグの有無
+- var useLogoH1 = false // ロゴにh1を使うか
+- var useBreadcrumb = false // パンくずを使うか
+
+//---------------
+//- 構造化データ設定
+//---------------
+- var useSchemaWebSite = true
+- var useSchemaWebPage = false
+- var useSchemaOrganization = false
+- var useSchemaBreadcrumb = false
+- var useSchemaArticle = false
+- var useSchemaFAQ = false
+
+//---------------
+//- ページメタ情報
+//---------------
+- var pageTitle = '予約受付完了'
+- var pageDescription = 'N2クリニックへの予約受付が完了しました。内容を確認のうえ、担当者よりご連絡差し上げます。'
+- var pageKeywords = '予約受付,N2クリニック,完了,送信完了'
+- var pageOgUrl = '' // ページ公開後にURLを指定
+- var pageOgTitle = pageTitle + '｜N2クリニック'
+- var pageOgDescription = pageDescription
+- var pageOgImage = '' // OGP画像があれば指定
+
+//---------------
+//- パンくず設定
+//---------------
+- var pageSlug= "reserve-thanks" // ページのスラッグ※末尾に「/」必須
+- var parentSlug= "reserve" // ページが3階層目の場合、親ページのスラッグ
+- var parentTitle= "予約のご案内" // ページが3階層目の場合、親ページの名前
+
+//- ===================================================
+//-  ███████╗████████╗ █████╗ ███████╗ ████████╗
+//-  ██╔════╝╚══██╔══╝██╔══██╗██╔═══██╗╚══██╔══╝
+//-  ███████╗   ██║   ███████║███████╔╝   ██║
+//-  ╚════██║   ██║   ██╔══██║██╔═██║     ██║
+//-  ███████║   ██║   ██║  ██║██║ ███║    ██║
+//-  ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚══╝    ╚═╝
+//- ===================================================
+doctype html
+html(lang='ja')
+  head
+    include _includes/_head
+    //---------------------------------
+    //- UNIQUE CSS　ページ独自に使用するスタイル
+    //---------------------------------
+    block append css
+      link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+      link(rel='stylesheet' href=root+cssPath+'main.css?ver=1.0.0' type='text/css' media='all')
+    //---------------------------------
+    //- SCHEMA　構造化データの呼び出し
+    //---------------------------------
+    include _includes/_foundation/_schema
+    //---------------------------------
+    //- 計測タグ（head）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_head
+  body.p-reserve
+    //---------------------------------
+    //- 計測タグ（body）の呼び出し
+    //---------------------------------
+    include _includes/_trackingTag_body
+    .l-wrapper
+      //- include _includes/_header
+      //- include _includes/_component/_breadcrumb
+      header.l-header.p-reserve-header
+        .p-reserve-header__logo
+          a(href=root+"")
+            img(src=root+imgPath+"common/logo-ginza.png" alt=siteName)
+      main.l-main.u-anim-fadeIn
+        //-================================================
+        //- ARTICLE START
+        //-================================================
+        // Article START
+        article.l-page
+          // Heroセクション
+          .l-page__head
+            h1.l-page__title 仮予約受付フォーム
+            .l-page__sub WELCOME TO N2 ClINIC GINZA
+          .l-page__body
+            section.l-section
+              .l-inner.-xxs
+                .c-step
+                  ul.c-step__list
+                    li.c-step__item
+                      span.c-step__order STEP1
+                      span.c-step__label 情報入力
+                    li.c-step__item
+                      span.c-step__order STEP2
+                      span.c-step__label 内容確認
+                    li.c-step__item.is-current
+                      span.c-step__order STEP3
+                      span.c-step__label 仮予約完了
+
+                .c-text 仮予約を受け付けました
+                .c-text 担当者より、24時間以内にご入力いただいたメール、またはお電話にご連絡差し上げます。  。
+            
+            
+            .c-btnBox.u-gap-l
+              a.c-btn.-underline(href="./") トップページへ戻る
+
+        //-================================================
+        //- Article END
+        //-================================================
+        // Article END
+      //- include _includes/_sidebar
+      //- include _includes/_component/_floatbox
+      //- include _includes/_footer
+    //- include _includes/_script
+    //---------------------------------
+    //- UNIQUE SCRIPT　ページ独自に使用するJS
+    //---------------------------------
+    block append js
+      script(src=root+jsPath + "main.js?ver=1.0.0")
