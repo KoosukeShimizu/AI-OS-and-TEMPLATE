@@ -24,6 +24,7 @@ AIは以下の分類に従ってファイルを参照する。
 - ai-runtime/ai_outline.md
 
 ※ 出力前は必ず 32_generation_rules.md を適用すること。
+※ ai_context.md が存在しない場合は、90_context_template.md をもとに作成してから続行すること。
 
 ---
 
@@ -47,8 +48,8 @@ AIは以下の分類に従ってファイルを参照する。
 - 31_design_modes.md  
   → Mode決定・変更時
 
-- 35_structure_review.md  
-  → Figma等のデザインデータを参照する案件で、実装前に構造レビューを行う場合
+- 35_structure_review.md
+  → 条件：11_interview.md で Figma URL が確認済みかつ実装前
 
 - 40_markup_pug.md  
   → Pug構造を編集する場合
@@ -132,6 +133,7 @@ AIは以下の順番で処理すること：
 6. **（追加）テンプレ選定と雛形展開**
    - ai_context.md / ai_outline.md の確定後に「採用テンプレ」を決める
    - テンプレは /_template/ 配下の "site / lp" を参照する
+   - **site / lp のどちらを使うかは、11_interview.md のヒアリング結果（プロジェクト種別）が確定してから決定する**
    - どちらを採用するかは ai_context.md の「プロジェクト種別 / 規模 / include運用」に従う
    - 以降の実装は、展開された雛形を前提に差分・追加で進める
 

@@ -75,7 +75,7 @@
     }
 
     &.is-sticky {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-s);
     }
 
     &.is-hide {
@@ -85,14 +85,14 @@
 }
 .c-btn-contact {
   display: none;
-  border-radius: var(--radius-primary);
+  border-radius: var(--radius-base);
   text-align: center;
   line-height: 1;
   transition: $transition;
   position: relative;
   font-size: fz(12, 14);
   background: var(--btn-primary);
-  color: #fff;
+  color: var(--text-light);
   font-family: $sans;
   font-weight: 500;
   width: auto;

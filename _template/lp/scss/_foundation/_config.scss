@@ -18,11 +18,6 @@ $wide: 1536px; // ワイドディスプレイ
 $cinema: 1920px; // フルHD以上
 
 // ----------------------------------
-// Layout Constraints
-// ----------------------------------
-$main-max: 760px;
-
-// ----------------------------------
 // Font size
 // ----------------------------------
 $pc-fz-scale: 0.9; // PCフォントサイズスケール
@@ -248,30 +243,30 @@ $shadow-soft-xl: 0 32px 64px rgba(0, 0, 0, 0.14);
 // ----------------------------------
 
 // ---- 基本系 ----
-$ease-linear: linear; // 均等、機械的
-$ease-in: cubic-bezier(0.42, 0, 1, 1); // ゆっくり始まる
-$ease-out: cubic-bezier(0, 0, 0.58, 1); // ゆっくり止まる
-$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1); // 両端なめらか
+$ease-linear: linear; // 均等、機械的 // 現在未使用
+$ease-in: cubic-bezier(0.42, 0, 1, 1); // ゆっくり始まる // 現在未使用
+$ease-out: cubic-bezier(0, 0, 0.58, 1); // ゆっくり止まる // 現在未使用
+$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1); // 両端なめらか // 現在未使用
 
 // ---- Material風 ----
-$ease-standard: cubic-bezier(0.4, 0, 0.2, 1); // 自然
-$ease-deceleration: cubic-bezier(0, 0, 0.2, 1); // ゆるやか停止
-$ease-acceleration: cubic-bezier(0.4, 0, 1, 1); // 加速
-$ease-sharp: cubic-bezier(0.4, 0, 0.6, 1); // パキッと切替
+$ease-standard: cubic-bezier(0.4, 0, 0.2, 1); // 自然 → --anim-easing で使用
+$ease-deceleration: cubic-bezier(0, 0, 0.2, 1); // ゆるやか停止 // 現在未使用
+$ease-acceleration: cubic-bezier(0.4, 0, 1, 1); // 加速 // 現在未使用
+$ease-sharp: cubic-bezier(0.4, 0, 0.6, 1); // パキッと切替 // 現在未使用
 
 // ---- Quad系 ----
-$ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53); // 強めに加速
-$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94); // 強めに減速
-$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955); // メリハリあり
+$ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53); // 強めに加速 // 現在未使用
+$ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94); // 強めに減速 // 現在未使用
+$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955); // メリハリあり // 現在未使用
 
 // ---- Back系 ----
-$ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045); // 少し引く
-$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275); // 少し戻る
-$ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55); // 前後に弾む
+$ease-in-back: cubic-bezier(0.6, -0.28, 0.735, 0.045); // 少し引く // 現在未使用
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275); // 少し戻る // 現在未使用
+$ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55); // 前後に弾む // 現在未使用
 
 // ---- Elastic系 ----
-$ease-in-elastic: cubic-bezier(0.47, 0, 0.745, 0.715); // びよんと始まる
-$ease-out-elastic: cubic-bezier(0.39, 0.575, 0.565, 1); // びよんと終わる
+$ease-in-elastic: cubic-bezier(0.47, 0, 0.745, 0.715); // びよんと始まる // 現在未使用
+$ease-out-elastic: cubic-bezier(0.39, 0.575, 0.565, 1); // びよんと終わる // 現在未使用
 
 // ============================
 // Aspect Ratios
@@ -284,9 +279,6 @@ $aspect-video: math.div(16, 9);
 $aspect-photo: math.div(4, 3);
 $aspect-portrait: math.div(3, 4);
 $aspect-tall: math.div(9, 16);
-$aspect-hd: math.div(16, 9);
-$aspect-vhd: math.div(9, 16);
-$aspect-classic: math.div(4, 3);
 $aspect-cinema: math.div(21, 9);
 
 // ============================

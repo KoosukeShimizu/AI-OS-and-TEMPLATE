@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-base);
   font-family: $sans;
   font-size: fz(12, 14);
   line-height: 1.8;
@@ -24,7 +24,7 @@ body {
   font-kerning: normal;
   font-variant-ligatures: common-ligatures contextual;
   overflow-x: hidden;
-  color: var(--text-primary);
+  color: var(--text-default);
   height: 100%;
 }
 

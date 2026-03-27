@@ -5,7 +5,7 @@ _config.scssより設計ベースの変数を引用
 -------------------------------------------------- */
 :root {
   // Layout
-  --main-max: #{$main-max};
+  --main-max: 760px;
 
   // Animation
   --anim-speed: 1.2s;
@@ -17,6 +17,8 @@ _config.scssより設計ベースの変数を引用
   --secondary: #000;
   --tertiary: #000;
   --accent: #666666;
+
+  // Status Colors（UI状態を表す固定色）
   --danger: #{$c-danger-light};
   --important: #{$c-important-light};
   --info: #{$c-info-light};
@@ -24,62 +26,67 @@ _config.scssより設計ベースの変数を引用
   --mute: #{$c-mute-default};
 
   // Background Colors
-  --bg-primary: #f5f5f5;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #eeeeee;
-  --bg-quaternary: #fbfbfb;
+  --bg-base:  #f5f5f5;  // ページの地色
+  --bg-alt:   #ffffff;  // セクション切り替え用の別面
+  --bg-deep:  #eeeeee;  // 強い区切り・強調面
 
   // Border Colors
-  --border-primary: #{rgba($c-black, 0.1)};
-  --border-secondary: #{rgba($c-white, 0.5)};
+  --border-dark: #{rgba($c-black, 0.2)};
+  --border-light: #{rgba($c-white, 0.5)};
 
-  // text Colors
-  --text-primary: #333333;
-  --text-secondary: #{$c-gray-600};
-  --link-primary: #{$c-link-default};
-  --link-secondary: #{$c-link-light};
+  // Text Colors
+  --text-default: #{$c-gray-700};
+  --text-muted: #{$c-gray-500};
+  --text-subtle: #{$c-gray-400};
+  --text-light: #{$c-white};
+  --text-dark: #{$c-gray-900};
 
   // Button Colors
-  --btn-primary: #333333;
-  --btn-secondary: var(--text-secondary);
+  --btn-primary: var(--primary);
+  --btn-secondary: var(--secondary);
   --btn-tertiary: transparent;
   --btn-default: #{$c-gray-200};
-  --btn-on-primary: #fff;
-  --btn-on-secondary: #fff;
-  --btn-on-tertiary: var(--text-primary);
+  --btn-on-primary: var(--text-light);
+  --btn-on-secondary: var(--text-light);
+  --btn-on-tertiary: var(--text-default);
   --btn-on-default: #{$c-gray-800};
-  --btn-border-tertiary: var(--border-secondary);
-  --btn-ghost: var(--text-primary);
-  --btn-underline: var(--text-primary);
-  --btn-muted: #{$c-gray-400};
+  --btn-border-tertiary: var(--border-light);
+  --btn-ghost: var(--text-default);
+  --btn-underline: var(--text-default);
 
   // radius
-  --radius-primary: #{$radius-xs};
+  --radius-base: #{$radius-xs};
   --radius-xs: #{$radius-xxs};
   --radius-s: #{$radius-xs};
   --radius-m: #{$radius-s};
   --radius-l: #{$radius-m};
   --radius-xl: #{$radius-l};
 
-  // tag Colors
-  --tag-primary: #333333;
-  --tag-secondary: var(--bg-primary);
+  // Shadow
+  --shadow-xs: #{$shadow-xs};
+  --shadow-s:  #{$shadow-s};
+  --shadow-m:  #{$shadow-m};
+  --shadow-l:  #{$shadow-l};
+  --shadow-xl: #{$shadow-xl};
+
+  // Overlay / Floating Surface
+  --overlay:       rgba(0, 0, 0, 0.6);          // 画面を覆う暗幕（ドロワー・モーダル共通）
+  --surface-float: rgba(255, 255, 255, 0.95);   // 浮き上がりパネル背景（ドロワー・モーダル本体）
 
   // Typography（コンポーネント用）
-  --note: #{$c-gray-600};
+  // ※ --text-lead は Text Colors ではなく、リードテキストの色制御用。値は inherit（親から継承）
   --text-lead: inherit;
-  --text-subtle: #{$c-gray-400};
   --highlight: #ffeaa7;
   --marker-color: rgba(255, 255, 0, 0.5);
   --quote-mark-color: #{$c-gray-300};
 
   // Header
-  --header-bg: var(--bg-primary);
-  --header-text: var(--text-primary);
+  --header-bg: var(--bg-base);
+  --header-text: var(--text-default);
 
   // Footer
-  --footer-bg: var(--bg-secondary);
-  --footer-text: var(--text-primary);
+  --footer-bg: var(--bg-alt);
+  --footer-text: var(--text-default);
 
   // SNS Colors
   --sns-facebook: #{$sns-facebook-default};

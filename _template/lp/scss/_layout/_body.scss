@@ -36,7 +36,7 @@
 .l-section {
   position: relative;
   padding: gt(48, 80) 0; // デフォルト基準：SP48 / PC80
-  background: var(--bg-primary);
+  background: var(--bg-base);
   &.-xxs {
     padding: gt(16, 24) 0;
   }
@@ -58,17 +58,14 @@
   &.-xxl {
     padding: gt(96, 144) 0; // PCでも行間として自然な最大値
   }
-  &.-bg-white {
-    background: $c-white;
+  &.-bg-base {
+    background: var(--bg-base);
   }
-  &.-bg-primary {
-    background: var(--bg-primary);
+  &.-bg-alt {
+    background: var(--bg-alt);
   }
-  &.-bg-secondary {
-    background: var(--bg-secondary);
-  }
-  &.-bg-tertiary {
-    background: var(--bg-tertiary);
+  &.-bg-deep {
+    background: var(--bg-deep);
   }
 }
 
