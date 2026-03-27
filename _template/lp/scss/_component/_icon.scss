@@ -102,10 +102,7 @@
   &.-group::before             { content: "group"; }
   &.-login::before             { content: "login"; }
   &.-logout::before            { content: "power_settings_new"; } // or "logout"
-  &.-doctor::before     { content: "badge"; }            // 担当医
-  &.-comment::before    { content: "chat_bubble"; }      // 医師コメント
-  &.-link::before       { content: "link"; }             // 関連リンク
-  &.-clinic::before     { content: "assignment"; }       // クリニックコメント
+  &.-link::before       { content: "link"; }
   &.-setting::before           { content: "settings"; }
 
   // ▼ コンテンツ・ドキュメント
@@ -118,8 +115,8 @@
   &.-pause::before             { content: "pause"; }
   &.-stop::before              { content: "stop"; }
 
-  // ▼ 医療・研究・ラボ関連
-  &.-lab::before               { content: "science"; } // or "biotech"
+  // ▼ その他
+  &.-lab::before               { content: "science"; }
 
   // ▼ 通知・受信関連
   &.-inbox::before             { content: "tune"; } // or "filter_list"

@@ -59,14 +59,6 @@
 // -----------------------------
 .c-sitemap {
   font-family: $sans;
-  :lang(en),
-  &:lang(vi) {
-    font-family: "Times New Roman", Times, serif !important;
-  }
-  &:lang(zh-CN),
-  &:lang(zh-SG) {
-    font-family: "Songti SC", serif !important;
-  }
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -97,13 +89,13 @@
   margin: 0 auto gt(40);
   &__list {
     @include flexbox(inline-flex, null, null, null, center, null);
-    background: #000;
-    color: var(--seconray);
+    background: var(--btn-primary);
+    color: var(--secondary);
   }
   &__item {
     padding: 0 gt(8);
     &:nth-child(odd) {
-      border-right: 1px solid var(--seconray);
+      border-right: 1px solid var(--secondary);
     }
     a {
       padding: gt(4) 0;
@@ -117,7 +109,7 @@
       display: block;
     }
     &__item {
-      border-bottom: 1px solid var(--seconray);
+      border-bottom: 1px solid var(--secondary);
       &:nth-child(odd) {
         border-right: none;
       }
@@ -130,19 +122,11 @@
 .c-pagetop {
   cursor: pointer;
   font-family: $sans;
-  :lang(en),
-  &:lang(vi) {
-    font-family: "Times New Roman", Times, serif !important;
-  }
-  &:lang(zh-CN),
-  &:lang(zh-SG) {
-    font-family: "Songti SC", serif !important;
-  }
   padding: gt(8, 16) 0;
   // width: 70px;
   // height: 70px;
   // background: #000;
-  // color: var(--seconray);
+  // color: var(--secondary);
   // border-radius: 50%;
   // @include position(absolute, 6% -15px null null);
   // line-height: 1;
@@ -165,12 +149,12 @@
   //   display: block;
   //   width: 15px;
   //   height: 0;
-  //   border-top: 1px solid var(--seconray);
+  //   border-top: 1px solid var(--secondary);
   //   @include position(absolute, 50% null null 0);
   //   transition: $transition;
   // }
   // @include hover {
-  //   background: var(--seconray);
+  //   background: var(--secondary);
   //   color: var(--text-primary);
   //   border: 1px solid var(--text-primary);
   //   &:before {
@@ -208,15 +192,7 @@
     font-size: fz(12, 14);
     background: var(--btn-primary);
     color: #fff;
-    font-family: $serif;
-    &:lang(en),
-    &:lang(vi) {
-      font-family: "Times New Roman", Times, serif !important;
-    }
-    &:lang(zh-CN),
-    &:lang(zh-SG) {
-      font-family: "Songti SC", serif !important;
-    }
+    font-family: $sans;
     font-weight: 500;
     width: calc((80% - 1em) / 2);
     padding: 1em 1.5em;

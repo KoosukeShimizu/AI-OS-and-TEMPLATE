@@ -227,7 +227,7 @@
     color: var(--btn-on-primary);
     padding: 0.8em 2em;
     font-size: $fz-l;
-    box-shadow: 0 3px 0 rgba(#8b0815, 0.9);
+    box-shadow: 0 3px 0 var(--btn-primary);
     b {
       font-size: $fz-xl;
       display: block;

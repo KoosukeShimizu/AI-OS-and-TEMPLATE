@@ -1,0 +1,14 @@
+//- ==============================================
+//- TRACKING : BODY（GTM noscript）
+//- ==============================================
+
+- var useAnalytics = (typeof useAnalytics !== 'undefined') ? useAnalytics : false
+
+if useAnalytics === true && typeof gtmId !== 'undefined' && gtmId
+  noscript
+    iframe(
+      src="https://www.googletagmanager.com/ns.html?id=#{gtmId}"
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+    )

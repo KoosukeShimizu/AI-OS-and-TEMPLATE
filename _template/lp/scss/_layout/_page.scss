@@ -24,14 +24,6 @@
     font-weight: 500;
     margin-block: 1em 0.5em;
     font-family: $sans;
-    :lang(en),
-    &:lang(vi) {
-      font-family: "Times New Roman", Times, serif !important;
-    }
-    &:lang(zh-CN),
-    &:lang(zh-SG) {
-      font-family: "Songti SC", serif !important;
-    }
     order: 1;
   }
   &__kv {
