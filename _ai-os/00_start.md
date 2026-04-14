@@ -77,12 +77,16 @@ AIは以下の分類に従ってファイルを参照する。
 - 60_figma_variables.md / 61_figma_styles.md / 62_figma_mode_handling.md / 63_design_tokens_output.md  
   → プロジェクトが Figma 連携を含む場合に必ず参照（実装前のトークン変換規約）
 
+- 64_figma_migration.md  
+  → Figma デザインシステムを別プロジェクト・別ファイルへ移植する場合に参照
+
 ## デザインシステム参照
 プロジェクトが Figma 連携を含む場合、以下を必ず参照：
 - @60_figma_variables.md — 変数命名規約
 - @61_figma_styles.md — スタイル命名規約
 - @62_figma_mode_handling.md — L/D・PC/SP モード処理
 - @63_design_tokens_output.md — トークン出力仕様
+- @64_figma_migration.md — プロジェクト間移植フロー
 
 AIは不要なファイルを常時ロードしないこと。
 各ファイルの「参照タイミング」に従うこと。

@@ -42,3 +42,30 @@ Figma 側は 4モード管理：
 ```
 
 ※ 差分のない変数は media query 不要。
+
+## ブレークポイント定義
+
+PC/SP の境界はタブレット域（768〜1023px）が曖昧になりがちなので、明示する：
+
+- **SP モード**: `max-width: 1023px`（モバイル・タブレット含む）
+- **PC モード**: `min-width: 1024px`（デスクトップ）
+
+タブレット専用ブレークポイントが必要な場合は、プロジェクト判断で 3 段階に分割：
+- Mobile: `max-width: 767px`
+- Tablet: `768px〜1023px`
+- Desktop: `1024px 以上`
+
+## システム設定の尊重（prefers-color-scheme）
+
+ユーザーの OS テーマを優先する場合：
+```css
+:root { --bg-default: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg-default: #0a0e1a; }
+}
+[data-theme="light"] { --bg-default: #ffffff; }
+[data-theme="dark"] { --bg-default: #0a0e1a; }
+```
+
+`data-theme` はユーザー明示切替、media query はシステム推定。
+明示切替が存在する場合は `data-theme` が media query を上書きする（カスケード優先）。

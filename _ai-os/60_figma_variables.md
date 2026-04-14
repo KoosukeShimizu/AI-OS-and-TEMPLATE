@@ -66,3 +66,30 @@ Theme/NN_Category/SubGroup/leaf-name
 - Variable名 `bg-default` → CSS `--bg-default` / Tailwind `bg-default` / TS `tokens.bgDefault`
 - kebab-case を基本とし、言語側の慣習に応じて変換
 - Figma階層（`Theme/`, `NN_`）は出力に含めない
+
+## Config 層のピッカー非表示
+
+Config 変数は Theme の内部参照専用。デザイナーやAIが直接選ぶことはない。
+Figma上で Config 変数が picker に出現しないよう、`scopes = []`（空配列）を設定する。
+
+- Theme 変数のみが picker に表示される
+- Config の bind は API / 既存バインディング経由でのみ有効
+- これにより「どのトークンを使うべきか」の迷いがなくなる
+
+## STRING変数の扱い
+
+`Theme/12_Content/` 配下の STRING変数（`dummy-*`, `meta-*`, `ph-*`）：
+- テキスト内容のプレースホルダー・ダミー
+- コード側では i18n キー or 環境変数として扱う
+- leaf名そのまま key 化（例：`ph-input` → `placeholder.input`）
+
+## _Reserved/ とは（除外ルールの根拠）
+
+Figma API の制約で以下のプロパティは Variable バインド時に単位（unit）が強制変換される：
+- `lineHeight` → PERCENT 指定で bind すると PIXELS に変わる
+- `letterSpacing` → 同上
+- `shadow opacity` → COLOR型しかバインド不可
+
+これらは「使えない」のではなく「Figma上で値を持ってもバインド経由で正しく適用できない」。
+将来 Figma 側で改善される可能性があるため削除せず `_Reserved/` に退避。
+コード側では CSS `line-height: 1.4` / `letter-spacing: 0.02em` 等で直接指定する（実運用は `61_figma_styles.md` の Text Style を介する）。
