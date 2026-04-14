@@ -1,0 +1,68 @@
+# 60_figma_variables.md
+
+## 参照タイミング
+Figma Variables をコードトークンへ変換する場合に参照する（実装前の変換規約確認）。
+
+## このファイルについて
+**このファイルは「デザインシステム変換規約」である（役割分類：60番台）。**
+Figma Variables の命名構造・カテゴリ prefix・除外ルール・コード変換ルールを定義する。
+AI は Figma 連携プロジェクトで変数を扱う際、このファイルを必ず参照すること。
+
+> **絶対ルール（強制）は `32_generation_rules.md` が Single Source of Truth。**
+> 本ファイルの指針と 32 の強制ルールが矛盾する場合は、**32 を優先する**。
+
+Updated: 2026-04-14
+---
+
+# Figma Variables 運用規約
+
+## 前提
+- Figma のデザインシステムは **Config層（プリミティブ）** と **Theme層（セマンティック）** の2層構造で設計されている
+- Variables は L/D・PC/SP のモードを持つ
+- AI はこの規約に従って Figma 変数をコードトークンに変換する
+
+## 命名構造
+
+### 階層（Figma上の整理用）
+```
+Theme/NN_Category/SubGroup/leaf-name
+例: Theme/06_Spacing/Gap/gap-m
+    Theme/10_Typography/FontSize/fz-h1
+```
+
+- `NN_` の数字 prefix は Figma パネル内のソート順制御のみの役割
+- **AI はこれらの階層情報を無視する**
+
+### 末尾名（leaf）
+- AI がコード生成時に使用するのは **leaf 名のみ**
+- leaf 名は単体で意味が通る self-descriptive 形式で命名される
+
+例:
+- `Theme/01_Brand/primary` → CSS変数 `--primary`
+- `Theme/02_Surface/bg-default` → CSS変数 `--bg-default`
+- `Theme/06_Spacing/Gap/gap-m` → CSS変数 `--gap-m`
+- `Theme/11_State/state-hover` → CSS変数 `--state-hover`
+
+### カテゴリ prefix 一覧
+| prefix | 意味 | 例 |
+|--------|------|-----|
+| `bg-` | 背景色 | bg-default, bg-raised |
+| `text-` | テキスト色 | text-main, text-sub |
+| `border-` | ボーダー色 | border-default, border-focus |
+| `on-` | カラー背景上のテキスト色 | on-primary, on-notice |
+| `gap-` | 要素間スペース | gap-xxs〜gap-xxl |
+| `section-` | セクション上下余白 | section-s〜section-xl |
+| `w-` | 幅 | w-cont-default, w-sidebar |
+| `rad-` | 角丸半径 | rad-s, rad-full |
+| `fz-` | フォントサイズ | fz-body-m, fz-h1 |
+| `fw-` | フォントウェイト | fw-reg, fw-bold |
+| `state-` | インタラクション不透明度 | state-hover, state-disabled |
+
+## 除外ルール
+- `_Reserved/` 配下の変数は **Figma API 制限により使用不可**。AI は無視すること。
+- `⚠_` prefix が付いた変数も同様。
+
+## コード生成時の変換ルール
+- Variable名 `bg-default` → CSS `--bg-default` / Tailwind `bg-default` / TS `tokens.bgDefault`
+- kebab-case を基本とし、言語側の慣習に応じて変換
+- Figma階層（`Theme/`, `NN_`）は出力に含めない
