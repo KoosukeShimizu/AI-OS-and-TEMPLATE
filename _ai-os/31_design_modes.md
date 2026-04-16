@@ -14,7 +14,7 @@ AIはヒアリング完了後：
 - ai_outline.md に反映する
 - 実装時は 32_generation_rules.md と整合させる
 
-Updated: 2026-02-20
+Updated: 2026-04-16
 ---
 
 # 1. 設計モード一覧
@@ -163,3 +163,29 @@ ai_context.md の「優先順位」に従う。
 - 20_mindset.md
 
 上位が優先される。
+
+---
+
+# 6. Mode × DS 導入度マトリクス
+
+11_interview.md の Step 6.1.5 で「DS あり」と判定された場合、Mode と組み合わせて **DS 導入の深さ** を決める。推奨値は以下：
+
+| Mode | Figma DS 活用度 | トークン化の方針 | 備考 |
+|------|----------------|----------------|------|
+| M1：Speed-first | **最小限** | 色のみ Theme 経由、spacing/radius は生値も許容 | DS 構築コストとのトレードオフ。案件単発なら深入りしない |
+| M2：Reuse-first | **全面活用** | 全カテゴリ Theme 経由、新規トークン追加は `decisions.md` に記録 | 横断利用前提なら DS の恩恵が最大化する |
+| M3：Legacy-safe | **踏襲** | 既存 SCSS を正、Figma DS は参照用途のみ | 68_token_bridge.md の「既存改修案件」枠。推測 rename 禁止 |
+| M4：Data-dense | **全面活用** | 状態トークン（state-*）の活用を厚めに | loading / empty / error の見た目もトークン化 |
+| M5：Design-faithful | **全面活用＋厳格** | 生値禁止、Figma Theme 一致を最優先 | デザイナー意図の忠実再現には DS 一致が必須 |
+
+## 6-1. 判断基準
+
+- DS 未導入プロジェクトで後から DS 駆動に切替える場合：**Mode 変更と同等の判断**として `ai_decision_log.md` に記録
+- M1 / M3 で DS を使わない判断をした場合も、その理由を `ai_context.md` に明記
+- Mode と DS 活用度が矛盾する場合（例：M1 なのに全面トークン化を要求された）は、ユーザーに確認
+
+## 6-2. 運用ガイド
+
+- **新規案件 × M2 / M5** ：DS 駆動が最も効く組み合わせ。初期から `design-system/` を整備
+- **新規案件 × M1**：DS を作る工数 > DS から得る恩恵になりがち。最小限の Theme だけ用意
+- **既存改修 × M3**：Figma DS を「参照資料」として扱うに留め、実装は既存 SCSS 命名を踏襲（32 の 8-6 / 68 の Phase 0 準拠）

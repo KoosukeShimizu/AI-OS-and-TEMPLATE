@@ -89,6 +89,9 @@ AIは以下の分類に従ってファイルを参照する。
 - 67_design_system_workflow.md  
   → デザインシステムを新規作成または改修する場合に参照
 
+- 68_token_bridge.md  
+  → 新旧トークンの命名が衝突する、または既存 SCSS から Figma Theme へ移行する場合に参照
+
 ## デザインシステム参照
 プロジェクトが Figma 連携を含む場合、以下を必ず参照：
 - @60_figma_variables.md — 変数命名規約
@@ -99,6 +102,7 @@ AIは以下の分類に従ってファイルを参照する。
 - @65_figma_constraints.md — Figma API 既知制約と回避策
 - @66_figma_guide_structure.md — Style Guide 設計テンプレート
 - @67_design_system_workflow.md — DS 制作標準ワークフロー
+- @68_token_bridge.md — 新旧トークン命名の橋渡し規約
 
 AIは不要なファイルを常時ロードしないこと。
 各ファイルの「参照タイミング」に従うこと。
@@ -112,7 +116,7 @@ AIは不要なファイルを常時ロードしないこと。
 | 32 | **強制ルール** | AI実装時に必ず従う唯一の出力ルール。他より常に優先 |
 | 40〜42 | **実装ガイド** | Pug / SCSS / JS の実装作法。32に矛盾する場合は32優先 |
 | 50〜53 | **レビュー/監査** | 実装後の品質・パフォーマンス・a11y確認。実装中は参照不要 |
-| 60〜67 | **デザインシステム変換規約** | Figma Variables/Styles/Modes → コードトークン変換ルール、移植・API制約・Guide構造・DS制作ワークフロー。Figma連携時に参照 |
+| 60〜68 | **デザインシステム変換規約** | Figma Variables/Styles/Modes → コードトークン変換ルール、移植・API制約・Guide構造・DS制作ワークフロー・新旧命名の橋渡し。Figma連携時に参照 |
 
 
 ---
@@ -164,8 +168,18 @@ AIは以下の順番で処理すること：
    - どちらを採用するかは ai_context.md の「プロジェクト種別 / 規模 / include運用」に従う
    - 以降の実装は、展開された雛形を前提に差分・追加で進める
 
-7. 32_generation_rules.md に従い実装を開始
-8. 重要判断が発生した場合は ai_decision_log.md に記録
+7. **（追加）デザインシステム駆動の判定と design-system/ の初期化**
+   - 11_interview.md の Step 6.1.5 で「DS あり」と判定された場合：
+     - `design-system/figma-reference.md` に File Key / URL / ファイル名を記録
+     - `ai_context.md` に「DS駆動プロジェクト」と明記
+     - 以降の実装で 32_generation_rules.md の 8-6 を適用（Theme トークン経由のみ）
+     - 新旧命名衝突時は 68_token_bridge.md の対応表を正とする
+   - 「DS なし / 不明」の場合：
+     - `design-system/` ディレクトリは作成しない、または空のまま
+     - Figma はレイアウト参照のみとして 32 の 8-5 を適用
+
+8. 32_generation_rules.md に従い実装を開始
+9. 重要判断が発生した場合は ai_decision_log.md に記録（DS設計判断は design-system/decisions.md へ、実装判断は ai_decision_log.md へ）
 
 ---
 
