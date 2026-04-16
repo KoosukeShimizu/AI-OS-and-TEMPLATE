@@ -7,7 +7,7 @@
 AI実装OSのエントリーポイント。
 新規プロジェクト開始時、AIは必ずこのファイルを読むこと。
 
-Updated: 2026-04-14
+Updated: 2026-04-16
 ---
 
 # 必読セット定義（ロード分類）
@@ -80,6 +80,15 @@ AIは以下の分類に従ってファイルを参照する。
 - 64_figma_migration.md  
   → Figma デザインシステムを別プロジェクト・別ファイルへ移植する場合に参照
 
+- 65_figma_constraints.md  
+  → Figma Plugin API で Variables / Styles / Effects を操作する場合に参照
+
+- 66_figma_guide_structure.md  
+  → Style Guide を Figma 上で作成・更新する場合に参照
+
+- 67_design_system_workflow.md  
+  → デザインシステムを新規作成または改修する場合に参照
+
 ## デザインシステム参照
 プロジェクトが Figma 連携を含む場合、以下を必ず参照：
 - @60_figma_variables.md — 変数命名規約
@@ -87,6 +96,9 @@ AIは以下の分類に従ってファイルを参照する。
 - @62_figma_mode_handling.md — L/D・PC/SP モード処理
 - @63_design_tokens_output.md — トークン出力仕様
 - @64_figma_migration.md — プロジェクト間移植フロー
+- @65_figma_constraints.md — Figma API 既知制約と回避策
+- @66_figma_guide_structure.md — Style Guide 設計テンプレート
+- @67_design_system_workflow.md — DS 制作標準ワークフロー
 
 AIは不要なファイルを常時ロードしないこと。
 各ファイルの「参照タイミング」に従うこと。
@@ -100,7 +112,7 @@ AIは不要なファイルを常時ロードしないこと。
 | 32 | **強制ルール** | AI実装時に必ず従う唯一の出力ルール。他より常に優先 |
 | 40〜42 | **実装ガイド** | Pug / SCSS / JS の実装作法。32に矛盾する場合は32優先 |
 | 50〜53 | **レビュー/監査** | 実装後の品質・パフォーマンス・a11y確認。実装中は参照不要 |
-| 60〜63 | **デザインシステム変換規約** | Figma Variables/Styles/Modes → コードトークン変換ルール。Figma連携時に参照 |
+| 60〜67 | **デザインシステム変換規約** | Figma Variables/Styles/Modes → コードトークン変換ルール、移植・API制約・Guide構造・DS制作ワークフロー。Figma連携時に参照 |
 
 
 ---
