@@ -42,87 +42,190 @@ Updated: 2026-04-16
 
 ※ Figma DS 側で扱うのは「色 / spacing / radius / shadow / typography / state opacity / content string」の7カテゴリに限定する。
 
+## 1-3. 責務境界の明示（重要）
+
+**Figma DS の責務は「色値・寸法値・タイポ値のセマンティック」まで。**
+コンポーネント状態の組み合わせ（ボタンの hover 挙動、アコーディオンの開閉トランジション等）は SCSS 側で組む。
+
+たとえば Figma Theme に `--primary-hover` がある場合、それは「primary 色のホバー状態で使う色値」であって、「ボタンの hover 挙動を定義したスタイル」ではない：
+
+- Figma 側：色の semantic 変数（primary-hover = #XXXXXX）
+- SCSS 側：`button:hover { background: var(--primary-hover); transition: ...; }`
+
+AI は Figma に `-hover` / `-active` / `-disabled` 等の変数があっても、コンポーネントスタイル自体まで Figma に求めないこと。
+
 ---
 
 # 2. 命名対応表（新 = Figma Theme を正）
 
-## 2-1. Brand / Accent
+本表は NDS_v2 実装を基準とする。**旧 SCSS に該当がない（Figma 新規）トークンも全て列挙**し、AI 変換時の「未記載によるスタック」を防ぐ。
+新トークンは CSS Custom Properties として出力される（`63_design_tokens_output.md` 準拠、kebab-case）。
+
+## 2-1. Brand / Accent（01_Brand）
 
 | 旧 SCSS | 新 Figma Theme | 備考 |
 |---------|---------------|------|
-| `--primary` | `--primary` | ✅ 一致、そのまま |
-| `--secondary` | `--secondary` | 用途に応じて Figma 側に定義 |
-| `--tertiary` | （廃止候補） | Figma 側で必要なら再定義 |
+| `--primary` | `--primary` | ✅ 一致 |
+| （該当なし） | `--primary-hover` | hover 時の色値（挙動定義は SCSS 側、1-3 参照） |
+| （該当なし） | `--primary-active` | active/pressed 時の色値 |
+| （該当なし） | `--primary-disabled` | 無効化時の色値 |
+| （該当なし） | `--primary-tint` | primary の淡色バリアント |
+| `--secondary` | `--secondary` | ✅ 一致 |
+| （該当なし） | `--secondary-hover` | |
+| （該当なし） | `--secondary-active` | |
+| （該当なし） | `--secondary-disabled` | |
+| （該当なし） | `--secondary-tint` | |
+| `--tertiary` | （廃止候補） | NDS_v2 には存在しない |
 | `--accent` | （廃止候補） | primary/secondary で代替 |
 
-## 2-2. Background
+## 2-2. Surface / Background（02_Surface）
+
+| 旧 SCSS | 新 Figma Theme | 備考 |
+|---------|---------------|------|
+| `--bg-base` | `--bg-default` | 標準背景 |
+| `--bg-alt` | `--bg-raised` | 一段持ち上げ面 |
+| `--bg-deep` | `--bg-deep` | ✅ NDS_v2 に実在。深い背景用、そのまま踏襲 |
+| `--bg-quaternary` | （用途再定義） | NDS_v2 に直接対応なし。decisions.md で判断 |
+| `--overlay` | `--bg-overlay` | 暗幕 |
+| `--surface-float` | `--bg-raised` + alpha 等 | 用途次第、decisions.md で明記 |
+| （該当なし） | `--bg-surface` | カード面 |
+| （該当なし） | `--bg-side` | サイドバー/脇面 |
+| （該当なし） | `--bg-hover` | hover 時の面色 |
+| （該当なし） | `--bg-selected` | 選択状態の面色 |
+| （該当なし） | `--bg-inverse` | 反転面（暗色地） |
+| （該当なし） | `--bg-header` | ヘッダー専用 |
+| （該当なし） | `--bg-footer` | フッター専用 |
+
+## 2-3. Text（03_Text）
+
+| 旧 SCSS | 新 Figma Theme | 備考 |
+|---------|---------------|------|
+| `--text-default` | `--text-main` | 主要テキスト |
+| `--text-muted` | `--text-muted` | ✅ NDS_v2 に実在、そのまま踏襲（sub とは役割違い） |
+| （該当なし） | `--text-sub` | 補助テキスト（muted より目立つ階層） |
+| `--text-subtle` | `--text-sub` | subtle は sub に寄せる |
+| `--text-light` | `--text-inverse` | 反転テキスト |
+| `--text-dark` | `--text-main` | Dark mode で自動解決、独立変数は廃止 |
+| `--text-lead` | `.text-lead`（Text Style） | Style 側で管理、`61_figma_styles.md` |
+| （該当なし） | `--on-primary` | primary 背景上のテキスト色 |
+| （該当なし） | `--on-secondary` | secondary 背景上のテキスト色 |
+| （該当なし） | `--on-notice` | notice 背景上のテキスト色 |
+
+※ `--text-caption` という **色 Variable は存在しない**。`.text-caption` は Text Style（Body/text-caption）であり、fontSize は Variable `fz-caption` に分離される。NDS 側指摘の誤マッピング修正済み。
+
+## 2-4. Border（04_Border）
+
+| 旧 SCSS | 新 Figma Theme | 備考 |
+|---------|---------------|------|
+| `--border-dark` | `--border-default` | 標準ボーダー |
+| `--border-light` | `--border-inverse` | 反転（暗地）ボーダー |
+| （該当なし） | `--border-subtle` | 控えめなボーダー |
+| （該当なし） | `--border-strong` | 強調ボーダー |
+| （該当なし） | `--border-focus` | focus リング色 |
+| （該当なし） | `--border-disabled` | 無効化時 |
+
+## 2-5. Notice（05_Notice、全12トークン）
 
 | 旧 SCSS | 新 Figma Theme |
 |---------|---------------|
-| `--bg-base` | `--bg-default` |
-| `--bg-alt` | `--bg-raised` |
-| `--bg-deep` | `--bg-header` or `--bg-footer`（用途で分岐） |
-| `--bg-quaternary` | （用途再定義、Figma Theme に該当追加） |
-| `--overlay` | `--bg-overlay` |
-| `--surface-float` | `--bg-raised` + alpha、または Figma 側で専用定義 |
+| `$c-danger-default` | `--error-default` |
+| `$c-danger-lighten`（近似） | `--error-sub` |
+| （該当なし） | `--error-border` |
+| `$c-important-default` | `--warning-default` |
+| `$c-important-lighten` | `--warning-sub` |
+| （該当なし） | `--warning-border` |
+| `$c-success-default` | `--success-default` |
+| `$c-success-lighten` | `--success-sub` |
+| （該当なし） | `--success-border` |
+| `$c-info-default` | `--info-default` |
+| `$c-info-lighten` | `--info-sub` |
+| （該当なし） | `--info-border` |
 
-## 2-3. Text
+※ 旧 SCSS の `-light` / `-dark` / `-darken` は default に統合、残りは廃止候補。
 
-| 旧 SCSS | 新 Figma Theme |
-|---------|---------------|
-| `--text-default` | `--text-main` |
-| `--text-muted` | `--text-sub` |
-| `--text-subtle` | `--text-caption` |
-| `--text-light` | `--on-primary` or `--text-inverse` |
-| `--text-dark` | `--text-main`（Dark mode で自動解決） |
-| `--text-lead` | `text-lead`（Text Style 側で管理、`61_figma_styles.md`） |
-
-## 2-4. Border
-
-| 旧 SCSS | 新 Figma Theme |
-|---------|---------------|
-| `--border-dark` | `--border-default` |
-| `--border-light` | `--border-inverse` |
-
-## 2-5. Radius
-
-| 旧 SCSS | 新 Figma Theme |
-|---------|---------------|
-| `--radius-base` / `--radius-xs` | `--rad-xs` |
-| `--radius-s` | `--rad-s` |
-| `--radius-m` | `--rad-m` |
-| `--radius-l` | `--rad-l` |
-| `--radius-xl` | `--rad-xl` |
-| `$radius-full` | `--rad-full` |
-
-※ Figma Theme は `rad-` prefix（60系規約）。旧 `--radius-` は廃止。
-
-## 2-6. Shadow
-
-| 旧 SCSS | 新 Figma Theme（Style） |
-|---------|---------------|
-| `--shadow-xs`〜`--shadow-xl` | `.shadow-xs`〜`.shadow-xl`（Effect Style） |
-| `$shadow-soft-*`（ふわっと系） | （廃止候補、Figma 側で必要なら Effect Style 追加） |
-
-※ Shadow は CSS 変数ではなく **Effect Style クラス** として出力される（`63_design_tokens_output.md`）。
-
-## 2-7. Spacing（旧 SCSS に該当なし、Figma 新規）
+## 2-6. Spacing（06_Spacing、旧 SCSS に該当なし）
 
 | 新 Figma Theme | 備考 |
 |---------------|------|
-| `--gap-xxs`〜`--gap-xxl` | 要素間 / 内側 padding 共用 |
-| `--section-s`〜`--section-xl` | セクション上下余白専用 |
-| `--w-cont-*` | コンテナ幅（旧 `--main-max` を包含） |
+| `--gap-xxs`〜`--gap-xxl` | Gap サブグループ、要素間 / 内側 padding 共用（PC/SP で 1段ずらし） |
+| `--section-s`〜`--section-xl` | Section サブグループ、セクション上下余白専用 |
 
-## 2-8. Typography（Text Style 側で管理）
+## 2-7. Width（07_Width、旧 SCSS に該当なし）
+
+| 旧 SCSS | 新 Figma Theme |
+|---------|---------------|
+| `--main-max` | `--w-cont-default` |
+| （該当なし） | `--w-cont-narrow` / `--w-cont-wide` / `--w-sidebar` 等 |
+
+## 2-8. Radius（08_Radius）
+
+| 旧 SCSS | 新 Figma Theme | 備考 |
+|---------|---------------|------|
+| `$radius-none` / `--radius-base` | `--rad-none` | 0px |
+| `--radius-xs` | `--rad-xs` | |
+| `--radius-s` | `--rad-s` | |
+| `--radius-m` | `--rad-m` | |
+| `--radius-l` | `--rad-l` | |
+| `--radius-xl` | `--rad-xl` | |
+| `$radius-full` | `--rad-full` | 9999px |
+
+※ 旧 `--radius-base` は `--rad-none` 相当（0px）か `--rad-xs` 相当かはプロジェクトで判断し `decisions.md` に記録する。
+
+## 2-9. Shadow（09_Shadow、Effect Style 側で管理）
 
 | 旧 SCSS | 新 Figma |
 |---------|---------|
-| `$fz-h1`〜`$fz-h6` | `.heading-h1`〜`.heading-h4`（Text Style） |
-| `$fz-lead` / `$fz-base` / `$fz-s` / `$fz-xs` | `.text-lead` / `.text-main` / `.text-sub` / `.text-caption` |
-| `$fz-section-title` / `$fz-page-title` 等 | `.heading-h*` に集約、固有名称は廃止 |
+| `--shadow-xs`〜`--shadow-xl` | `.shadow-xs`〜`.shadow-xl`（Effect Style クラス） |
+| `$shadow-soft-*` | 廃止候補、必要なら Figma 側で Effect Style 追加 |
 
-※ Typography は複合レシピとして Text Style で管理（`61_figma_styles.md`）。
+※ Shadow は CSS 変数ではなく **Effect Style クラス** として出力（`63_design_tokens_output.md`）。
+
+## 2-10. Typography Variables（10_Typography、Variable 部分）
+
+| 旧 SCSS | 新 Figma Theme（Variable） |
+|---------|---------------|
+| `$fz-xs` | `--fz-caption`（11px 相当） |
+| `$fz-s` / `$fz-base` | `--fz-body-s` / `--fz-body-m` |
+| `$fz-lead` / `$fz-l` / `$fz-xl` | `--fz-body-l` |
+| `$fz-h1`〜`$fz-h6` | `--fz-h1` / `--fz-h2` / `--fz-h3` / `--fz-h4` |
+| （該当なし） | `--fw-reg` / `--fw-med` / `--fw-bold` |
+
+※ fontSize / fontWeight は Variable、lineHeight / letterSpacing は Text Style 側で直接指定（`_Reserved/` 退避、`65_figma_constraints.md` 制約1）。
+
+## 2-11. Typography Styles（Text Style、全10種）
+
+| 旧 SCSS（$fz-系） | 新 Figma Text Style |
+|---------|---------|
+| `$fz-h1`〜`$fz-h4` ベースのスタイル | `.heading-h1`〜`.heading-h4` |
+| `$fz-lead` ベース | `.text-lead` |
+| `$fz-base` ベース | `.text-main` |
+| `$fz-s` ベース | `.text-sub` |
+| `$fz-xs` ベース | `.text-caption` |
+| `$fz-section-title` / `$fz-page-title` 等の固有名 | `.heading-h*` に集約、固有名称は廃止 |
+| （ボタン専用） | `.text-button` |
+| （ラベル専用） | `.text-label` |
+
+## 2-12. State（11_State、全5トークン）
+
+| 旧 SCSS | 新 Figma Theme |
+|---------|---------------|
+| （該当なし） | `--state-disabled` |
+| （該当なし） | `--state-hover` |
+| （該当なし） | `--state-pressed` |
+| （該当なし） | `--state-focus` |
+| （該当なし） | `--state-skeleton` |
+
+※ 全て FLOAT（opacity 値）。`color-mix()` や `rgba()` と組み合わせて使用。
+
+## 2-13. Content（12_Content、STRING 変数）
+
+| 新 Figma Theme | 備考 |
+|---------------|------|
+| `dummy-*` | ダミーテキスト |
+| `meta-*` | メタ情報文字列 |
+| `ph-*` | プレースホルダー |
+
+※ コード側では i18n キー or 環境変数として扱う（`60_figma_variables.md` STRING 変数節）。
 
 ---
 

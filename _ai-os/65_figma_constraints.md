@@ -125,3 +125,17 @@ for (const v of configVars) {
 ### 実践的運用
 - Style Guide を「全トークン被覆担保」の役割で作成する
 - コピペだけで Variables + Styles 両方が新ファイルに展開される
+
+### 移植先での Config 層の見え方（重要）
+
+`scopes = []` で picker 非表示化した Config 層は、**移植先でも picker に出ない**。
+デザイナーが「Config が消えた」「Variables が減った」と誤解するケースが頻発する。
+
+**移植時に必ず伝えること**：
+- Config 層は**存在している**が picker 非表示にしているだけ
+- Variables パネル上部の「フィルタ」や「検索」では可視
+- Variables Collection 設定から scope を戻せばいつでも再表示可能
+
+**確認方法**：
+- 移植後に Variables パネルを開き、Collection 選択時に Config が存在することを目視確認
+- あるいは Plugin API で `figma.variables.getLocalVariables()` で件数確認

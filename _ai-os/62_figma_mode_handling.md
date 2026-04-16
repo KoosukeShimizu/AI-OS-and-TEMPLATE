@@ -109,6 +109,38 @@ Figma では `PC-Light / SP-Light / PC-Dark / SP-Dark` の4モードが標準。
 
 PC/SP で小さくずらす運用（例：gap-m = PC:16, SP:12）は、デザイナーの手動調整を減らす鉄板パターン。
 
+## FOUC（Flash of Unstyled Content）対策
+
+`[data-theme="dark"]` での明示切替を採用する場合、**ページ初期ロード時に一瞬 Light → Dark のちらつき** が発生する。
+対策として、CSS より前（`<head>` の早い段階）で `<script>` により初期テーマを判定する：
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+```
+
+### ポイント
+- `<script>` は **CSS 読み込みより前**（`<link rel="stylesheet">` の上）に置く
+- IIFE で即時実行（defer/async を付けない）
+- `localStorage` 優先 → 無ければ `prefers-color-scheme`
+- テーマトグル UI からの切替は `document.documentElement.setAttribute('data-theme', ...)` + `localStorage.setItem('theme', ...)` の組み合わせ
+
+### 注意
+- この preflight script は外部ファイルにせず **インラインで埋め込む**（外部参照だとロードが遅れてちらつきが残る）
+- `<script>` が増えるが、描画前に一度だけ実行される軽量処理なのでパフォーマンス影響は無視できる
+
 ---
 
 ## 関連ドキュメント

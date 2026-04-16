@@ -103,6 +103,42 @@ Variable バインドでは unit が PIXELS に強制変換される制約があ
 Figma 上で Text Style を適用すれば、unit が保持された正しい値になる。
 （背景の根拠は `60_figma_variables.md` の `_Reserved/` 節を参照）
 
+## Text Style の unit 保持 検証手順
+
+lh / ls の unit は Variable 経由で PIXELS に変換されがちなので、Text Style 作成後・移植後に **必ず目視確認** する。
+
+### Figma UI での確認
+1. Text Style パネルを開く（左サイドバー → Local Styles → Text）
+2. 対象 Style（例：`Heading/heading-h1`）をクリック
+3. 右サイドバーで以下を確認：
+   - **Line height**: `125%`（PERCENT 表記）であること。`40` のような裸数字 = PIXELS 化されている
+   - **Letter spacing**: `-1%` または `-0.01em` のような単位付き表記であること
+4. PIXELS 表記になっていたら Style を再定義（Variable bind を外し、値を直接入力）
+
+### Plugin API での一括確認
+```javascript
+const textStyles = await figma.getLocalTextStylesAsync();
+const broken = [];
+for (const style of textStyles) {
+  const lh = style.lineHeight;
+  const ls = style.letterSpacing;
+  // lineHeight が PIXELS になっていたら問題
+  if (lh.unit === "PIXELS" && lh.value > 10) {
+    broken.push({ name: style.name, prop: "lineHeight", value: lh });
+  }
+  if (ls.unit === "PIXELS" && Math.abs(ls.value) > 2) {
+    broken.push({ name: style.name, prop: "letterSpacing", value: ls });
+  }
+}
+console.log(broken);
+```
+
+※ fontSize より大きい lineHeight 値（例：125 で PIXELS）は行間が破綻しているサイン。
+※ letterSpacing で ±2 より大きい PIXELS 値も同様。
+
+### 移植後チェック
+他ファイルへ Guide コピペ移植した後は、Text Style が unit を保持しているかを再検証する（`64_figma_migration.md` の検証リストと併用）。
+
 ---
 
 ## 関連ドキュメント

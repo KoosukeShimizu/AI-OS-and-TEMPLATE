@@ -141,6 +141,70 @@ master.findAll(n => {
 const uncovered = allVarIds.filter(id => !usedIds.has(id));
 ```
 
+### 判定基準
+
+- **OK**：`uncovered.length === 0`（全 Variable が Guide 内で最低 1 箇所 bind されている）
+- **要対応**：`uncovered.length > 0`（未 bind Variable を Guide に追加するか、削除判断）
+
+補足：
+- `_Reserved/` / `⚠_` prefix の Variable は除外対象。カウントに含めない
+- STRING 変数は `characters` bind が必須（下記「移植時チェックリスト」参照）
+- Text Style / Effect Style も同様に被覆確認（使用している Style の id を収集し、全 Style との差分を取る）
+
+### 検証用スクリプト雛形
+
+```javascript
+// 1. 対象 Collection の全 Variable を列挙
+const targetColl = await figma.variables.getVariableCollectionByIdAsync(COLLECTION_ID);
+const allVars = (await figma.variables.getLocalVariablesAsync())
+  .filter(v =>
+    v.variableCollectionId === targetColl.id
+    && !v.name.includes("_Reserved/")
+    && !v.name.startsWith("⚠_")
+  );
+
+// 2. Guide フレーム配下の bind 収集（前述のコード）
+// 3. 差分出力
+console.log(`Total: ${allVars.length}`);
+console.log(`Covered: ${allVars.length - uncovered.length}`);
+console.log(`Uncovered (${uncovered.length}):`);
+uncovered.forEach(id => {
+  const v = allVars.find(x => x.id === id);
+  console.log(`  - ${v.name}`);
+});
+```
+
+被覆率 100% が Guide 完成の判定条件。
+
+## 移植時チェックリスト（Copy-Paste 直前）
+
+Guide フレームを他ファイルへコピー移植する前に、以下を確認：
+
+- [ ] 全 Variable が Guide 内で bind されている（被覆 100%）
+- [ ] 全 Text Style が Guide 内のテキストで適用されている
+- [ ] 全 Effect Style が Guide 内の要素で適用されている
+- [ ] **STRING 変数は `text.setBoundVariable("characters", var)` で bind されている**（raw 文字列表示ではダメ）
+- [ ] `_Reserved/` 配下は bind しなくて OK（移植対象外）
+
+### STRING 変数の bind 確認手順
+
+STRING 変数（Content 系）は **`characters` プロパティに bind** されていないと移植時に転送されない。
+
+**確認方法**：
+1. Guide 内の対象テキストを選択
+2. Variables パネルで `characters` プロパティに Variable アイコンが付いているか確認
+3. 付いていなければ Variables パネルで該当 STRING 変数を `characters` に bind
+
+**Plugin API での一括チェック**：
+```javascript
+const stringVars = allVars.filter(v => v.resolvedType === "STRING");
+const unboundStrings = stringVars.filter(v => !usedIds.has(v.id));
+if (unboundStrings.length > 0) {
+  console.warn("以下の STRING 変数が未 bind。移植時に転送されません：");
+  unboundStrings.forEach(v => console.warn(`  - ${v.name}`));
+}
+```
+
 ---
 
 ## レイアウト設計指針
