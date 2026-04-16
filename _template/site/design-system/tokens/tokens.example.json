@@ -1,0 +1,54 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$metadata": {
+    "description": "W3C Design Tokens Community Group (DTCG) 形式のトークンファイル例。このファイルはスキーマ参考用。実際のトークンは tokens.json に Figma から書き出して格納する。"
+  },
+  "color": {
+    "bg-default": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "標準背景色（Light mode）"
+    },
+    "text-main": {
+      "$value": "#111827",
+      "$type": "color",
+      "$description": "主要テキスト色（Light mode）"
+    }
+  },
+  "dimension": {
+    "gap-m": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "標準 gap（PC）"
+    },
+    "section-m": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "標準セクション上下パディング"
+    }
+  },
+  "typography": {
+    "heading-h1": {
+      "$value": {
+        "fontFamily": "Inter",
+        "fontWeight": 700,
+        "fontSize": "40px",
+        "lineHeight": "125%",
+        "letterSpacing": "-0.01em"
+      },
+      "$type": "typography"
+    }
+  },
+  "shadow": {
+    "shadow-m": {
+      "$value": {
+        "color": "#00000026",
+        "offsetX": "0",
+        "offsetY": "4px",
+        "blur": "8px",
+        "spread": "0"
+      },
+      "$type": "shadow"
+    }
+  }
+}
