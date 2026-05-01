@@ -213,6 +213,35 @@ error / warning / success / info 各色を **default / sub / border** の3段階
 
 ---
 
+### 2026-04-16 - Brand tint バリアントを primary / secondary 対称化（実装済み）
+
+#### 決定内容
+`Theme/01_Brand/secondary-tint` を追加（Light: **indigo-50**, Dark: **indigo-950**）。
+`primary-tint`（blue-50 / blue-950）と同じ対称構造。
+
+対称化後の Brand 全 10 トークン：
+
+```
+primary, primary-hover, primary-active, primary-disabled, primary-tint
+secondary, secondary-hover, secondary-active, secondary-disabled, secondary-tint
+```
+
+#### 理由
+- secondary ベースのボタン・ハイライト・通知で tint 色需要が予測される
+- `primary-tint` のみ存在する非対称は将来の実装で不整合を招く
+- AI-OS 側対応表（`_ai-os/68_token_bridge.md` §2-1）を綺麗に揃えるため
+- 却下：`secondary-tint` を作らない（非対称のまま）→ 運用中に必ず問い合わせが発生する
+
+#### 影響範囲
+- Theme/01_Brand 配下、トークン数 9 → 10（実装完了）
+- `_ai-os/68_token_bridge.md` §2-1 の備考欄に値を明記（indigo-50 / indigo-950）
+
+#### 関連
+- `_ai-os/68_token_bridge.md` §2-1 — Brand / Accent 対応表
+- NDS レビュー指摘（2026-04-16）
+
+---
+
 ## スペーシング
 
 ### 2026-04 - Gap / Section の2サブグループに分離
