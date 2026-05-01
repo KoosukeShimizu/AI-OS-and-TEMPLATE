@@ -10,7 +10,7 @@
 ## このリポジトリの構造
 
 ```
-_ai-os/          — AI-OS ルールセット本体（00〜68番台）
+_ai-os/          — AI-OS ルールセット本体（00〜69番台）
 _template/site/  — サイト型プロジェクトのテンプレート
 _template/lp/    — LP型プロジェクトのテンプレート
 ```
@@ -21,9 +21,9 @@ _template/lp/    — LP型プロジェクトのテンプレート
 - `_ai-os/11_interview.md` — プロジェクト要件ヒアリング
 - `_ai-os/31_design_modes.md` — デザインモード管理
 - `_ai-os/32_generation_rules.md` — コード生成絶対ルール
-- `_ai-os/60〜68` — Figma デザインシステム連携規約
+- `_ai-os/60〜69` — Figma デザインシステム連携規約
 
-## Figma DS 連携モジュール（60〜68番台）
+## Figma DS 連携モジュール（60〜69番台）
 
 | ファイル | 役割 |
 |---|---|
@@ -36,6 +36,7 @@ _template/lp/    — LP型プロジェクトのテンプレート
 | `66_figma_guide_structure.md` | Style Guide設計テンプレート |
 | `67_design_system_workflow.md` | DS制作4ステップ |
 | `68_token_bridge.md` | 新旧トークン命名対応表（NDS_v2基準） |
+| `69_figma_design_with_nds.md` | NDS_v2でデザイン生成するときのトークン選択・use_figma手順 |
 
 ## 作業開始時の一言
 

@@ -92,6 +92,9 @@ AIは以下の分類に従ってファイルを参照する。
 - 68_token_bridge.md  
   → 新旧トークンの命名が衝突する、または既存 SCSS から Figma Theme へ移行する場合に参照
 
+- 69_figma_design_with_nds.md  
+  → use_figma MCP で NDS_v2 を使って Figma デザインを生成・配置する場合に参照（コーディング前のデザイン工程）
+
 ## デザインシステム参照
 プロジェクトが Figma 連携を含む場合、以下を必ず参照：
 - @60_figma_variables.md — 変数命名規約
@@ -103,6 +106,7 @@ AIは以下の分類に従ってファイルを参照する。
 - @66_figma_guide_structure.md — Style Guide 設計テンプレート
 - @67_design_system_workflow.md — DS 制作標準ワークフロー
 - @68_token_bridge.md — 新旧トークン命名の橋渡し規約
+- @69_figma_design_with_nds.md — NDS_v2 でデザイン生成するときのトークン選択・use_figma 手順
 
 AIは不要なファイルを常時ロードしないこと。
 各ファイルの「参照タイミング」に従うこと。
@@ -117,6 +121,7 @@ AIは不要なファイルを常時ロードしないこと。
 | 40〜42 | **実装ガイド** | Pug / SCSS / JS の実装作法。32に矛盾する場合は32優先 |
 | 50〜53 | **レビュー/監査** | 実装後の品質・パフォーマンス・a11y確認。実装中は参照不要 |
 | 60〜68 | **デザインシステム変換規約** | Figma Variables/Styles/Modes → コードトークン変換ルール、移植・API制約・Guide構造・DS制作ワークフロー・新旧命名の橋渡し。Figma連携時に参照 |
+| 69 | **Figmaデザイン生成規約** | use_figma MCP で NDS_v2 を使ってデザインを作るときのトークン選択・Surface/Text/Brand の使い分け・生成手順。デザイン工程（コーディング前）に参照 |
 
 
 ---
