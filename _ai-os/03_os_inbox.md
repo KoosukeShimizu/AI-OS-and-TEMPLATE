@@ -16,6 +16,11 @@
 各 _ai-os/XX.md へ統合
 ```
 
+**このファイルのローカルパス（AIは必ずこのパスに書き込む）:**
+```
+/Users/koosuke/Library/CloudStorage/Dropbox-個人/★Project/AIコーディングエージェント/_ai-os/03_os_inbox.md
+```
+
 インボックスは **ステージングエリア**。直接 OS を書き換えるのではなく、
 一度ここに溜めてから人間がレビューして正式統合する。
 
@@ -68,3 +73,15 @@
 ---
 
 <!-- 以下に未処理メモを追記していく -->
+
+## 2026-05-01 #001 [OS候補]
+- 対象：69_figma_design_with_nds.md（または 31_design_modes.md に追記）
+- 内容：ワイヤーフレーム段階から NDS_v2 のトークン思考を適用する。具体的には「primary は1画面に1 CTA のみ」「テキストは text-main→text-sub→text-muted の3階層」「Gap と Section を混在させない」を守ること。ワイヤーで赤一色・全要素同色にしない。
+- きっかけ：FODフライデイ LP ワイヤー作成時、NDS_v2 ルールを知らずに primary（赤）を全 CTA・全強調に使い、レビューで全面修正が必要になった。
+- ステータス：未処理
+
+## 2026-05-01 #002 [OS候補]
+- 対象：31_design_modes.md または 69_figma_design_with_nds.md に追記
+- 内容：Figma でのデザイン作業はオートレイアウト（Auto Layout）を最大限使用する。フレーム・セクション・カード・ボタン等、すべての要素に layoutMode + layoutSizingVertical/Horizontal を適用し、絶対座標・固定高さは原則使わない。また、子ノードは必ず親フレームに appendChild してから layoutSizingHorizontal/Vertical を設定すること（事前設定は無効）。
+- きっかけ：FODフライデイ LP ワイヤー作成時、全要素を絶対座標で配置したため後から要素追加のたびに手作業で Y 座標修正が必要になった。また Plugin API でのオートレイアウト設定は append 順序に依存するという制約を発見した。
+- ステータス：未処理
