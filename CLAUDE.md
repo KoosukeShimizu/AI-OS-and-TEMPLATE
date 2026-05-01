@@ -4,8 +4,9 @@
 
 ## 起動時の読み込み順
 
-1. `@_ai-os/00_start.md` — AI-OS 全体の起動ガイド（エントリーポイント）
-2. `@_ai-os/32_generation_rules.md` — 絶対ルール（SSOT、最優先）
+1. `@HANDOFF.md` — 全判断・経緯の引き継ぎ文書（**必ず最初に読む**）
+2. `@_ai-os/00_start.md` — AI-OS 全体の起動ガイド（エントリーポイント）
+3. `@_ai-os/32_generation_rules.md` — 絶対ルール（SSOT、最優先）
 
 ## このリポジトリの構造
 
